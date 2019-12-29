@@ -1,0 +1,13 @@
+<block wx:for="{{4}}">
+  <view class="content">
+    <view class="top flex-between">
+      <view>张玉玉 (通州北关店)</view>
+      <view>电话: 15782895544</view>
+    </view>
+    <view class="neirong">业主最近不在北京，现在不能带看房子；业主下周 三回北京后可以周六日带客户看房</view>
+    <view class='time'>
+      <text>2018-11-20  11：28</text>
+    </view>
+  </view>
+
+</block>

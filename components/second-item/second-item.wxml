@@ -1,0 +1,21 @@
+
+<block wx:for="{{4}}">
+  <view class="house-item flex">
+    <image class="roomImg" src="../../assets/img/img1.png"></image>
+    <view class="right-box">
+      <view class="title">新城花园1期/1栋/1单元/1101</view>
+      <view class="info">1室1厅 / 123.45㎡ / 东南 / 简装</view>
+      <view class="code">MF09138811</view>
+      <view  class="flex">
+      <block wx:for="{{5}}">
+        <view class="tag">钥匙</view>
+        </block>
+      </view>
+      <view class="flex">
+        <view class="jibie">A级</view>
+        <view class="price">3388万</view>
+        <view class="unit">45698.56元/㎡</view>
+      </view>
+    </view>
+  </view>
+</block>

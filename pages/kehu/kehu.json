@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "客户",
+ "usingComponents": {
+  "index-kehu-item-comp": "/components/index-kehu-item/index-kehu-item"
+}
+}

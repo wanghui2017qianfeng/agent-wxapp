@@ -1,0 +1,62 @@
+.top{
+
+background: #2F72F7;
+color:#fff;
+padding:65rpx 0 101rpx 26rpx
+
+}
+
+.top image{
+  width:100rpx;
+  height:100rpx;
+  margin-right:20rpx;
+}
+
+.yeji{
+  position: absolute;
+  width:698rpx;
+  height:262rpx;
+  border-radius:12rpx;
+  top:200rpx;
+  left:25rpx;
+  z-index:1000;
+  background: #ffffff
+}
+.yeji .title{
+  margin:42rpx 0 56rpx 38rpx;
+}
+.my-yeji{
+
+  text-align: center;
+}
+.my-yeji .price{
+  font-size: 23rpx;
+  color:#EB5B55;
+  margin-bottom:24rpx;
+
+}
+.my-yeji .name{
+  font-size: 25rpx;
+  color:#333;
+}
+.my-item {
+  line-height: 47rpx;
+}
+.my-item image{
+  width:47rpx;
+  height:47rpx;
+  margin-right: 40rpx;
+  margin-top:10rpx
+
+}
+
+.logout {
+  background: #fff;
+  margin: 50rpx 26rpx 0;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+  border-radius: 14rpx;
+}

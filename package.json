@@ -1,0 +1,16 @@
+{
+  "name": "agent-wxapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "dependencies": {
+    "@vant/weapp": "^1.0.1",
+    "miniprogram-api-promise": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

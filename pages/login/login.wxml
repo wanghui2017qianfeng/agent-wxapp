@@ -1,0 +1,17 @@
+
+<view class="box">
+<view class="login-item flex">
+<image src="../../assets/img/shouji.png"></image>
+<input placeholder="请输入手机号码"></input>
+</view>
+<view class="login-item flex">
+<image src="../../assets/img/password.png"></image>
+<input placeholder="请输入手机号码"></input>
+</view>
+
+<view class="login-btn">
+登录
+</view>
+<view class="msg">与租售系统登录账号和密码一致</view>
+
+</view>

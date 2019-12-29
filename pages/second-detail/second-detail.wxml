@@ -1,0 +1,147 @@
+<view style='position: relative;'>
+  <swiper interval="5000" duration="1000" bindchange="swiperChange">
+    <block wx:for="{{info.houseImage}}" wx:key="id">
+      <swiper-item bindtap="toAlbum" data-id="{{info.id}}">
+        <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='imgPage' wx:if="{{info.houseImage}}">{{nowImgIndex}}/{{info.houseImage.length==0?'1':info.houseImage.length}}</view>
+  <view class="top-icon">
+    <van-icon name="like" color="#FF7531" wx:if="{{isFocus}}" size="32rpx" bindtap="focus" data-id="{{info.id}}" />
+    <van-icon name="like-o" color="#ffffff" wx:else size="32rpx" catchtap="focus" data-id="{{info.id}}" />
+    <button open-type="share" class="shareBtn">
+      <image src="../../assets/img/zhuanfa.png"></image>
+    </button>
+  </view>
+</view>
+
+<view class="top-detail">
+  <view class="name">{{info.houseName==null?'':info.houseName}}</view>
+  <!-- <view class="code">房源编号：{{info.houseNo==null?'暂无':info.houseNo}}</view> -->
+  <!-- <view style="margin-bottom:44rpx ;display:flex">
+    <block wx:for="{{tagList}}" wx:key="*this">
+      <view  class="tag">{{item}}</view>
+    </block>
+  </view> -->
+  <view class="flex flex-box">
+    <view class="flex-item">
+      <view class="title1">售价</view>
+      <view class="price red">{{info.offer==null?'暂无':info.offer+'万'}}</view>
+    </view>
+    <view class="border" style="margin-right:58rpx;"></view>
+    <view class="flex-item">
+      <view class="title1">居室</view>
+      <view class="price">{{info.bedroom==null?'-':info.bedroom+'室'}}{{info.sittingRoom==null?'-':info.sittingRoom+'厅'}}{{info.toilet==null?'-':info.toilet+'卫'}}</view>
+    </view>
+    <view class="border" style="margin-right:58rpx;"></view>
+    <view class="flex-item">
+      <view class="title1">建筑面积</view>
+      <view class="price">{{info.constructionArea==null?'暂无':info.constructionArea+"㎡"}}</view>
+    </view>
+  </view>
+
+</view>
+
+<view class="huxing huxing1">
+  <view class="border-left">
+    基本信息
+  </view>
+  <view class="info">
+    <view class="info-item">
+      <text class="label">单价 : </text>{{info.univalent?info.univalent+"元/㎡":'-'}}</view>
+    <view class="info-item">
+      <text class="label">挂牌 : </text>{{info.listingTime?info.listingTime:'-'}}</view>
+    <view class="info-item">
+      <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
+    <view class="info-item">
+      <text class="label">楼层 : </text>{{info.floor?info.floor+'层':''}}{{info.floorMax?'/共'+info.floorMax+'层':'-'}}</view>
+    <view class="info-item">
+      <text class="label">楼型 : </text>{{info.buildingType?info.buildingType:'-'}}</view>
+    <view class="info-item">
+      <text class="label">年代 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+
+    <view class="info-item">
+      <text class="label">装修 : </text>{{info.decorateName?info.decorateName:'-'}}</view>
+    <view class="info-item">
+      <text class="label">产权 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+    <view class="info-item">
+      <text class="label">用途 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+    <view class="info-item">
+      <text class="label">供暖 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+    <view class="info-item">
+      <text class="label">属性 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+    <view class="info-item">
+      <text class="label">贷款 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+    <view class="info-item">
+      <text class="label">小区 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+
+  </view>
+
+</view>
+
+
+<!-- 备注 -->
+<view class="huxing huxing1">
+  <view class="border-left">
+    备注
+  </view>
+  <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
+  <view class="memo">周边配套:</view>
+  <view class="memo">交通出行:</view>
+  <view class="memo">户型介绍:</view>
+</view>
+<!-- 出售优势 -->
+<view class="huxing huxing1">
+  <view class="border-left">
+    出售优势
+  </view>
+  <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
+  <view class="memo">周边配套:</view>
+  <view class="memo">交通出行:</view>
+  <view class="memo">户型介绍:</view>
+</view>
+
+<!-- 业绩归属 -->
+<view class="huxing huxing1">
+  <view class="border-left">
+    业绩归属
+  </view>
+  <block wx:for="{{4}}">
+    <view class="flex-between yeji-item">
+      <image src="../../assets/img/ren.png" class="renImg"></image>
+      <view class="name">丽华</view>
+      <view class="tag">维护人</view>
+      <image src="../../assets/img/phone.png" class="phone"></image>
+    </view>
+  </block>
+</view>
+
+<!-- 查看电话 -->
+<view class="huxing huxing1">
+  <view class="border-left">
+    查看电话
+  </view>
+  <block wx:for="{{4}}">
+    <view class="flex-between yeji-item">
+      <view class="name">丽华</view>
+
+      <view class="tag">产权人</view>
+      <view class="phone-number">15072829596</view>
+
+      <image src="../../assets/img/phone.png" class="phone"></image>
+    </view>
+  </block>
+</view>
+
+<view class="huxing huxing1 flex-between" style="margin-bottom:60rpx;border-bottom:30rpx solid #f5f5f5">
+  <view class="border-left">
+    跟进记录
+  </view>
+  <van-icon name="arrow"  />
+  </view>
+
+
+
+
+<view class="bottom-btn">跟进</view>

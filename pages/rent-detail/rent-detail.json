@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "租房房源详情",
+  "usingComponents": {
+    "kehu-item-comp": "/components/kehu-item/kehu-item"
+  }
+}

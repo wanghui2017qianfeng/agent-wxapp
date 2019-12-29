@@ -1,0 +1,30 @@
+   <block wx:for="{{4}}">
+      <view class="kehu-item">
+        <view class="top flex-between">
+          <view class="name">杨晓 (NC00031825)</view>
+          <view class="focu flex">
+            <van-icon name="like" color="#EC4613 " wx:if="{{true}}" />
+            <van-icon name="like-o" color="#EC4613 " wx:else />
+            <image src="../../assets/img/red-phone.png" class="phone"></image>
+          </view>
+        </view>
+        <view class="content flex-between">
+          <view class="qu">
+            <view class="name">海定区</view>
+            <view class="price">300-500万</view>
+          </view>
+          <view class="qu">
+            <view class="name">住宅</view>
+            <view class="price">300-500㎡</view>
+          </view>
+          <view class="pingjia qu">
+            <van-rate value="{{ 3 }}" color="#FF4657" void-color="#DCDCDC" bind:change="onChange" />
+            <view class="price1">2-3居室</view>
+          </view>
+        </view>
+        <view class="date">录入日期 : 2018/12/15</view>
+
+      </view>
+
+
+    </block>

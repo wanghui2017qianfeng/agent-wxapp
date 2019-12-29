@@ -1,0 +1,21 @@
+/* components/no-data/no-data.wxss */
+
+.no-data{
+position: absolute;
+left:50%;
+transform: translate(-50%,0);
+
+
+}
+.no-data image{
+  width:257rpx;
+  height:169rpx;
+}
+.no-data .text{
+ 
+  margin-top:31rpx;
+  font-size: 27rpx;
+  color:#333333;
+
+
+}

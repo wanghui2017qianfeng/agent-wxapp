@@ -1,0 +1,33 @@
+/* pages/msg/msg.wxss */
+.msg-center{
+  padding:0 28rpx;
+}
+.msg-center .title{
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.msg-center .title image{
+    width:46rpx;
+  height:38rpx;
+  margin-right:16rpx;
+}
+
+.msg-item{
+  border-bottom:1rpx solid #eeeeee;
+  padding-bottom:31rpx;
+  padding-top:28rpx;
+}
+.msg-title{
+  font-size: 26rpx;
+  color:#888888;
+}
+.item{
+  margin-top:27rpx;
+  font-size: 28rpx;
+  color:#333333;
+}
+.time{
+  color:#D0D0D0;
+  font-size: 27rpx;
+}

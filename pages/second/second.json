@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "二手房列表",
+  "usingComponents": {
+    "second-item": "/components/second-item/second-item",
+    "no-data-comp" :"/components/no-data/no-data"
+  }
+}

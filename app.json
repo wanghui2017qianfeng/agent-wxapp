@@ -1,0 +1,90 @@
+{
+  "pages": [
+    "pages/buy-kehu-detail/buy-kehu-detail",
+    
+    "pages/kehu/kehu",
+    
+    "pages/genjin-record/genjin-record",
+    
+    "pages/genjin/genjin",
+    
+    "pages/second-detail/second-detail",
+    
+    "pages/second/second",
+    
+    
+    
+    "pages/rent/rent",
+    "pages/rent-detail/rent-detail",
+    
+    
+    "pages/my-house/my-house",
+    "pages/my-focus-kehu/my-focus-kehu",
+    
+    "pages/my-kehu/my-kehu",
+    "pages/login/login",
+    
+    "pages/my/my",
+    
+    "pages/index/index",
+    "pages/msg/msg"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2F72F7",
+    "navigationBarTitleText": "租售系统小程序",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 100
+  },
+    "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#2F72F7",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "工作台",
+          "iconPath": "assets/img/work1.png",
+          "selectedIconPath": "assets/img/work.png"
+        },
+        {
+          "pagePath": "pages/msg/msg",
+          "text": "消息",
+          "iconPath": "assets/img/msg1.png",
+          "selectedIconPath": "assets/img/msg.png"
+        },
+        {
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "assets/img/my1.png",
+          "selectedIconPath": "assets/img/my.png"
+        }
+      ]
+    },
+  "usingComponents": {
+    "van-rate": "@vant/weapp/rate",
+    "van-grid": "@vant/weapp/grid",
+    "van-grid-item": "@vant/weapp/grid-item",
+    "van-cell": "@vant/weapp/cell",
+    "van-nav-bar": "@vant/weapp/nav-bar",
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-tag": "@vant/weapp/tag",
+    "van-icon": "@vant/weapp/icon",
+    "van-tab": "@vant/weapp/tab",
+    "van-tabs": "@vant/weapp/tabs",
+    "van-sticky": "@vant/weapp/sticky",
+    "van-dialog": "@vant/weapp/dialog",
+    "van-popup": "@vant/weapp/popup",
+    "van-radio": "@vant/weapp/radio",
+    "van-radio-group": "@vant/weapp/radio-group",
+    "van-collapse": "@vant/weapp/collapse",
+    "van-collapse-item": "@vant/weapp/collapse-item",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu",
+    "van-dropdown-item": "@vant/weapp/dropdown-item",
+    "van-divider": "@vant/weapp/divider",
+    "van-overlay": "@vant/weapp/overlay"
+  },
+  "sitemapLocation": "sitemap.json"
+}

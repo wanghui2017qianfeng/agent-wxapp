@@ -1,0 +1,184 @@
+<view class="fixed">
+  <view class="sticky-fixed">
+    <view class="search-content">
+      <view class="search-box flex" bindtap="goSearch">
+        <image src="../../assets/img/search.png"></image>
+        <input value="{{houseName}}" placeholder="请输入楼盘名称、房间号或房源编号" bindinput="changeInput"></input>
+      </view>
+    </view>
+    <view style="height:20rpx;background:#ececec"></view>
+  </view>
+  <view class="choose-wrapper" catchtouchmove='ture' bind:tap="openShow">
+    <view class="memu-box">
+      <view class="menu-item {{searchActive==0?'menuActive':''}}" bindtap="clickDrop" data-name="area">
+        <view>{{areaTitle}}</view>
+      </view>
+      <view class="menu-item {{searchActive==1?'menuActive':''}}" bindtap="clickDrop" data-name="offer">
+        <view>{{offerText}}</view>
+      </view>
+      <view class="menu-item {{searchActive==2?'menuActive':''}}" bindtap="clickDrop" data-name="bedroom">
+        <view>{{bedroomText}}</view>
+      </view>
+      <view class="menu-item {{searchActive==3?'menuActive':''}}" bindtap="clickDrop" data-name="more">
+        <view>更多</view>
+      </view>
+      <view class="menu-item1" bindtap="clickDrop" data-name="paixu">
+        <view>
+          <image src="../../assets/img/paixu.png" class="paixu" wx:if="{{searchActive!=4}}"></image>
+          <image src="../../assets/img/paixu-on.png" class="paixu" wx:else></image>
+
+
+        </view>
+      </view>
+
+
+
+    </view>
+    <view class="choose-content" wx:if="{{showContent}}">
+      <!-- 区域 -->
+      <block wx:if="{{searchActive==0}}">
+        <view style='height:550rpx;overflow:hidden'>
+          <view style='display:flex'>
+            <scroll-view scroll-y class="area-wrapper">
+              <view class="areaLi {{areaActNum==index?'actThisArea':''}}" wx:for="{{areaList}}" wx:key="*this" catchtap='tabThisArea' data-id="{{item.id==null?'':item.id}}" data-text="{{item.name}}" data-index="{{index}}">{{item.name}}</view>
+            </scroll-view>
+            <scroll-view scroll-y class="circle-wrapper">
+              <view class="circleLi {{circleActNum==index?'actThisCircle':''}}" wx:for="{{circleList}}" wx:key="*this" catchtap='tabThisCircle' data-id="{{item.id==null?'':item.id}}" data-text="{{item.name}}" data-index="{{index}}">
+                {{item.name}}
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+      </block>
+      <!--售价 -->
+      <block wx:if="{{searchActive==1}}">
+        <view class="content">
+          <view class="tag-box">
+            <block wx:for="{{offerList}}" wx:for-index="idx" wx:key="*this">
+              <view class="tag {{offerActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseOffer">{{item.text}}</view>
+            </block>
+          </view>
+          <view class="flex-between">
+            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn sure" catchtap="sure">确定</view>
+          </view>
+        </view>
+
+      </block>
+      <!-- 居室 -->
+      <block wx:if="{{searchActive==2}}">
+        <view class="content">
+
+          <view class="tag-box">
+            <block wx:for="{{bedroomList}}" wx:for-index="idx" wx:key="*this">
+              <view class="tag {{bedActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseBed">{{item.text}}</view>
+            </block>
+          </view>
+          <view class="flex-between ">
+            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn sure" catchtap="sure">确定</view>
+          </view>
+        </view>
+
+      </block>
+
+      <!-- 更多 -->
+
+      <block wx:if="{{searchActive==3}}">
+        <view style='height:640rpx;overflow:hidden;'>
+          <scroll-view scroll-y class="scroll-box">
+            <view class="content">
+              <view class="name">面积(㎡)</view>
+              <view class="tag-box">
+                <block wx:for="{{coverList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{areaActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseCover">{{item.name}}</view>
+                </block>
+              </view>
+              <view class="line"></view>
+              <view class="name">朝向</view>
+              <view class="tag-box">
+                <block wx:for="{{orientList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+              <view class="line"></view>
+
+               <view class="name">级别</view>
+              <view class="tag-box">
+                <block wx:for="{{levelList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+              <view class="line"></view>
+              <view class="name">装修</view>
+              <view class="tag-box">
+                <block wx:for="{{decorateList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+               <view class="line"></view>
+              <view class="name">楼层</view>
+              <view class="tag-box">
+                <block wx:for="{{floorList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+                <view class="line"></view>
+              <view class="name">车位</view>
+              <view class="tag-box">
+                <block wx:for="{{parkingList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+               <view class="line"></view>
+              <view class="name">房源委托</view>
+              <view class="tag-box">
+                <block wx:for="{{entrustList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+                <view class="line"></view>
+              <view class="name">其他</view>
+              <view class="tag-box">
+                <block wx:for="{{otherList}}" wx:for-index="idx" wx:key="*this">
+                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                </block>
+              </view>
+
+            </view>
+          </scroll-view>
+          <view class="flex-between btn-box" >
+            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn sure" catchtap="sure">确定</view>
+          </view>
+        </view>
+
+      </block>
+
+      <!-- 排序 -->
+      <block wx:if="{{searchActive==4}}">
+        <van-radio-group value="{{ paixu }}" bind:change="onPaixuChange">
+          <van-cell-group>
+            <block wx:for="{{paixuList}}" wx:key="*this">
+              <van-cell title="{{item.text}}" clickable data-name="{{item.value}}" data-item="{{item}}" catchtap="onPaixuClick">
+                <van-radio slot="right-icon" use-icon-slot name="{{item.value}}">
+                  <van-icon color="{{paixu==item.value?'#2F72F7':'#ffffff'}}" name="success" />
+                </van-radio>
+              </van-cell>
+            </block>
+          </van-cell-group>
+        </van-radio-group>
+
+      </block>
+
+    </view>
+  </view>
+</view>
+<view class="body-content">
+  <block wx:if="{{list.length>0}}">
+    <second-item list="{{list}}" bind:goDetail="goDetail"></second-item>
+  </block>
+  <view wx:else>
+    <no-data-comp text="没有找到相关房源"></no-data-comp>
+  </view>
+</view>

@@ -1,0 +1,86 @@
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'>
+  <van-tab title="详情">
+
+    <view class="from flex">
+      <view class="label">客户来源:</view>
+      <view class="">进店客户</view>
+    </view>
+
+    <view class="box">
+      <view class="name">客户信息</view>
+      <view class="box-item">
+        <view class="label">称呼:</view>
+        <view>张先生</view>
+      </view>
+
+      <view class="box-item">
+        <view class="label">电话:</view>
+        <view class="flex-between" style="width:390rpx;"><view>15252526262</view><view>
+          <image src="../../assets/img/red-phone.png" class="phone"></image>
+        </view></view>
+        
+      </view>
+
+      <view class="box-item">
+    <view class="label">性别:</view>
+    <view>男</view>
+  </view>
+
+  <view class="box-item">
+    <view class="label">身份证号:</view>
+    <view>2451824625</view>
+  </view>
+
+  <view class="box-item">
+    <view class="label">户籍所在地:</view>
+    <view>重庆</view>
+  </view>
+    <view class="box-item">
+    <view class="label">现居地:</view>
+    <view>北京市朝阳区</view>
+  </view>
+    <view class="box-item">
+    <view class="label">微信号:</view>
+    <view>132428546</view>
+  </view>
+    <view class="box-item">
+    <view class="label">客户意向:</view>
+    <view>高</view>
+  </view>
+   <view class="box-item">
+    <view class="label">客户职业:</view>
+    <view>企业老板</view>
+  </view>
+   <view class="box-item">
+    <view class="label">客户现住情况:</view>
+    <view>租房</view>
+  </view>
+   <view class="box-item">
+    <view class="label">客户职业:</view>
+    <view>个体</view>
+  </view>
+   <view class="box-item">
+    <view class="label">租赁目的:</view>
+    <view>自住</view>
+  </view>
+   <view class="box-item">
+    <view class="label">客户星级:</view>
+    <view>一星</view>
+  </view>
+    </view>
+
+
+
+
+
+
+
+  </van-tab>
+  <van-tab title=" 跟进 ">
+
+  </van-tab>
+
+  <van-tab title=" 带看 ">
+
+  </van-tab>
+</van-tabs>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的房源资源",
+  "usingComponents": {
+    "my-house-item": "/components/my-house-item/my-house-item"
+  }
+}

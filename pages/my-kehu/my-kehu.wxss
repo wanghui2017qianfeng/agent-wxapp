@@ -1,0 +1,5 @@
+/* pages/my-kehu/my-kehu.wxss */
+.activeTab .van-ellipsis{
+  color:#2F72F7;
+  font-weight:700;
+}

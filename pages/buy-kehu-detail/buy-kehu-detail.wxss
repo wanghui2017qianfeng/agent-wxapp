@@ -1,0 +1,49 @@
+/* pages/buy-kehu-detail/buy-kehu-detail.wxss */
+page{
+  background:#f5f5f5;
+}
+.from{
+    background:#fff;
+  padding:0 26rpx;
+  height:114rpx;box-sizing: border-box;
+  line-height:114rpx;
+  color:#666666;
+  margin: 32rpx 26rpx;
+  border-radius:14rpx;
+}
+
+.from .label{
+width:260rpx;
+  text-align: left;
+}
+.box{
+  background:#fff;
+  padding:0 26rpx;
+  margin: 0 26rpx;
+  border-radius:14rpx;
+}
+
+.box .name{
+  font-size: 34rpx;
+  color:#333333;
+  height:96rpx;
+  line-height:96rpx;
+}
+.box-item{
+  font-size: 32rpx;
+  color:#666666;
+  height:90rpx;
+  line-height:90rpx;
+  border-top:1rpx solid #eee;
+  display: flex;
+}
+
+.box-item .phone{
+  width:36rpx;
+  height: 36rpx;
+}
+
+.box-item .label{
+  width:260rpx;
+  text-align: left;
+}

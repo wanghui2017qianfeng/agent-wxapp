@@ -1,0 +1,14 @@
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab">
+  <van-tab title="求购客户">
+
+ <kehu-item-comp></kehu-item-comp>
+
+
+
+
+  </van-tab>
+  <van-tab title=" 求租客户 ">
+ <kehu-item-comp></kehu-item-comp>
+
+  </van-tab>
+</van-tabs>

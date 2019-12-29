@@ -1,0 +1,43 @@
+<view class="search-box flex">
+  <image src="../../assets/img/search.png"></image>
+  <input value="{{keyword}}" placeholder="请输入楼盘名称、房间号或房源编号" bindinput="changeInput"></input>
+</view>
+<view class="search-content" wx:if="{{isInput}}">
+  <block wx:if="{{list.length>0}}">
+    <block wx:for="{{list}}" wx:key="*this">
+      <van-cell title="{{item.houseName}}" clickable data-name="{{item.houseName}}" data-item="{{item}}" bindtap="onCheckClick">
+        <van-radio slot="right-icon" use-icon-slot name="{{item.houseName}}">
+          <van-icon color="{{keyword==item.houseName?'#462E7C':'#ffffff'}}" name="success" />
+        </van-radio>
+      </van-cell>
+    </block>
+  </block>
+  <block wx:else>
+    <view style="text-align:center;font-size:30rpx">未查询到对应数据</view>
+  </block>
+
+</view>
+<block wx:else>
+  <block wx:if="{{historyList.length>0}}">
+    <view class="search-item flex-between">
+      <view class="stext">历史搜索</view>
+      <image src="../../assets/img/del.png" class="del"  bindtap="handleDel"></image>
+    </view>
+
+    <view class=" tag-box">
+      <block wx:for="{{historyList}}" wx:key="*this">
+        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseName}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseName}}</van-tag>
+      </block>
+    </view>
+  </block>
+
+</block>
+<!-- <view class="search-item flex-between hot">
+      <view>热门搜索</view>
+    </view>
+    
+    <view class=" tag-box">
+      <block wx:for="{{hotList}}" wx:key="*this">
+        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag">{{item.name}}</van-tag>
+      </block>
+    </view> -->

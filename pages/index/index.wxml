@@ -1,0 +1,62 @@
+<view class="flex-between top">
+  <view class="flex">
+    <image src='../../assets/img/tuxiang.png'></image>
+    <view class="name">华润城润府店-张小三</view>
+  </view>
+  <view class="red">业绩排名 : 第8名</view>
+</view>
+
+<view class="card">
+  <image src="../../assets/img/my1.png" class="up"></image>
+  <view>
+    <view class="name">本月签约业绩</view>
+    <view class="money">
+      <text>1.4</text>万</view>
+    <view class="last">1.5万(上月)</view>
+  </view>
+  <view class="yeji">
+    <view>
+      <text space="ensp">● 新房  0.00万</text>
+    </view>
+    <view>
+      <text space="ensp">● 二手  0.00万</text>
+    </view>
+    <view>
+      <text space="ensp">● 租赁  0.00万</text>
+    </view>
+  </view>
+
+</view>
+
+<van-grid column-num="4" border="{{ false }}">
+  <van-grid-item use-slot wx:for="{{ list }}" wx:key="index" class="grid" bindtap="goBuild" data-index="{{index}}">
+    <image src="{{item.src}}" class="iconBox"></image>
+    <view style="font-size:29rpx;">{{item.text}}</view>
+  </van-grid-item>
+</van-grid>
+
+<view class="bobao flex">
+  <view class="border-r">
+    <image src="../../assets/img/bobao.png"></image>
+  </view>
+  <view class="person">
+    <image src="../../assets/img/tuxiang.png"></image>
+    <view>李晓琪</view>
+  </view>
+  <view class="info">恭喜新城中心花园店的李小四签约新城中心花园 55.00万元房源
+  </view>
+</view>
+
+<view class="msg-center">
+<view class="title"><image src="../../assets/img/laba.png"></image>消息中心</view>
+
+<block wx:for="{{4}}">
+<view class="msg-item">
+  <view class="msg-title">租赁客源【ZK0206934】掉门店淘宝池提醒。</view>
+  <view class="flex-between item">
+    <view class="msg1">出租房源掉共享池提醒</view>
+    <view class="time">2019-07-07</view>
+  </view>
+</view>
+</block>
+</view>

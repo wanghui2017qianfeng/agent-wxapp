@@ -1,0 +1,36 @@
+<view class="content">
+  <view class="form-item flex">
+    <view class="label">房源编号:</view>
+    <view>H0023156 东亚创展国际</view>
+
+  </view>
+  <view class="form-item flex">
+    <view class="label">跟进方式:</view>
+    <view class="inputClass" bindtap="openSelect">
+      <view class="flex-between">
+        <input placeholder="请选择" value="{{needsText}}" readonly></input>
+        <image src="../../assets/img/select_up.png" class="selectIcon" wx:if="{{canSelect}}"></image>
+        <image src="../../assets/img/select_down.png" class="selectIcon" wx:else></image>
+      </view>
+    </view>
+    <view class="options-box" wx:if="{{canSelect}}">
+      <block wx:for="{{option1}}" wx:key="*this">
+        <view class="options" bindtap="chooseNeed" data-need="{{item}}">{{item.text}}</view>
+      </block>
+    </view>
+
+  </view>
+
+   <view class="form-item flex">
+    <view class="label">跟进内容:</view>
+    <view class="neirong">
+    <textarea placeholder="请输入跟进内容" style="width:100%;"></textarea>
+    
+    </view>
+
+  </view>
+
+</view>
+
+
+<view class="btn">保存</view>
