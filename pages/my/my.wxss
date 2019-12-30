@@ -60,3 +60,14 @@ padding:65rpx 0 101rpx 26rpx
   font-size: 30rpx;
   border-radius: 14rpx;
 }
+
+.login-btn{
+  background: #2F72F7;
+  border:0;
+  color:#fff;
+  padding:0;
+}
+
+.login-btn::after{
+  border:0
+}

@@ -1,9 +1,19 @@
 <view class="top flex">
-  <image src="../../assets/img/geren.png"></image>
-  <view>
-    <view style="margin-bottom:5rpx;">新城花园店：张小三</view>
-    <van-tag color="#ffffff" text-color='#2F72F7'>置业顾问</van-tag>
+  <block wx:if="{{isLogin}}" class="flex">
+    <image src="../../assets/img/geren.png"></image>
+    <view>
+      <view style="margin-bottom:5rpx;">新城花园店：张小三</view>
+      <van-tag color="#ffffff" text-color='#2F72F7'>置业顾问</van-tag>
+    </view>
+  </block>
+
+  <view  wx:else >
+  <button class="login-btn flex" open-type='getUserInfo' bindgetuserinfo="goLogin">
+    <image src="../../assets/img/denglu.png"></image>
+    <view  style="line-height:100rpx">请点击登录</view>
+    </button>
   </view>
+
 
 </view>
 
@@ -15,40 +25,40 @@
       <view class="name">上月业绩</view>
     </view>
     <view>
-     <view class="price">100000.0元</view>
+      <view class="price">100000.0元</view>
       <view class="name">本月业绩</view>
     </view>
     <view>
-     <view class="price">100000.0元</view>
+      <view class="price">100000.0元</view>
       <view class="name">本周业绩</view>
     </view>
   </view>
 </view>
 
 <view style="margin-top:220rpx;"></view>
-<van-cell is-link >
-<view slot="title" class="my-item">
-<image src="../../assets/img/f2.png"></image>我关注的房源
-</view>
+<van-cell is-link bindtap="goMyFoucsHouse">
+  <view slot="title" class="my-item">
+    <image src="../../assets/img/f2.png"></image>我关注的房源
+  </view>
 </van-cell>
-<van-cell is-link >
-<view slot="title" class="my-item">
-<image src="../../assets/img/f1.png"></image>我关注的客户
-</view>
-</van-cell>
-
-
-
-<van-cell is-link >
-<view slot="title" class="my-item">
-<image src="../../assets/img/f3.png"></image>我的房源资源
-</view>
+<van-cell is-link  bindtap="goMyFoucsKehu">
+  <view slot="title" class="my-item">
+    <image src="../../assets/img/f1.png"></image>我关注的客户
+  </view>
 </van-cell>
 
-<van-cell is-link >
-<view slot="title" class="my-item">
-<image src="../../assets/img/f4.png"></image>我的客户资源
-</view>
+
+
+<van-cell is-link  bindtap="goMyHouse">
+  <view slot="title" class="my-item">
+    <image src="../../assets/img/f3.png"></image>我的房源资源
+  </view>
+</van-cell>
+
+<van-cell is-link  bindtap="goMyKehu">
+  <view slot="title" class="my-item">
+    <image src="../../assets/img/f4.png"></image>我的客户资源
+  </view>
 </van-cell>
 
 <view class="logout" bindtap="logout" wx:if="{{isLogin}}">退出登录</view>

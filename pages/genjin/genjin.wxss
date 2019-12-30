@@ -1,5 +1,5 @@
 /* pages/genjin/genjin.wxss */
-.page{
+page{
   background: #f5f5f5;
 }
 

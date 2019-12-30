@@ -6,8 +6,8 @@
   <view class="red">业绩排名 : 第8名</view>
 </view>
 
-<view class="card">
-  <image src="../../assets/img/my1.png" class="up"></image>
+<view class="card"  style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">
+  <image src="../../assets/img/up.png" class="up"></image>
   <view>
     <view class="name">本月签约业绩</view>
     <view class="money">

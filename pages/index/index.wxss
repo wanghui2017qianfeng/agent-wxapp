@@ -22,7 +22,6 @@ line-height: 64rpx
 }
 
 .card{
-  background:orangered;
   margin-top:35rpx;
   height:259rpx;
   width:100%;
@@ -30,6 +29,7 @@ line-height: 64rpx
   display: flex;
   padding-top:22rpx;
   box-sizing: border-box;
+ 
 
 }
 

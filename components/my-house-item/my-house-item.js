@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    isRent: {
+      type: Number,
+      value: 0
+    }
   },
 
   /**

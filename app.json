@@ -1,5 +1,14 @@
 {
   "pages": [
+    "pages/daikan-detail/daikan-detail",
+    
+    "pages/my/my",
+    
+    "pages/index/index",
+    
+   "pages/daikan-feedback/daikan-feedback",
+    "pages/write-genjin/write-genjin",
+    
     "pages/buy-kehu-detail/buy-kehu-detail",
     
     "pages/kehu/kehu",
@@ -24,9 +33,7 @@
     "pages/my-kehu/my-kehu",
     "pages/login/login",
     
-    "pages/my/my",
     
-    "pages/index/index",
     "pages/msg/msg"
     
   ],
