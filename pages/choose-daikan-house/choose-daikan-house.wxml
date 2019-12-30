@@ -1,0 +1,9 @@
+
+<search-item></search-item>
+<view class="border"></view>
+<block wx:for="{{4}}" wx:key="*this">
+<view class="flex">
+<my-house-item></my-house-item>
+
+</view>
+</block>

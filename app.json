@@ -1,13 +1,11 @@
 {
   "pages": [
-    "pages/daikan-detail/daikan-detail",
-    
+ "pages/choose-daikan-house/choose-daikan-house",
     "pages/my/my",
     
-    "pages/index/index",
     
-   "pages/daikan-feedback/daikan-feedback",
-    "pages/write-genjin/write-genjin",
+    "pages/index/index",
+ 
     
     "pages/buy-kehu-detail/buy-kehu-detail",
     

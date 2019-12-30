@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "选择带看房源",
+  "usingComponents": {
+    "search-item":"/components/search-item/search-item",
+    "my-house-item": "/components/my-house-item/my-house-item"
+  }
+}

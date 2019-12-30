@@ -1,0 +1,6 @@
+/* pages/choose-daikan-house/choose-daikan-house.wxss */
+.border{
+  height:30rpx;
+  background: #f5f5f5;
+  
+}
