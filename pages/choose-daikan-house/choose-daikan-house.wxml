@@ -1,9 +1,11 @@
-
-<search-item></search-item>
-<view class="border"></view>
-<block wx:for="{{4}}" wx:key="*this">
-<view class="flex">
-<my-house-item></my-house-item>
-
+<view class="fixed">
+  <search-item></search-item>
 </view>
-</block>
+
+<view class="border"></view>
+
+<my-house-item class="mb100"></my-house-item>
+
+
+<view style="height:10rpx;margin-bottom:100rpx"></view>
+<view class="bottom-btn"  >提交选择</view>

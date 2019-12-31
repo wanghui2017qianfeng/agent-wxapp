@@ -1,39 +1,32 @@
 {
   "pages": [
- "pages/choose-daikan-house/choose-daikan-house",
-    "pages/my/my",
-    
-    
-    "pages/index/index",
- 
-    
-    "pages/buy-kehu-detail/buy-kehu-detail",
-    
-    "pages/kehu/kehu",
-    
-    "pages/genjin-record/genjin-record",
-    
-    "pages/genjin/genjin",
-    
-    "pages/second-detail/second-detail",
-    
     "pages/second/second",
     
+    "pages/index/index",
+    "pages/rent-kehu-detail/rent-kehu-detail",
+    "pages/daikan-record/daikan-record",
+    "pages/album/album",
     
+    "pages/daikan-feedback/daikan-feedback",
     
+    "pages/write-genjin/write-genjin",
+    "pages/choose-daikan-house/choose-daikan-house",
+    "pages/daikan-detail/daikan-detail",
+    "pages/search/search",
+    "pages/my/my",
+    
+    "pages/buy-kehu-detail/buy-kehu-detail",
+    "pages/kehu/kehu",
+    "pages/genjin-record/genjin-record",
+    "pages/genjin/genjin",
+    "pages/second-detail/second-detail",
     "pages/rent/rent",
     "pages/rent-detail/rent-detail",
-    
-    
     "pages/my-house/my-house",
     "pages/my-focus-kehu/my-focus-kehu",
-    
     "pages/my-kehu/my-kehu",
     "pages/login/login",
-    
-    
     "pages/msg/msg"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -50,3 +50,11 @@ border-bottom: 1rpx solid #eeeeee;
   font-size: 20rpx;
   margin-top:10rpx;
 }
+
+.checkImg image{
+  width:28rpx;
+  height:28rpx;
+  margin-top:70rpx;
+  margin-right:22rpx
+}
+

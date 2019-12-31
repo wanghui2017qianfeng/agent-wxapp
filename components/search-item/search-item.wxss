@@ -1,4 +1,7 @@
 /* components/search-item/search-item.wxss */
+page{
+  background: #fff;
+}
 .flex{
   display: flex
 }
@@ -12,7 +15,7 @@
   line-height: 62.5rpx;
   background:#F4F3F3;
   box-sizing: border-box;
-  margin:36rpx 28rpx;
+  margin:26rpx 28rpx;
   border-radius: 18rpx;
 }
 .search-box image{

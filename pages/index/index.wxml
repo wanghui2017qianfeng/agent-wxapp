@@ -1,28 +1,33 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+
 <view class="flex-between top">
   <view class="flex">
-    <image src='../../assets/img/tuxiang.png'></image>
-    <view class="name">华润城润府店-张小三</view>
+    <image src='{{myInfo.image}}' wx:if="{{myInfo.image}}"></image>
+    <image src='../../assets/img/tuxiang.png' wx:else></image>
+
+    <view class="name">{{myInfo.storeName?myInfo.storeName:''}}{{myInfo.name?'-'+myInfo.name:''}}</view>
   </view>
-  <view class="red">业绩排名 : 第8名</view>
-</view>
+  <view class="red">业绩排名 : 第{{myInfo.rank?myInfo.rank:'-'}}名</view>
+  </view>
 
 <view class="card"  style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">
   <image src="../../assets/img/up.png" class="up"></image>
   <view>
     <view class="name">本月签约业绩</view>
     <view class="money">
-      <text>1.4</text>万</view>
-    <view class="last">1.5万(上月)</view>
+      <text>{{myInfo.monthAchievement?tools.toFixed(myInfo.monthAchievement,2):'-'}}</text>万</view>
+    <view class="last">{{myInfo.lastAchievement?tools.toFixed(myInfo.lastAchievement,2):'-'}}万(上月)</view>
   </view>
   <view class="yeji">
     <view>
-      <text space="ensp">● 新房  0.00万</text>
+      <text space="ensp">● 新房  {{myInfo.newAchievement?tools.toFixed(myInfo.newAchievement,2):'-'}}万</text>
     </view>
     <view>
-      <text space="ensp">● 二手  0.00万</text>
+      <text space="ensp">● 二手  {{myInfo.sellAchievement?tools.toFixed(myInfo.sellAchievement,2):'-'}}万</text>
     </view>
     <view>
-      <text space="ensp">● 租赁  0.00万</text>
+      <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement,2):'-'}}万</text>
     </view>
   </view>
 
@@ -40,22 +45,22 @@
     <image src="../../assets/img/bobao.png"></image>
   </view>
   <view class="person">
-    <image src="../../assets/img/tuxiang.png"></image>
-    <view>李晓琪</view>
+    <image src="{{bobaoInfo.image}}"></image>
+    <view>{{bobaoInfo.name?bobaoInfo.name:'暂无'}}</view>
   </view>
-  <view class="info">恭喜新城中心花园店的李小四签约新城中心花园 55.00万元房源
+  <view class="info">{{bobaoInfo.context}}
   </view>
 </view>
 
 <view class="msg-center">
 <view class="title"><image src="../../assets/img/laba.png"></image>消息中心</view>
 
-<block wx:for="{{4}}">
+<block wx:for="{{infoList}}" wx:key="*this">
 <view class="msg-item">
-  <view class="msg-title">租赁客源【ZK0206934】掉门店淘宝池提醒。</view>
+  <view class="msg-title">{{item.context}}</view>
   <view class="flex-between item">
-    <view class="msg1">出租房源掉共享池提醒</view>
-    <view class="time">2019-07-07</view>
+    <view class="msg1">{{item.type}}</view>
+    <view class="time">{{item.date}}</view>
   </view>
 </view>
 </block>

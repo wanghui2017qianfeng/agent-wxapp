@@ -1,0 +1,104 @@
+/* pages/daikan-detail/daikan-detail.wxss */
+page{
+  padding:66rpx 50rpx;
+  box-sizing: border-box;
+}
+
+.store{
+  font-size: 30rpx;
+  color:#333;
+}
+
+.tag{
+  height:32rpx;
+  line-height:32rpx;
+  font-size: 18rpx;
+  color:#889AAE;
+  background: #F2F3F5;
+  padding:0 12rpx;
+  margin-left:12rpx
+
+}
+.time{
+  font-size: 24rpx;
+  color:#999999;
+}
+
+.yixiang{
+  font-size:28rpx;
+  color:#999999;
+  margin-top:34rpx;
+  margin-bottom:32rpx
+}
+
+.kehu{
+  font-size: 28rpx;
+  color:#333;
+}
+
+.kehu text{color: #999999}
+
+.context{
+  color:#999999;
+  font-size: 28rpx;
+  margin-top:26rpx
+}
+
+.title1{
+  font-size: 28rpx
+}
+
+
+
+
+
+
+
+
+.house-item {
+/* margin:0 50rpx; */
+padding:30rpx 0 ;
+
+}
+.right-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height:180rpx;
+}
+.house-item .roomImg{
+  width:218rpx;
+  height:181rpx;
+  margin-right:18rpx;
+}
+
+.house-item .title{
+  font-size: 30rpx;
+  color:#333;
+  font-weight:bold;
+}
+.house-item .info{
+  color:#9A9A9A;
+  font-size: 24rpx;
+}
+.house-item .tag{
+  background: #F2F3F5;
+  border-radius:5rpx;
+  color:#889AAE;
+  font-size: 18rpx;
+  padding:10rpx 6rpx 6rpx;
+  margin-right:16rpx;
+}
+.house-item .price{
+  font-size: 25rpx;
+  color:#333333;
+}
+
+.house-item .price{
+  color:#EE3C52;
+  font-size: 30rpx;
+
+}
+.code{
+  font-size: 24rpx;color:#9A9A9A
+}

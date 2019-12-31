@@ -59,7 +59,7 @@ Page({
   },
   goMyFoucsKehu() {
     wx.navigateTo({
-      url: '/pages/my-kehu/my-kehu',
+      url: '/pages/my-focus-kehu/my-focus-kehu',
     })
   },
   //我的房源资源

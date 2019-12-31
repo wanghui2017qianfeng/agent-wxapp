@@ -1,2 +1,8 @@
-<!--pages/my-focus-kehu/my-focus-kehu.wxml-->
-<text>pages/my-focus-kehu/my-focus-kehu.wxml</text>
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab">
+  <van-tab title="买卖客户">
+    <kehu-item-comp></kehu-item-comp>
+  </van-tab>
+  <van-tab title=" 租赁客户 ">
+    <kehu-item-comp></kehu-item-comp>
+  </van-tab>
+</van-tabs>

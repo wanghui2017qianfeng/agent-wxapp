@@ -167,9 +167,9 @@
     </view>
 
     <view class="two-btn flex">
-      <view class="width374">写跟进</view>
+      <view class="width374"  bindtap="goGenjin">写跟进</view>
       <view class="border-center"></view>
-      <view class="width374">带看反馈</view>
+      <view class="width374"  bindtap="goFeedback">带看反馈</view>
 
     </view>
 
@@ -205,9 +205,9 @@
     </block>
 
     <view class="two-btn flex-around">
-      <view class="width374">写跟进</view>
+      <view class="width374"  bindtap="goGenjin">写跟进</view>
       <view class="border-center"></view>
-      <view class="width374">带看反馈</view>
+      <view class="width374"  bindtap="goFeedback">带看反馈</view>
 
     </view>
 
@@ -235,9 +235,9 @@
     </block>
 
       <view class="two-btn flex-around">
-      <view class="width374">跟进带看</view>
+      <view class="width374"  bindtap="goGenjin">跟进带看</view>
       <view class="border-center"></view>
-      <view  class="width374">操作</view>
+      <view  class="width374"  bindtap="goFeedback">操作</view>
 
     </view>
 

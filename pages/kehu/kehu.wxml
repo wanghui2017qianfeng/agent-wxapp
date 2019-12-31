@@ -6,14 +6,14 @@
 </view>
 
 
- <index-kehu-item-comp></index-kehu-item-comp>
+ <index-kehu-item-comp bind:goDetail="goDetailBuy"></index-kehu-item-comp>
 
 
 
 
   </van-tab>
   <van-tab title=" 租赁客户 ">
- <index-kehu-item-comp></index-kehu-item-comp>
+ <index-kehu-item-comp bind:goDetail="goDetailRent"></index-kehu-item-comp>
 
   </van-tab>
 </van-tabs>

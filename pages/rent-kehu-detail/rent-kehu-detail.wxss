@@ -1,0 +1,211 @@
+/* pages/buy-kehu-detail/buy-kehu-detail.wxss */
+
+page {
+  background: #f5f5f5;
+  padding-bottom: 100rpx;
+}
+
+.activeTab .van-ellipsis {
+  color: #2f72f7;
+  font-weight: 700;
+}
+
+.from {
+  background: #fff;
+  padding: 0 26rpx;
+  height: 114rpx;
+  box-sizing: border-box;
+  line-height: 114rpx;
+  color: #666;
+  margin: 32rpx 26rpx;
+  border-radius: 14rpx;
+}
+
+.from .label {
+  width: 260rpx;
+  text-align: left;
+}
+
+.box {
+  background: #fff;
+  padding: 0 26rpx;
+  margin: 0 26rpx;
+  border-radius: 14rpx;
+  margin-bottom: 30rpx;
+}
+
+.box .name {
+  font-size: 34rpx;
+  color: #333;
+  height: 96rpx;
+  line-height: 96rpx;
+}
+
+.box-item {
+  font-size: 32rpx;
+  color: #666;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-top: 1rpx solid #eee;
+  display: flex;
+}
+
+.box-item .phone {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.box-item .label {
+  width: 260rpx;
+  text-align: left;
+}
+
+.zanwu {
+  width: 216rpx;
+  height: 130rpx;
+}
+
+.yeji-item {
+  margin-bottom: 29rpx;
+  margin-left: 23rpx;
+  margin-right: 23rpx;
+}
+
+.yeji-item .renImg {
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 50%;
+}
+
+.yeji-item .name {
+  color: #131313;
+  font-size: 38rpx;
+  line-height: 86rpx;
+}
+
+.yeji-item .tag {
+  background: #eff0f2;
+  color: #919ca8;
+  font-size: 24rpx;
+  padding: 0rpx 15rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  border-radius: 5rpx;
+  margin-top: 22rpx;
+}
+
+.yeji-item .phone {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.yeji-item .phone-number {
+  color: #919ca8;
+  font-size: 24rpx;
+  line-height: 86rpx;
+}
+
+.two-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 86rpx;
+  line-height: 86rpx;
+  color: #ffff;
+  background: #2f72f7;
+}
+.width374{
+  width:374rpx;
+  text-align: center;
+
+}
+
+.border-center {
+  background: #fff;
+  height: 48rpx;
+  width: 2rpx;
+  margin-top: 22rpx;
+}
+
+/* //跟进 */
+
+.genjin-top {
+  background: #fff;
+  padding: 0 26rpx;
+  height: 64rpx;
+  box-sizing: border-box;
+  line-height: 64rpx;
+  color: #333;
+  margin: 32rpx 26rpx;
+  border-radius: 14rpx;
+}
+
+.genjin-top view {
+  width: 50%;
+}
+
+.content {
+  background: #fff;
+  padding: 32rpx 24rpx;
+  border-radius: 14rpx;
+  /* width:100%; */
+  box-sizing: border-box;
+  /* margin-bottom: 50rpx; */
+  margin: 44rpx 26rpx;
+}
+
+.content .top {
+  font-size: 34rpx;
+  margin-bottom: 32rpx;
+}
+
+.content .neirong {
+  color: #999;
+  font-size: 30rpx;
+  line-height: 44rpx;
+}
+
+.content .time {
+  color: #999;
+  font-size: 28rpx;
+  margin-top: 38rpx;
+  padding-bottom: 40rpx;
+}
+
+.content .time text {
+  float: right;
+}
+
+/* daikan */
+
+.daikan-item {
+  background: #fff;
+  padding: 32rpx 22rpx;
+  border-radius: 14rpx;
+  box-sizing: border-box;
+  margin: 44rpx 25rpx;
+}
+
+.daikan-top .name {
+  color: #333;
+  font-size: 34rpx;
+}
+
+.daikan-top .time {
+  color: #999;
+  font-size: 28rpx;
+  line-height: 34rpx;
+}
+
+.daikan-item .neirong {
+  font-size: 30rpx;
+  color: #666;
+  margin-top: 34rpx;
+  margin-bottom:20rpx;
+}
+
+.daikan-item .desc {
+  font-size: 30rpx;
+  color: #cacaca;
+}

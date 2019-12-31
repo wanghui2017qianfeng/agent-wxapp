@@ -18,6 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    goDetail(e) {
+      console.log(this.data.list)
+      let id = e.currentTarget.dataset.id;
+      this.triggerEvent('goDetail', id)
 
+    },
   }
 })

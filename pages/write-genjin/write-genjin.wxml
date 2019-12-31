@@ -1,0 +1,16 @@
+<view class="content">
+  <view class="form-item flex">
+    <view class="label">房源编号:H0023156</view>
+    <view> 客户姓名:测试</view>
+  </view>
+   <view class="form-item flex">
+    <view class="label">跟进内容:</view>
+    <view class="neirong">
+    <textarea placeholder="请输入跟进内容" style="width:100%;"></textarea>
+    </view>
+  </view>
+</view>
+
+
+<view class="btn">保存</view>
+

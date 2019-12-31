@@ -98,56 +98,56 @@
               <view class="name">朝向</view>
               <view class="tag-box">
                 <block wx:for="{{orientList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{towardActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseToward">{{item.name}}</view>
                 </block>
               </view>
               <view class="line"></view>
 
-               <view class="name">级别</view>
+              <view class="name">级别</view>
               <view class="tag-box">
                 <block wx:for="{{levelList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{levelActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseLevel">{{item.name}}</view>
                 </block>
               </view>
               <view class="line"></view>
               <view class="name">装修</view>
               <view class="tag-box">
                 <block wx:for="{{decorateList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{decorateActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseDecorate">{{item.name}}</view>
                 </block>
               </view>
-               <view class="line"></view>
+              <view class="line"></view>
               <view class="name">楼层</view>
               <view class="tag-box">
                 <block wx:for="{{floorList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{floorActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseFloor">{{item.name}}</view>
                 </block>
               </view>
-                <view class="line"></view>
+              <view class="line"></view>
               <view class="name">车位</view>
               <view class="tag-box">
                 <block wx:for="{{parkingList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{parkActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="choosePark">{{item.name}}</view>
                 </block>
               </view>
-               <view class="line"></view>
+              <view class="line"></view>
               <view class="name">房源委托</view>
               <view class="tag-box">
                 <block wx:for="{{entrustList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{entrustActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseEntrust">{{item.name}}</view>
                 </block>
               </view>
-                <view class="line"></view>
+              <view class="line"></view>
               <view class="name">其他</view>
               <view class="tag-box">
                 <block wx:for="{{otherList}}" wx:for-index="idx" wx:key="*this">
-                  <view class="tag {{typeActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseType">{{item.name}}</view>
+                  <view class="tag {{otherActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseOther">{{item.name}}</view>
                 </block>
               </view>
 
             </view>
           </scroll-view>
-          <view class="flex-between btn-box" >
+          <view class="flex-between btn-box">
             <view class="btn clear" catchtap="clear">重置</view>
             <view class="btn sure" catchtap="sure">确定</view>
           </view>
@@ -157,18 +157,9 @@
 
       <!-- 排序 -->
       <block wx:if="{{searchActive==4}}">
-        <van-radio-group value="{{ paixu }}" bind:change="onPaixuChange">
-          <van-cell-group>
-            <block wx:for="{{paixuList}}" wx:key="*this">
-              <van-cell title="{{item.text}}" clickable data-name="{{item.value}}" data-item="{{item}}" catchtap="onPaixuClick">
-                <van-radio slot="right-icon" use-icon-slot name="{{item.value}}">
-                  <van-icon color="{{paixu==item.value?'#2F72F7':'#ffffff'}}" name="success" />
-                </van-radio>
-              </van-cell>
-            </block>
-          </van-cell-group>
-        </van-radio-group>
-
+        <view class="sort-wrapper">
+          <view class="sortLi {{sortActNum==index?'actThisSort':''}}" wx:for="{{paixuList}}" wx:key="*this" catchtap='tabThisPaixu' data-index="{{index}}" data-item="{{item}}">{{item.text}}</view>
+        </view>
       </block>
 
     </view>

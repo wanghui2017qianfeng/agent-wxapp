@@ -102,6 +102,7 @@ border-right: 3rpx solid #CCCCCC;
   height:47rpx;
   margin-bottom:5rpx;
   margin-top:3rpx;
+  border-radius: 50%;
 }
 
 .bobao  .info{

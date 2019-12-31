@@ -1,0 +1,31 @@
+var sub = function(str, start, end) {
+  return str.substring(start, end)
+}
+
+var split = function(str, p) {
+  return str.split(p)
+}
+// 2019-12-30 17:24:12=>2019/12/30
+var formatDate=function(str){
+  console.log("str",str)
+  var date = str.substring(0,9)
+  return date.split("-").join("/")
+}
+
+var toFixed=function(str,num){
+  console.log(typeof str)
+  if(typeof str =='string'){
+    return Number(str).toFixed(num)
+
+  }else{
+    return str.toFixed(num)
+
+  }
+}
+
+module.exports = {
+  sub: sub,
+  split: split,
+  formatDate: formatDate,
+  toFixed: toFixed
+};

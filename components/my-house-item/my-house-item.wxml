@@ -1,26 +1,35 @@
-<block wx:for="{{4}}">
-  <view class="house-item flex">
-    <image class="roomImg" src="../../assets/img/img1.png"></image>
-    <view class="right-box">
-      <view class="title">在水一方 FY00123523</view>
-      <view class="info">1室1厅 / 123.45㎡ / 东南 / 简装</view>
-      <view class="flex">
-        <block wx:for="{{5}}">
-          <view class="tag">钥匙</view>
-        </block>
-      </view>
-      <view class="flex">
-        <view class="jibie">A级</view>
-        <!-- 租房 -->
-        <block wx:if="{{isRent==1}}">
-          <view class="price">3388元</view>
-        </block>
-        <!-- 二手房 -->
-        <block wx:else>
-          <view class="price">3388万</view>
-          <view class="unit">45698.56元/㎡</view>
-        </block>
+<block wx:for="{{4}}" wx:key="*this">
+  <view class="house-item flex" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="checkImg" wx:if="{{isCheck==1}}" data-index="{{index}}" bindtap="chooseHouse">
+      <image src="../../assets/img/checked.png" wx:if="{{checked==index}}" ></image>
+      <image src="../../assets/img/no-checked.png" wx:else></image>
+
+    </view>
+    <view class="flex">
+      <image class="roomImg" src="../../assets/img/img1.png"></image>
+      <view class="right-box">
+        <view class="title">在水一方 FY00123523</view>
+        <view class="info">1室1厅 / 123.45㎡ / 东南 / 简装</view>
+        <view class="flex">
+          <block wx:for="{{5}}">
+            <view class="tag">钥匙</view>
+          </block>
+        </view>
+        <view class="flex">
+          <view class="jibie">A级</view>
+          <!-- 租房 -->
+          <block wx:if="{{isRent==1}}">
+            <view class="price">3388元/月</view>
+          </block>
+          <!-- 二手房 -->
+          <block wx:else>
+            <view class="price">3388万</view>
+            <view class="unit">45698.56元/㎡</view>
+          </block>
+        </view>
       </view>
     </view>
   </view>
 </block>
+
+

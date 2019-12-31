@@ -9,6 +9,18 @@ Page({
 
   },
 
+  goGenjin() {
+    wx.navigateTo({
+      url: '/pages/genjin/genjin',
+    })
+
+  },
+  goFeedback() {
+    wx.navigateTo({
+      url: '/pages/daikan-feedback/daikan-feedback',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

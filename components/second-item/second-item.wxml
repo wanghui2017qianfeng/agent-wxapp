@@ -1,20 +1,26 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
 
 <block wx:for="{{4}}">
-  <view class="house-item flex">
-    <image class="roomImg" src="../../assets/img/img1.png"></image>
+  <view class="house-item flex" bindtap="goDetail" data-id="{{item.id}}">
+    <image class="roomImg" src="{{item.firstImgUrl}}"></image>
     <view class="right-box">
       <view class="title">新城花园1期/1栋/1单元/1101</view>
-      <view class="info">1室1厅 / 123.45㎡ / 东南 / 简装</view>
-      <view class="code">MF09138811</view>
+      <view class="info">{{item.bedroom?item.bedroom+'室':'-'}}{{item.sittingRoom?item.sittingRoom+'厅':'-'}} / {{item.constructionArea?item.constructionArea+'㎡':'-'}} / {{item.towardName?item.towardName:'-'}} / {{item.decorateName?item.decorateName:'-'}}</view>
+      <view class="code">{{item.houseNo?item.houseNo:'暂无编号'}}</view>
       <view  class="flex">
-      <block wx:for="{{5}}">
-        <view class="tag">钥匙</view>
-        </block>
+      <!-- <block wx:for="{{5}}"> -->
+        <view class="tag" wx:if="{{item.isKeyName}}">{{item.isKeyName?item.isKeyName:''}}</view>
+        <view class="tag" wx:if="{{item.isFocusName}}">{{item.isFocusName?item.isFocusName:''}}</view>
+        <view class="tag" wx:if="{{item.isImgName}}">{{item.isImgName?item.isImgName:''}}</view>
+        <view class="tag" wx:if="{{item.isOnlyName}}">{{item.isOnlyName?item.isOnlyName:''}}</view>
+        <view class="tag" wx:if="{{item.isWrittenName}}">{{item.isWrittenName?item.isWrittenName:''}}</view>
+
+        <!-- </block> -->
       </view>
       <view class="flex">
-        <view class="jibie">A级</view>
-        <view class="price">3388万</view>
-        <view class="unit">45698.56元/㎡</view>
+        <view class="jibie">{{item.levelName?item.levelName+'级':'-'}}</view>
+        <view class="price">{{item.offer?tools.toFixed(item.offer,2)+'万':''}}</view>
+        <view class="unit">{{item.univalent?tools.toFixed(item.univalent,2)+'元/㎡':''}}</view>
       </view>
     </view>
   </view>

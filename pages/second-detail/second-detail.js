@@ -36,6 +36,16 @@ Page({
 
     }]
   },
+  goGenjinRecord(){
+wx.navigateTo({
+  url: '/pages/genjin-record/genjin-record',
+})
+  },
+  goGenjin(){
+    wx.navigateTo({
+      url: '/pages/genjin/genjin',
+    })
+  },
   toAlbum(e) {
     var thisHouseId = e.currentTarget.dataset.id;
     //  1楼盘 2二手房 3租房

@@ -1,0 +1,33 @@
+<view class="flex-between"  style="margin-bottom:38rpx;">
+  <view class="flex">
+    <view class="store">{{info.createStore?info.createStore:''}}-{{info.createPerson?info.createPerson:''}}</view>
+    <view class="tag" wx:if="{{info.buyOrRent==1}}">购看</view>
+    <view class="tag" wx:if="{{info.buyOrRent==2}}">租看</view>
+  </view>
+  <view class="time">{{info.createTime?info.createTime:''}}</view>
+</view>
+<view class="flex-between">
+  <view class="kehu">客户:
+    <text>{{info.cusName?info.cusName:''}}</text>
+  </view>
+  <view class="time">{{info.cusNo?info.cusNo:''}}</view>
+</view>
+<view class="yixiang">
+  <text space="nbsp" wx:if="{{info.buyOrRent==1}}">求购  {{info.cusBedroomName?info.cusBedroomName+'居':''}}  {{info.cusAreaName?info.cusAreaName+'㎡':''}}  {{info.cusPriceName?info.cusPriceName+'元/平':''}}  {{info.cusUsedName?info.cusUsedName:''}}</text>
+    <text space="nbsp" wx:if="{{info.buyOrRent==2}}">求租  1-2居  50-100㎡  1000-2000元/平  住宅</text>
+</view>
+
+<view class="title1">房源:</view>
+  <view class="house-item flex">
+    <image class="roomImg" src="{{info.houseImg}}"></image>
+    <view class="right-box">
+      <view class="title">{{info.houseName?info.houseName:''}}1期/1栋/1单元/1101</view>
+      <view class="info">{{info.houseArea?info.houseArea+'㎡':''}}{{info.houseBedroom?'  |  '+info.houseBedroom+'室':''}}</view>
+      <!-- {{info.houseBedroom?info.houseBedroom+'厅':''}}{{info.houseBedroom?info.houseBedroom+'卫':''}}{{info.houseBedroom?info.houseBedroom+'阳台':''}} -->
+      <view class="code">维护人:{{info.createPerson?info.createPerson:''}}-{{info.createStore?info.createStore:''}}</view>
+        <view class="price">{{iinfo.housePrice?info.housePrice+'元/平米':''}}</view>
+    </view>
+  </view>
+
+<view class="title1">带看内容:</view>
+<view class="context">{{info.context?info.context:''}}</view>

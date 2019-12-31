@@ -1,5 +1,5 @@
    <block wx:for="{{4}}">
-      <view class="kehu-item">
+      <view class="kehu-item"  bindtap="goDetail" data-id="{{item.id}}">
         <view class="top flex-between">
           <view class="name">杨晓 (NC00031825)</view>
           <view class="focu flex">

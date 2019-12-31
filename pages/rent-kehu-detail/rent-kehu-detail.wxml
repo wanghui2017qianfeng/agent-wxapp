@@ -1,0 +1,245 @@
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'>
+  <van-tab title="详情">
+
+    <view class="from flex">
+      <view class="label">客户来源:</view>
+      <view class="">{{info.source?info.source:''}}</view>
+    </view>
+
+    <view class="box">
+      <view class="name">客户信息</view>
+      <view class="box-item">
+        <view class="label">称呼:</view>
+        <view>{{info.name?info.name:''}}</view>
+      </view>
+
+      <view class="box-item">
+        <view class="label">电话:</view>
+        <view class="flex-between" style="width:390rpx;">
+          <view>{{info.phone?info.phone:''}}</view>
+          <view wx:if="{{info.phone}}">
+            <image src="../../assets/img/red-phone.png" class="phone"></image>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="box-item">
+        <view class="label">性别:</view>
+        <view>{{info.sex?info.sex:''}}</view>
+      </view>
+
+      <view class="box-item">
+        <view class="label">身份证号:</view>
+        <view>{{info.card?info.card:''}}</view>
+      </view>
+
+      <view class="box-item">
+        <view class="label">户籍所在地:</view>
+        <view>{{info.census?info.census:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">现居住地:</view>
+        <view>{{info.address?info.address:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">微信号:</view>
+        <view>{{info.weiXin?info.weiXin:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">客户意向:</view>
+        <view>{{info.intention?info.intention:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">客户职业:</view>
+        <view>{{info.occupation?info.occupation:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">客户现住情况:</view>
+        <view>{{info.situation?info.situation:''}}</view>
+      </view>
+      <!-- <view class="box-item">
+        <view class="label">客户职业:</view>
+        <view>个体</view>
+      </view> -->
+      <view class="box-item">
+        <view class="label">租赁目的:</view>
+        <view>{{info.buyOrder?info.buyOrder:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">客户星级:</view>
+        <view>{{info.star?info.star:''}}</view>
+      </view>
+    </view>
+
+    <view class="box">
+      <view class="name">联系人信息</view>
+      <block wx:if="{{info.contacts.length>0}}">
+        <block wx:for="{{info.contacts}}" wx:key="*this">
+          <view class="box-item">
+            <view class="label">姓名:{{item.cusName?item.cusName:''}}</view>
+            <view class="flex-between" style="width:390rpx;">
+              <view>{{item.phone?item.phone:''}}</view>
+              <view>
+                <image src="../../assets/img/red-phone.png" class="phone"></image>
+              </view>
+            </view>
+          </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view style="text-align:center;padding-bottom:56rpx;padding-top:20rpx;border-top:1rpx solid #eee">
+          <image src="../../assets/img/zanwu.png" class='zanwu'></image>
+        </view>
+      </block>
+    </view>
+
+
+    <view class="box">
+      <view class="name">求租信息</view>
+      <view class="box-item">
+        <view class="label">用途:</view>
+        <view>{{info.used?info.used:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">面积:</view>
+        <view>{{info.acreage?info.acreage+'㎡':''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">价格:</view>
+        <view>{{info.price?info.price:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">购房资质:</view>
+        <view>{{info.seniority?info.seniority:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">朝向:</view>
+        <view>{{info.toward?info.toward:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">装修:</view>
+        <view>{{info.decorate?info.decorate:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">居室:</view>
+        <view>{{info.bed?info.bed:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">楼层:</view>
+        <view>{{info.floorMin?info.floorMin:''}}{{info.floorMax?info.floorMax:''}}</view>
+      </view>
+      <view class="box-item" style="border:none">
+        <view class="label"></view>
+        <view>{{info.bottom?info.bottom:''}}{{info.top?info.top:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">付款方式:</view>
+        <view>{{info.pay?info.pay:''}}</view>
+      </view>
+      <view class="box-item">
+        <view class="label">求购商圈:</view>
+        <view>
+          <block wx:for="{{info.circles}}" wx:key="*this">
+            {{item.key?info.key+' ':''}}
+          </block>
+        </view>
+      </view>
+      <view class="box-item">
+        <view class="label">备注:</view>
+        <view>{{info.remark?info.remark:''}}</view>
+      </view>
+    </view>
+
+
+    <view class="box">
+      <view class="name">归属人</view>
+      <view style="border-top:1rpx solid #eee;padding-top:20rpx">
+        <block wx:for="{{4}}" wx:key="*this">
+          <view class="flex-between yeji-item">
+            <image src="../../assets/img/ren.png" class="renImg"></image>
+            <view class="name">丽华</view>
+            <view class="tag">维护人</view>
+            <image src="../../assets/img/phone.png" class="phone"></image>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="two-btn flex">
+      <view class="width374" bindtap="goGenjin">写跟进</view>
+      <view class="border-center"></view>
+      <view class="width374" bindtap="goFeedback">带看反馈</view>
+
+    </view>
+
+
+
+
+
+
+
+
+
+  </van-tab>
+  <van-tab title=" 跟进 ">
+
+    <view class="genjin-top flex">
+      <view>客户编号:{{info.cusNo?info.cusNo:''}}</view>
+      <view>客户姓名:{{info.name?info.name:''}}</view>
+    </view>
+
+
+    <block wx:for="{{4}}">
+      <view class="content">
+        <view class="top flex-between">
+          <view>张玉玉 (通州北关店)</view>
+          <view>电话: 15782895544</view>
+        </view>
+        <view class="neirong">业主最近不在北京，现在不能带看房子；业主下周 三回北京后可以周六日带客户看房</view>
+        <view class='time'>
+          <text>2018-11-20  11：28</text>
+        </view>
+      </view>
+
+    </block>
+
+    <view class="two-btn flex-around">
+      <view class="width374" bindtap="goGenjin">写跟进</view>
+      <view class="border-center"></view>
+      <view class="width374" bindtap="goFeedback">带看反馈</view>
+
+    </view>
+
+  </van-tab>
+
+  <van-tab title=" 带看 ">
+    <view class="genjin-top flex">
+      <view>客户编号:{{info.cusNo?info.cusNo:''}}</view>
+      <view>客户姓名:{{info.name?info.name:''}}</view>
+    </view>
+
+    <block wx:for="{{4}}" wx:key="*this">
+      <view class="daikan-item">
+        <view class="daikan-top flex-between">
+          <view class="name">华润府一期 FY0022550</view>
+          <view class="time">2018-11-20 11:28</view>
+        </view>
+        <view class="neirong flex-between">
+          <view>彩虹新城店（张龙涛组)</view>
+          <view>张龙涛 </view>
+        </view>
+        <view class="desc">三回北京后可以周六日带客户看房</view>
+      </view>
+
+    </block>
+
+      <view class="two-btn flex-around">
+      <view class="width374" bindtap="goGenjin">跟进带看</view>
+      <view class="border-center"></view>
+      <view  class="width374" bindtap="goFeedback">操作</view>
+
+    </view>
+
+  </van-tab>
+</van-tabs>

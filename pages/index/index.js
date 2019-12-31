@@ -1,9 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import {msgApi} from "../../api/msg.js"
 Page({
   data: {
+    userId:'',
+    bobaoInfo:{},//播报
+    myInfo:{},//顶部业绩
+    infoList:[],//底部四个信息
     list: [{
       src: '../../assets/img/ershoufang.png',
       text: '二手房',
@@ -22,46 +26,62 @@ Page({
       color: '#4dd5b8',
     }]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  goBuild(e) {
+    let index = e.currentTarget.dataset.index;
+    if (index == 0) { //二手房
+      wx.navigateTo({
+        url: '/pages/second/second',
+      })
+    }
+
+    if (index == 1) { //租房
+      wx.navigateTo({
+        url: '/pages/rent/rent',
+      })
+    }
+
+    if (index == 2) { //客户
+      wx.navigateTo({
+        url: '/pages/kehu/kehu',
+      })
+    }
+
+    if (index == 3) { //带看
+      wx.navigateTo({
+        url: '/pages/daikan-record/daikan-record',
+      })
+    }
+
+  },
+  getBobao(){
+    msgApi.getBobao().then(res => {
+      this.setData({
+        bobaoInfo: res
+      })
+    })
+  },
+  getFour() {
+    msgApi.getFour(this.data.userId).then(res => {
+      this.setData({
+        infoList: res
+      })
+    })
+  },
+  getMyInfo() {
+    msgApi.getMyInfo(this.data.userId).then(res => {
+      this.setData({
+        myInfo: res
+      })
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+   this.getBobao()
+    this.getFour()
+    this.getMyInfo()
+  
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  onShow:function(){
+   
   }
+ 
 })

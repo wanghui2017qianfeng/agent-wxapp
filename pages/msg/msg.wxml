@@ -1,11 +1,11 @@
 <view class="msg-center">
 
-<block wx:for="{{4}}">
+<block wx:for="{{list}}" wx:key="*this">
 <view class="msg-item">
-  <view class="msg-title">租赁客源【ZK0206934】掉门店淘宝池提醒。</view>
+  <view class="msg-title">{{item.context}}</view>
   <view class="flex-between item">
-    <view class="msg1">出租房源掉共享池提醒</view>
-    <view class="time">2019-07-07</view>
+    <view class="msg1">{{item.type}}</view>
+    <view class="time">{{item.date}}</view>
   </view>
 </view>
 </block>
