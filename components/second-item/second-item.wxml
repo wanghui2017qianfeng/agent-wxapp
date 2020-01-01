@@ -10,10 +10,10 @@
       <view  class="flex">
       <!-- <block wx:for="{{5}}"> -->
         <view class="tag" wx:if="{{item.isKeyName}}">{{item.isKeyName?item.isKeyName:''}}</view>
-        <view class="tag" wx:if="{{item.isFocusName}}">{{item.isFocusName?item.isFocusName:''}}</view>
         <view class="tag" wx:if="{{item.isImgName}}">{{item.isImgName?item.isImgName:''}}</view>
-        <view class="tag" wx:if="{{item.isOnlyName}}">{{item.isOnlyName?item.isOnlyName:''}}</view>
         <view class="tag" wx:if="{{item.isWrittenName}}">{{item.isWrittenName?item.isWrittenName:''}}</view>
+        <view class="tag" wx:if="{{item.isFocusName}}">{{item.isFocusName?item.isFocusName:''}}</view>
+        <view class="tag" wx:if="{{item.isOnlyName}}">{{item.isOnlyName?item.isOnlyName:''}}</view>
 
         <!-- </block> -->
       </view>

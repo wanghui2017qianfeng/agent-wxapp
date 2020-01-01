@@ -11,6 +11,10 @@ Component({
     isCheck:{//是否是选择带看房源
       type:Number,
       value:0,
+    },
+    list:{
+      type:Array,
+      value:[]
     }
   },
 

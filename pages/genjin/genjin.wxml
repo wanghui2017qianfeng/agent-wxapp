@@ -1,7 +1,7 @@
 <view class="content">
   <view class="form-item flex">
     <view class="label">房源编号:</view>
-    <view>H0023156 东亚创展国际</view>
+    <view>{{houseNo?houseNo:''}} {{houseName?houseName:''}}</view>
 
   </view>
   <view class="form-item flex">
@@ -24,7 +24,7 @@
    <view class="form-item flex">
     <view class="label">跟进内容:</view>
     <view class="neirong">
-    <textarea placeholder="请输入跟进内容" style="width:100%;"></textarea>
+    <textarea placeholder="请输入跟进内容" value="{{remark}}" style="width:100%;" bindinput="inputRemark"></textarea>
     
     </view>
 
@@ -33,4 +33,4 @@
 </view>
 
 
-<view class="btn">保存</view>
+<view class="btn" bindtap="save">保存</view>

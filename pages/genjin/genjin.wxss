@@ -16,11 +16,14 @@ page{
 }
 .form-item{
   margin-bottom:86rpx;
-  position: relative
+  position: relative;
+  font-size: 32rpx;
 }
 .form-item .label{
-  margin-right:42rpx;
+  margin-right:30rpx;
   margin-left:26rpx;
+  font-size: 32rpx;
+  width:165rpx;
 }
 .form-item .inputClass {
   border: 1rpx solid #ececec;
@@ -30,12 +33,14 @@ page{
   width:426rpx;
   box-sizing: border-box;
   margin-top:-30rpx;
+  color:#B3B3B3;
+
 }
 
 .selectIcon {
   width: 22rpx;
   height: 22rpx;
-  margin-top: 9rpx;
+  margin-top: 16rpx;
 }
 
 .options-box {
@@ -45,7 +50,7 @@ page{
   width: 426rpx;
   border: 1rpx solid #ececec;
   border-top: none;
-  left: 210rpx;
+  left: 220rpx;
   top:80rpx;
   
 }
@@ -55,6 +60,8 @@ page{
   height: 70rpx;
   line-height: 70rpx;
   padding-left: 20rpx;
+  font-size: 26rpx;
+  color:#B3B3B3;
 }
 
 .options:last-child {

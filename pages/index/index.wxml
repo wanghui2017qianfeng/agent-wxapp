@@ -8,7 +8,7 @@
 
     <view class="name">{{myInfo.storeName?myInfo.storeName:''}}{{myInfo.name?'-'+myInfo.name:''}}</view>
   </view>
-  <view class="red">业绩排名 : 第{{myInfo.rank?myInfo.rank:'-'}}名</view>
+  <view class="red">业绩排名 : {{myInfo.rank?'第'+myInfo.rank+'名':'暂无排名'}}</view>
   </view>
 
 <view class="card"  style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">

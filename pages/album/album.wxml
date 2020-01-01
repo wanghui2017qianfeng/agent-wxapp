@@ -8,7 +8,7 @@
 <view class='typeList'>
 	<view  bindtap='thisType' class="albumLi {{typeAct==index?'greenThis':''}}" wx:for="{{typeList}}" wx:key="{{index}}" data-index="{{index}}">
   
-  <view>{{item.name}}</view>
-  <view>{{item.imgs.length}}</view>
+  <view>{{item.name}}({{item.imgs.length}})</view>
+ 
 </view>
 </view>

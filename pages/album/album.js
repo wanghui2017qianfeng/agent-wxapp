@@ -1,11 +1,11 @@
 // pages/album/album.js
 
-// import {
-//   secondApi
-// } from "../../api/second.js"
-// import {
-//   rentApi
-// } from "../../api/rent.js"
+import {
+  secondApi
+} from "../../api/second.js"
+import {
+  rentApi
+} from "../../api/rent.js"
 // import {
 //   buildApi
 // } from "../../api/build.js"
@@ -17,38 +17,34 @@ Page({
    */
   data: {
     typeAct: 0,
+    userId:'',
 
     typeList: [{
       name: '全部',
       count: 0,
       imgs:[]
     }, {
-      name: '观景图',
+      name: '客厅',
       count: 0,
         imgs: []
 
     }, {
-      name: '小区图',
+      name: '卧室',
       count: 0,
         imgs: []
 
     }, {
-      name: '鸟瞰图',
+      name: '卫生间',
       count: 0,
         imgs: []
 
     }, {
-      name: '配套设施',
+      name: '厨房',
       count: 0,
         imgs: []
 
     }, {
-      name: '区位图',
-      count: 0,
-        imgs: []
-
-    }, {
-      name: '户型图',
+      name: '阳台',
       count: 0,
         imgs: []
 
@@ -84,14 +80,18 @@ Page({
       type
     } = options;
        //  1楼盘 2二手房 3租房
+    let model = {
+      userId: this.data.userId,
+      id: options.id
+    }
     if (type == 2) {
-      secondApi.getInfoById(id).then(res => {
+      secondApi.getDetailInfo(model).then(res => {
         this.filterImage(res.houseImage)
       })
     }
 
     if (type == 3) {
-      rentApi.getInfoById(id).then(res => {
+      rentApi.getDetailInfo(model).then(res => {
         this.filterImage(res.houseImage)
       })
     }

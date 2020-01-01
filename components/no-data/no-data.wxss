@@ -16,6 +16,6 @@ transform: translate(-50%,0);
   margin-top:31rpx;
   font-size: 27rpx;
   color:#333333;
-
+text-align:center;
 
 }

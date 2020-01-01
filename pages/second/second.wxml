@@ -3,7 +3,7 @@
     <view class="search-content">
       <view class="search-box flex" bindtap="goSearch">
         <image src="../../assets/img/search.png"></image>
-        <input value="{{houseName}}" placeholder="请输入楼盘名称、房间号或房源编号" bindinput="changeInput"></input>
+        <input value="{{houseName}}" placeholder="请输入楼盘名称、房间号或房源编号" ></input>
       </view>
     </view>
     <view style="height:20rpx;background:#ececec"></view>

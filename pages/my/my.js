@@ -1,5 +1,8 @@
 // pages/my/my.js
 const app = getApp()
+import {
+  msgApi
+} from "../../api/msg.js"
 Page({
 
   /**
@@ -7,6 +10,15 @@ Page({
    */
   data: {
     isLogin: false,
+    userId: '',
+    info: {}
+  },
+  getData() {
+    msgApi.getMyInfo(this.data.userId).then(res => {
+      this.setData({
+        info: res
+      })
+    })
   },
   goLogin(e) {
     var getUser = e.detail;
@@ -28,7 +40,21 @@ Page({
               'Content-Type': 'application/x-www-form-urlencoded'
             },
             success: (res1) => {
-              console.log("经纪人登陆授权失败", res1)
+              console.log("经纪人登陆授权成功", res1.data.data.openid)
+              let openid = res1.data.data.openid
+              wx.request({
+                url: app.globalData.baseUrl + 'brokerInfo/findByOpenId',
+                method: 'post', //请求方式
+                data: {
+                  openid: openid
+                },
+                success: (res2) => {
+                  console.log("经纪人信息", res2)
+                },
+                fail: (err2) => {
+                  console.log("经纪人信息失败", err2)
+                }
+              })
 
             },
             fail: (err) => {
@@ -79,7 +105,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+this.getData()
   },
 
   /**

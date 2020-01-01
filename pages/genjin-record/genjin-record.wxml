@@ -1,12 +1,12 @@
-<block wx:for="{{4}}">
+<block wx:for="{{list}}" wx:key='*this'>
   <view class="content">
     <view class="top flex-between">
-      <view>张玉玉 (通州北关店)</view>
-      <view>电话: 15782895544</view>
+      <view>{{item.createPersonName?item.createPersonName:''}} {{item.createStoreName?"("+item.createStoreName+")":''}}</view>
+      <view>电话: {{item.followTypeName?item.followTypeName:'暂无'}}</view>
     </view>
-    <view class="neirong">业主最近不在北京，现在不能带看房子；业主下周 三回北京后可以周六日带客户看房</view>
+    <view class="neirong">{{item.remark?item.remark:'暂无跟进内容'}}</view>
     <view class='time'>
-      <text>2018-11-20  11：28</text>
+      <text>{{item.createDate?item.createDate:'暂无'}}</text>
     </view>
   </view>
 

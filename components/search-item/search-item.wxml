@@ -1,6 +1,6 @@
 <view class="search-box flex">
   <image src="../../assets/img/search.png"></image>
-  <input value="{{keyword}}" placeholder="请输入楼盘名称、房间号或房源编号" bindinput="changeInput"></input>
+  <input value="{{keyword}}" placeholder="请输入区域或楼盘名称" bindinput="changeInput"></input>
 </view>
 <view class="search-content" wx:if="{{isInput}}">
   <block wx:if="{{list.length>0}}">

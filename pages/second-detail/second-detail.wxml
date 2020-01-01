@@ -1,3 +1,5 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
 <view style='position: relative;'>
   <swiper interval="5000" duration="1000" bindchange="swiperChange">
     <block wx:for="{{info.houseImage}}" wx:key="id">
@@ -17,7 +19,7 @@
 </view>
 
 <view class="top-detail">
-  <view class="name">{{info.houseName==null?'':info.houseName}}</view>
+  <view class="name">{{info.houseName==null?'':info.houseName}}{{info.houseNo==null?'暂无编号':info.houseNo}}</view>
   <!-- <view class="code">房源编号：{{info.houseNo==null?'暂无':info.houseNo}}</view> -->
   <!-- <view style="margin-bottom:44rpx ;display:flex">
     <block wx:for="{{tagList}}" wx:key="*this">
@@ -27,7 +29,7 @@
   <view class="flex flex-box">
     <view class="flex-item">
       <view class="title1">售价</view>
-      <view class="price red">{{info.offer==null?'暂无':info.offer+'万'}}</view>
+      <view class="price red">{{info.offer==null?'暂无':tools.toFixed(info.offer,2)+'万'}}</view>
     </view>
     <view class="border" style="margin-right:58rpx;"></view>
     <view class="flex-item">
@@ -49,32 +51,32 @@
   </view>
   <view class="info">
     <view class="info-item">
-      <text class="label">单价 : </text>{{info.univalent?info.univalent+"元/㎡":'-'}}</view>
+      <text class="label">单价 : </text>{{info.univalent?tools.toFixed(info.univalent,2)+"元/㎡":'-'}}</view>
     <view class="info-item">
-      <text class="label">挂牌 : </text>{{info.listingTime?info.listingTime:'-'}}</view>
+      <text class="label">挂牌 : </text>{{info.developerStoreId?info.developerStoreId:'-'}}</view>
     <view class="info-item">
       <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
     <view class="info-item">
-      <text class="label">楼层 : </text>{{info.floor?info.floor+'层':''}}{{info.floorMax?'/共'+info.floorMax+'层':'-'}}</view>
+      <text class="label">楼层 : </text>{{info.floor?info.floor:''}}{{info.floorMax?'/'+info.floorMax+'层':'-'}}</view>
     <view class="info-item">
-      <text class="label">楼型 : </text>{{info.buildingType?info.buildingType:'-'}}</view>
+      <text class="label">楼型 : </text>{{info.buildingStructureName?info.buildingStructureName:'-'}}</view>
     <view class="info-item">
-      <text class="label">年代 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">年代 : </text>{{info.buildingYears?tools.sub(info.buildingYears,0,4):'-'}}</view>
 
     <view class="info-item">
       <text class="label">装修 : </text>{{info.decorateName?info.decorateName:'-'}}</view>
     <view class="info-item">
-      <text class="label">产权 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">产权 : </text>{{info.natureOfPropertyRightName?info.natureOfPropertyRightName:'-'}}</view>
     <view class="info-item">
-      <text class="label">用途 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">用途 : </text>{{info.businessTypeName?info.businessTypeName:'-'}}</view>
     <view class="info-item">
-      <text class="label">供暖 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">供暖 : </text>{{info.heatingMethodName?info.heatingMethodName:'-'}}</view>
     <view class="info-item">
-      <text class="label">属性 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">属性 : </text>{{info.fiveYear?'满五年':'未满五年'}}</view>
     <view class="info-item">
-      <text class="label">贷款 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">贷款 : </text>{{info.loanName?info.loanName:'-'}}</view>
     <view class="info-item">
-      <text class="label">小区 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">小区 : </text>{{info.stageName?info.stageName:'-'}}</view>
 
   </view>
 
@@ -92,7 +94,7 @@
   <view class="memo">户型介绍:</view>
 </view>
 <!-- 出售优势 -->
-<view class="huxing huxing1">
+<!-- <view class="huxing huxing1">
   <view class="border-left">
     出售优势
   </view>
@@ -100,6 +102,24 @@
   <view class="memo">周边配套:</view>
   <view class="memo">交通出行:</view>
   <view class="memo">户型介绍:</view>
+</view> -->
+
+<view class="huxing huxing1">
+  <view class="border-left">
+    出售优势
+  </view>
+  <view class="yuan-name">- 户型描述</view>
+  <view class="yuan-text">{{info.advantage4?info.advantage4:'-'}}</view>
+  <view class="yuan-name">- 交通优势</view>
+  <view class="yuan-text">{{info.advantage2?info.advantage2:'-'}}</view>
+  <view class="yuan-name">- 地理优势</view>
+  <view class="yuan-text">{{info.advantage1?info.advantage1:'-'}}
+  </view>
+  <view class="yuan-name">- 学区优势</view>
+  <view class="yuan-text">{{info.advantage3?info.advantage3:'-'}}</view>
+  <view class="yuan-name">- 楼层优势</view>
+  <view class="yuan-text">{{info.advantage5?info.advantage5:'-'}}
+  </view>
 </view>
 
 <!-- 业绩归属 -->
@@ -107,14 +127,47 @@
   <view class="border-left">
     业绩归属
   </view>
-  <block wx:for="{{4}}">
-    <view class="flex-between yeji-item">
-      <image src="../../assets/img/ren.png" class="renImg"></image>
-      <view class="name">丽华</view>
-      <view class="tag">维护人</view>
-      <image src="../../assets/img/phone.png" class="phone"></image>
-    </view>
-  </block>
+  <!-- <block wx:for="{{4}}"> -->
+  <view class="flex-between yeji-item" wx:if="{{info.whName}}">
+    <image src="{{info.whImage}}" class="renImg" wx:if="{{info.whImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.whName?info.whName:''}}</view>
+    <view class="tag">维护人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{info.whPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.lrName}}">
+    <image src="{{info.lrImage}}" class="renImg" wx:if="{{info.lrImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.lrName?info.lrName:''}}</view>
+    <view class="tag">录入人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.lrPhone}}"></image>
+  </view>
+  <view class="flex-between yeji-item" wx:if="{{info.skName}}">
+    <image src="{{info.skImage}}" class="renImg" wx:if="{{info.skImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.skName?info.skName:''}}</view>
+    <view class="tag">实勘人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.skPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.ysName}}">
+    <image src="{{info.ysImage}}" class="renImg" wx:if="{{info.ysImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+
+    <view class="name">{{info.ysName?info.ysName:''}}</view>
+    <view class="tag">钥匙人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.ysPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.wtName}}">
+    <image src="{{info.wtImage}}" class="renImg" wx:if="{{info.wtImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.wtName?info.wtName:''}}</view>
+    <view class="tag">委托人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.wtPhone}}"></image>
+  </view>
+  <!-- </block> -->
 </view>
 
 <!-- 查看电话 -->
@@ -122,14 +175,12 @@
   <view class="border-left">
     查看电话
   </view>
-  <block wx:for="{{4}}">
+  <block wx:for="{{info.houseContacts}}" wx:key="*this">
     <view class="flex-between yeji-item">
-      <view class="name">丽华</view>
-
-      <view class="tag">产权人</view>
-      <view class="phone-number">15072829596</view>
-
-      <image src="../../assets/img/phone.png" class="phone"></image>
+      <view class="name">{{item.contactsName?item.contactsName:'暂无'}}</view>
+      <view class="tag">{{item.owerRelationshipName?item.owerRelationshipName:'暂无'}}</view>
+      <view class="phone-number">{{item.contactsPhone?item.contactsPhone:'暂无'}}</view>
+      <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{item.contactsPhone}}"></image>
     </view>
   </block>
 </view>
@@ -138,10 +189,10 @@
   <view class="border-left">
     跟进记录
   </view>
-  <van-icon name="arrow"  />
-  </view>
+  <van-icon name="arrow" />
+</view>
 
 
 
 
-<view class="bottom-btn" bindtap="goGenjin" >跟进</view>
+<view class="bottom-btn" bindtap="goGenjin">跟进</view>

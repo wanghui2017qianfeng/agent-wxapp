@@ -371,45 +371,61 @@ Page({
 
 
     sortActNum: 0,
-    areaActive:0,//面积
-    towardActive:0,
-    decorateActive:0,
-    levelActive:0,
-    floorActive:0,
-    parkActive:0,
-    entrustActive:0,
-    otherActive:0,
+    areaActive: 0, //面积
+    towardActive: 0,
+    decorateActive: 0,
+    levelActive: 0,
+    floorActive: 0,
+    parkActive: 0,
+    entrustActive: 0,
+    otherActive: 0,
   },
-
-  chooseEntrust(e){
-    let {item,index} = e.currentTarget.dataset;
-    console.log("委托",item,index)
+  goSearch() {
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+  chooseEntrust(e) {
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
+    console.log("委托", item, index)
     this.setData({
-      entrustActive:index,
-      entrust:item.value,
+      entrustActive: index,
+      entrust: item.value,
     })
   },
 
   chooseOther(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("其他", item, index)
     this.setData({
       otherActive: index,
-      other:item.value
+      other: item.value
     })
   },
 
   choosePark(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("停车", item, index)
     this.setData({
       parkActive: index,
-      parking:item.value
+      parking: item.value
     })
   },
 
   chooseCover(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("面积", item, index)
     this.setData({
       areaActive: index,
@@ -418,35 +434,47 @@ Page({
     })
   },
   chooseToward(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("朝向", item, index)
     this.setData({
       towardActive: index,
-      toward:item.value
+      toward: item.value
     })
   },
   chooseLevel(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("等级", item, index)
     this.setData({
       levelActive: index,
-      level:item.value,
+      level: item.value,
     })
   },
   chooseDecorate(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("装修", item, index)
     this.setData({
       decorateActive: index,
-      decorate:item.value
+      decorate: item.value
     })
   },
   chooseFloor(e) {
-    let { item, index } = e.currentTarget.dataset;
+    let {
+      item,
+      index
+    } = e.currentTarget.dataset;
     console.log("楼层", item, index)
     this.setData({
       floorActive: index,
-      floor:item.value
+      floor: item.value
     })
   },
 
@@ -460,6 +488,7 @@ Page({
 
 
   goDetail(e) {
+    console.log("二手房",e)
     wx.navigateTo({
       url: '/pages/second-detail/second-detail',
     })
@@ -574,9 +603,12 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: this.data.pageSize
     }
-    console.log("model",model)
+    console.log("model", model)
     secondApi.getPage(model).then(res => {
       console.log('结果', res)
+      this.setData({
+        list:this.data.pageNum==1?res.list:this.data.list.concat(res.list)
+      })
     })
 
   },
@@ -584,7 +616,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+this.getData()
   },
 
   /**

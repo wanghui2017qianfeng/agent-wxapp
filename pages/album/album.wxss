@@ -20,7 +20,7 @@ swiper image {
 
 .typeList {
   background: #2c2c2c;
-  height: 124.3rpx;
+  height: 88rpx;
   color: #999;
   text-align: center;
   position: fixed;
@@ -37,8 +37,13 @@ swiper image {
 
 .typeList .albumLi {
   display: inline-block;
+  height:40rpx;
+  line-height:40rpx;
+  padding:0 12rpx;
+  border-radius:5rpx;
 }
 
 .greenThis {
   color: #ffffff;
+  background: #878484;
 }
