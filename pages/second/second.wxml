@@ -59,7 +59,7 @@
             </block>
           </view>
           <view class="flex-between">
-            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn clear" catchtap="clearPrice">重置</view>
             <view class="btn sure" catchtap="sure">确定</view>
           </view>
         </view>
@@ -75,7 +75,7 @@
             </block>
           </view>
           <view class="flex-between ">
-            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn clear" catchtap="clearBed">重置</view>
             <view class="btn sure" catchtap="sure">确定</view>
           </view>
         </view>
@@ -148,7 +148,7 @@
             </view>
           </scroll-view>
           <view class="flex-between btn-box">
-            <view class="btn clear" catchtap="clear">重置</view>
+            <view class="btn clear" catchtap="clearMore" >重置</view>
             <view class="btn sure" catchtap="sure">确定</view>
           </view>
         </view>
@@ -169,7 +169,7 @@
   <block wx:if="{{list.length>0}}">
     <second-item list="{{list}}" bind:goDetail="goDetail"></second-item>
   </block>
-  <view wx:else>
+  <view wx:else style="margin-top:300rpx;">
     <no-data-comp text="没有找到相关房源"></no-data-comp>
   </view>
 </view>

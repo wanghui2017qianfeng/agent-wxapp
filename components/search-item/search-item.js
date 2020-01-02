@@ -1,10 +1,10 @@
 // components/search-item/search-item.js
-// import {
-//   secondApi
-// } from "../../api/second.js"
-// import {
-//   rentApi
-// } from "../../api/rent.js"
+import {
+  secondApi
+} from "../../api/second.js"
+import {
+  rentApi
+} from "../../api/rent.js"
 // import {
 //   buildApi
 // } from "../../api/build.js"
@@ -18,6 +18,7 @@ Component({
       type: Number,
 
     },
+    // type 2二手 3租房 1楼盘
     hotList: {
       type: Array,
       value: []

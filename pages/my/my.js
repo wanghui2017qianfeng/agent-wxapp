@@ -3,6 +3,7 @@ const app = getApp()
 import {
   msgApi
 } from "../../api/msg.js"
+import {cityApi} from "../../api/city.js"
 Page({
 
   /**
@@ -11,7 +12,10 @@ Page({
   data: {
     isLogin: false,
     userId: '',
-    info: {}
+    info: {},
+    avatar:'',
+    openid: '',
+    cityList:[]
   },
   getData() {
     msgApi.getMyInfo(this.data.userId).then(res => {
@@ -20,62 +24,21 @@ Page({
       })
     })
   },
-  goLogin(e) {
-    var getUser = e.detail;
-    var that = this;
-    wx.login({
-      success: (res) => {
-        console.log("登录")
-        if (res.code) {
-          let loginCode = res.code
-          wx.request({
-            url: app.globalData.baseUrl + 'brokerInfo/authorize',
-            method: 'post', //请求方式
-            data: {
-              js_code: loginCode,
-              encrypted: getUser.encryptedData,
-              iv: getUser.iv
-            },
-            header: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            success: (res1) => {
-              console.log("经纪人登陆授权成功", res1.data.data.openid)
-              let openid = res1.data.data.openid
-              wx.request({
-                url: app.globalData.baseUrl + 'brokerInfo/findByOpenId',
-                method: 'post', //请求方式
-                data: {
-                  openid: openid
-                },
-                success: (res2) => {
-                  console.log("经纪人信息", res2)
-                },
-                fail: (err2) => {
-                  console.log("经纪人信息失败", err2)
-                }
-              })
-
-            },
-            fail: (err) => {
-              console.log("经纪人登陆授权失败", err)
-            }
-          })
-        }
-
-      },
-      fail: (err) => {
-        console.log("登录失败", err)
-      }
+  logout(){
+    this.setData({
+      isLogin:false,
+      info:{},
 
     })
-
-
-
-
-    // wx.navigateTo({
-    //   url: '/pages/login/login',
-    // })
+  wx.setStorage({
+    key: 'userInfo',
+    data: {},
+  })
+  },
+  goLogin(e) {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
 
   },
   goMyFoucsHouse() {
@@ -105,13 +68,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-this.getData()
   },
+getAllCity(){
+  cityApi.getAllCity().then(res=>{
+    console.log("res",res)
+    this.setData({
+      cityList:res
+    })
+  })
 
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
+
 
   },
 
@@ -119,6 +90,34 @@ this.getData()
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let that = this;
+
+    let userInfo = wx.getStorageSync('userInfo')
+    console.log("my页面userInfo", userInfo)
+    wx.getStorage({
+      key: 'userInfo',
+      success: function(res) {
+        let userInfo = res.data
+        console.log("结果", userInfo.userid)
+
+        // if (userInfo && userInfo.openid)
+          that.setData({
+         
+            avatar: userInfo.avatarUrl,
+            phone: userInfo.phoneNumber,
+            openid: userInfo.openid,
+            userId: userInfo.userid,
+            isLogin: true
+          })
+        console.log("userId", that.data.userId)
+    that.getData()
+
+
+      },
+      fail: (err) => {
+        console.log("失败", err)
+      }
+    })
 
   },
 

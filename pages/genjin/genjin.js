@@ -68,19 +68,31 @@ Page({
       houseId: this.data.houseId,
       type: this.data.type,
       remark: this.data.remark,
-
-
     }
-    houseFollowApi.addFollow(model).then()
+    houseFollowApi.addFollow(model).then(()=>{
+      wx.showToast({
+        title: '保存成功',
+        icon:'none'
+      })
+      this.setData({
+        remark:'',
+        needsText:'',
+        needs: '',
+        type: ''
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let userInfo = wx.getStorageSync('userInfo')
+
     this.setData({
       houseId: options.houseId,
       houseName:options.houseName,
-      houseNo:options.houseNo
+      houseNo:options.houseNo,
+      userId: userInfo.userid
     })
 
   },

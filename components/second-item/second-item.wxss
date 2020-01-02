@@ -1,7 +1,7 @@
 /* components/second-item/second-item.wxss *//* components/my-house-item/my-house-item.wxss */
 @import "../../app.wxss";
 .house-item {
-margin:0 50rpx;
+margin:0 40rpx;
 padding:54rpx 0;
 border-bottom: 1rpx solid #eeeeee;
 

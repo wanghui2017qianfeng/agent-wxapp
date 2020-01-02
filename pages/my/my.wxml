@@ -3,7 +3,7 @@
 
 <view class="top flex">
   <block wx:if="{{isLogin}}" class="flex">
-    <image src="../../assets/img/geren.png"></image>
+    <image src="{{avatar}}" style="border-radius:50%"></image>
     <view>
       <view style="margin-bottom:5rpx;">{{info.storeName?info.storeName:'-'}}：{{info.name?info.name:''}}</view>
       <van-tag color="#ffffff" text-color='#2F72F7'>{{info.jobName?info.jobName:''}}</van-tag>
@@ -24,15 +24,15 @@
   <view class='title'>我的业绩</view>
   <view class="flex-around my-yeji">
     <view>
-      <view class="price">{{info.lastAchievement?tools.toFixe(info.lastAchievement,2):'0.00'}}元</view>
+      <view class="price">{{info.lastAchievement?tools.toFixed(info.lastAchievement,2):'0.00'}}元</view>
       <view class="name">上月业绩</view>
     </view>
     <view>
-      <view class="price">{{info.monthAchievement?tools.toFixe(info.monthAchievement,2):'0.00'}}元</view>
+      <view class="price">{{info.monthAchievement?tools.toFixed(info.monthAchievement,2):'0.00'}}元</view>
       <view class="name">本月业绩</view>
     </view>
     <view>
-      <view class="price">{{info.weekAchievement?tools.toFixe(info.weekAchievement,2):'0.00'}}元</view>
+      <view class="price">{{info.weekAchievement?tools.toFixed(info.weekAchievement,2):'0.00'}}元</view>
       <view class="name">本周业绩</view>
     </view>
   </view>

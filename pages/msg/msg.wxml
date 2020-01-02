@@ -1,5 +1,5 @@
 <view class="msg-center">
-
+<block wx:if="{{list.length>0}}">
 <block wx:for="{{list}}" wx:key="*this">
 <view class="msg-item">
   <view class="msg-title">{{item.context}}</view>
@@ -9,4 +9,11 @@
   </view>
 </view>
 </block>
+</block>
+
+ <block wx:else>
+    <view style="padding-top:200rpx;height:300rpx;">
+      <no-data-comp text="暂无消息"></no-data-comp>
+    </view>
+  </block>
 </view>

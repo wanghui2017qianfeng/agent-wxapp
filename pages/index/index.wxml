@@ -9,10 +9,11 @@
     <view class="name">{{myInfo.storeName?myInfo.storeName:''}}{{myInfo.name?'-'+myInfo.name:''}}</view>
   </view>
   <view class="red">业绩排名 : {{myInfo.rank?'第'+myInfo.rank+'名':'暂无排名'}}</view>
-  </view>
+</view>
 
-<view class="card"  style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">
+<view class="card" style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">
   <image src="../../assets/img/up.png" class="up"></image>
+  <view class="flex-between" style="width:100%;padding-right:20rpx">
   <view>
     <view class="name">本月签约业绩</view>
     <view class="money">
@@ -30,13 +31,14 @@
       <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement,2):'-'}}万</text>
     </view>
   </view>
+  </view>
 
 </view>
 
 <van-grid column-num="4" border="{{ false }}">
   <van-grid-item use-slot wx:for="{{ list }}" wx:key="index" class="grid" bindtap="goBuild" data-index="{{index}}">
     <image src="{{item.src}}" class="iconBox"></image>
-    <view style="font-size:29rpx;">{{item.text}}</view>
+    <view style="font-size:29rpx;">{{item.text?item.text:'暂无'}}</view>
   </van-grid-item>
 </van-grid>
 
@@ -45,23 +47,31 @@
     <image src="../../assets/img/bobao.png"></image>
   </view>
   <view class="person">
-    <image src="{{bobaoInfo.image}}"></image>
+    <image src="{{bobaoInfo.image}}" wx:if="{{bobaoInfo.image}}"></image>
+    <image src="../../assets/img/tuxiang.png" wx:else></image>
     <view>{{bobaoInfo.name?bobaoInfo.name:'暂无'}}</view>
   </view>
-  <view class="info">{{bobaoInfo.context}}
+  <view class="info">{{bobaoInfo.context?bobaoInfo.context:'暂无'}}
   </view>
 </view>
 
 <view class="msg-center">
-<view class="title"><image src="../../assets/img/laba.png"></image>消息中心</view>
-
-<block wx:for="{{infoList}}" wx:key="*this">
-<view class="msg-item">
-  <view class="msg-title">{{item.context}}</view>
-  <view class="flex-between item">
-    <view class="msg1">{{item.type}}</view>
-    <view class="time">{{item.date}}</view>
-  </view>
-</view>
-</block>
+  <view class="title">
+    <image src="../../assets/img/laba.png"></image>消息中心</view>
+  <block wx:if="{{infoList.length>0}}">
+    <block wx:for="{{infoList}}" wx:key="*this">
+      <view class="msg-item">
+        <view class="msg-title">{{item.context?item.context:'暂无'}}</view>
+        <view class="flex-between item">
+          <view class="msg1">{{item.type?item.type:'暂无'}}</view>
+          <view class="time">{{item.date?item.date:'暂无'}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:else>
+    <view style="padding-top:80rpx;height:300rpx;">
+      <no-data-comp text="暂无消息"></no-data-comp>
+    </view>
+  </block>
 </view>

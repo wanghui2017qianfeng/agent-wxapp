@@ -12,15 +12,15 @@
       <view class="content flex-between">
         <view class="qu">
           <view class="name">{{item.address?item.address:'-'}}</view>
-          <view class="price">{{item.price?item.price:'-'}}万</view>
+          <view class="price">{{item.price?item.price:'-'}}</view>
         </view>
         <view class="qu">
           <view class="name">{{item.use?item.use:'-'}}</view>
-          <view class="price">{{item.area?item.area:'-'}}㎡</view>
+          <view class="price">{{item.area?item.area:'-'}}</view>
         </view>
         <view class="pingjia qu">
           <van-rate value="{{ 3 }}" color="#FF4657" void-color="#DCDCDC" bind:change="onChange" />
-          <view class="price1">{{item.bed?item.bed:'-'}}居室</view>
+          <view class="price1">{{item.bed?item.bed:'-'}}</view>
         </view>
       </view>
       <view class="date">录入日期 : {{item.lastFollowTime?item.lastFollowTime:''}}</view>

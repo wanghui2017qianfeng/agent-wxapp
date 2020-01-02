@@ -181,6 +181,21 @@ page {
   width: 300rpx;
 }
 
+.sortLi {
+  line-height: 95rpx;
+  color: #333;
+  font-size: 32rpx;
+  border-bottom: 1px solid #ececec;
+}
+.sort-wrapper{
+  background: #fff;
+  padding:0 30rpx;
+  box-sizing: border-box;
+}
+.actThisSort {
+  color: #2F72F7;
+}
+
 .actThisCircle {
   color: #2F72F7;
 }

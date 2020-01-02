@@ -56,7 +56,7 @@ line-height: 64rpx
   font-size: 46rpx;
 }
 .card .yeji{
-  margin-left:180rpx;
+  /* margin-left:180rpx; */
   margin-top:50rpx;
   display: felx;
   flex-direction: column;
@@ -94,7 +94,7 @@ border-right: 3rpx solid #CCCCCC;
 .bobao .person {
   margin:0 20rpx;
   font-size: 22rpx;
-  width:120rpx;
+  width:130rpx;
   text-align: center;
 }
 .bobao .person image{

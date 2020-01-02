@@ -1,15 +1,23 @@
 // pages/kehu/kehu.js
+import {kehuApi} from "../../api/kehu.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userId:'',
+    buyList:[],
+    rentList:[],
+    cusName:'',
+    buyPageNo:1,
+    pageSize:5
 
   },
   goDetailBuy(e) {
+    console.log("去买卖客户详情",e.detail)
     wx.navigateTo({
-      url: '/pages/buy-kehu-detail/buy-kehu-detail',
+      url: '/pages/buy-kehu-detail/buy-kehu-detail?cusId='+e.detail,
     })
   },
   goDetailRent(e) {
@@ -17,11 +25,33 @@ Page({
       url: '/pages/rent-kehu-detail/rent-kehu-detail',
     })
   },
+
+  getBuyList(){
+    let model={
+      cusName: this.data.cusName,
+      pageNo: this.data.buyPageNo,
+      buyOrRent:1,
+      pageSize: 5,
+      userId:this.data.userId
+    }
+
+    kehuApi.getPage(model).then(res=>{
+      this.setData({
+        buyList:res.list
+      })
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid
+    })
 
+    this.getBuyList()
   },
 
   /**

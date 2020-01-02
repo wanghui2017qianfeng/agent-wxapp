@@ -17,7 +17,7 @@
         <view class="label">电话:</view>
         <view class="flex-between" style="width:390rpx;">
           <view>{{info.phone?info.phone:''}}</view>
-          <view wx:if="{{info.phone}}">
+          <view wx:if="{{info.phone}}" bindtap="openPhone" data-phone="{{info.phone}}">
             <image src="../../assets/img/red-phone.png" class="phone"></image>
           </view>
         </view>
@@ -80,7 +80,7 @@
             <view class="label">姓名:{{item.cusName?item.cusName:''}}</view>
             <view class="flex-between" style="width:390rpx;">
               <view>{{item.phone?item.phone:''}}</view>
-              <view>
+              <view  bindtap="openPhone" data-phone="{{item.phone}}">
                 <image src="../../assets/img/red-phone.png" class="phone"></image>
               </view>
             </view>
@@ -155,14 +155,16 @@
     <view class="box">
       <view class="name">归属人</view>
       <view style="border-top:1rpx solid #eee;padding-top:20rpx">
-        <block wx:for="{{4}}" wx:key="*this">
+        <!-- <block wx:for="{{4}}" wx:key="*this"> -->
           <view class="flex-between yeji-item">
-            <image src="../../assets/img/ren.png" class="renImg"></image>
-            <view class="name">丽华</view>
+            <image src="{{info.maintainUrl}}" class="renImg" wx:if="{{info.maintainUrl}}"></image>
+            <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+            
+            <view class="name">{{info.maintainName?info.maintainName:'-'}}</view>
             <view class="tag">维护人</view>
-            <image src="../../assets/img/phone.png" class="phone"></image>
+            <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{info.maintainPhone}}"></image>
           </view>
-        </block>
+        <!-- </block> -->
       </view>
     </view>
 
@@ -190,15 +192,15 @@
     </view>
 
 
-    <block wx:for="{{4}}">
+    <block wx:for="{{followList}}" wx:key="*this">
       <view class="content">
         <view class="top flex-between">
-          <view>张玉玉 (通州北关店)</view>
-          <view>电话: 15782895544</view>
+          <view>{{item.followPerson?item.followPerson:'-'}} ({{item.followDept?intem.followDept:'-'}})</view>
+          <view>{{item.followTypeTxt?item.followTypeTxt:'-'}}</view>
         </view>
-        <view class="neirong">业主最近不在北京，现在不能带看房子；业主下周 三回北京后可以周六日带客户看房</view>
+        <view class="neirong">{{item.followRemark?item.followRemark:'-'}}</view>
         <view class='time'>
-          <text>2018-11-20  11：28</text>
+          <text>{{item.followTime?item.followTime:'-'}}</text>
         </view>
       </view>
 
@@ -219,17 +221,17 @@
       <view>客户姓名:{{info.name?info.name:''}}</view>
     </view>
 
-    <block wx:for="{{4}}" wx:key="*this">
+    <block wx:for="{{lookList}}" wx:key="*this">
       <view class="daikan-item">
         <view class="daikan-top flex-between">
-          <view class="name">华润府一期 FY0022550</view>
-          <view class="time">2018-11-20 11:28</view>
+          <view class="name">{{item.houseName?item.houseName:'-'}} {{item.houseNo?item.houseNo:'-'}}</view>
+          <view class="time">{{item.followTime?item.followTime:'-'}}</view>
         </view>
         <view class="neirong flex-between">
-          <view>彩虹新城店（张龙涛组)</view>
-          <view>张龙涛 </view>
+          <view>{{item.followDept?intem.followDept:'-'}}（{{item.followPerson?item.followPerson:'-'}}组)</view>
+          <view>{{item.followPerson?item.followPerson:'-'}} </view>
         </view>
-        <view class="desc">三回北京后可以周六日带客户看房</view>
+        <view class="desc">{{item.followRemark?item.followRemark:'-'}}</view>
       </view>
 
     </block>

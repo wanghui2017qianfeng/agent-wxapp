@@ -1,11 +1,11 @@
 // pages/search/search.js
 
-// import {
-//   secondApi
-// } from "../../api/second.js"
-// import {
-//   rentApi
-// } from "../../api/rent.js"
+import {
+  secondApi
+} from "../../api/second.js"
+import {
+  rentApi
+} from "../../api/rent.js"
 // import {
 //   buildApi
 // } from "../../api/build.js"
@@ -32,42 +32,9 @@ Page({
     rentHistoryList: [],
     buildHistoryList: [],
 
-
-
-    icon1: {
-      normal: '../../assets/img/home.png',
-      active: '../../assets/img/home_on.png'
-    },
-    icon2: {
-      normal: '../../assets/img/focus.png',
-      active: '../../assets/img/focus_on.png'
-    },
-    icon3: {
-      normal: '../../assets/img/my.png',
-      active: '../../assets/img/my_on.png'
-    },
-
   },
 
-  onChangeTabbar(event) {
-    this.setData({
-      active1: event.detail
-    });
-    if (event.detail == 0) { //首页
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
-    } else if (event.detail == 1) { //关注
-      wx.switchTab({
-        url: '/pages/focus/focus'
-      })
-    } else {
-      wx.switchTab({
-        url: '/pages/my/my'
-      })
-    }
 
-  },
 
   toRedirect(e) {
 
@@ -89,24 +56,24 @@ Page({
       this.setData({
         type: 2
       })
-      hotApi.getHot(1).then(res => {
-        this.setData({
-          secondHotList: res,
-          secondHistoryList: wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : []
-        })
-      })
+      // hotApi.getHot(1).then(res => {
+      //   this.setData({
+      //     secondHotList: res,
+      //     secondHistoryList: wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : []
+      //   })
+      // })
     }
 
     if (index == 1) {
       this.setData({
         type: 3
       })
-      hotApi.getHot(2).then(res => {
-        this.setData({
-          rentHotList: res,
-          rentHistoryList: wx.getStorageSync('rentHistoryList') ? wx.getStorageSync('rentHistoryList') : []
-        })
-      })
+      // hotApi.getHot(2).then(res => {
+      //   this.setData({
+      //     rentHotList: res,
+      //     rentHistoryList: wx.getStorageSync('rentHistoryList') ? wx.getStorageSync('rentHistoryList') : []
+      //   })
+      // })
     }
 
 
@@ -114,12 +81,12 @@ Page({
       this.setData({
         type: 1
       })
-      hotApi.getHot(3).then(res => {
-        this.setData({
-          buildHotList: res,
-          buildHistoryList: wx.getStorageSync('buildHistoryList') ? wx.getStorageSync('buildHistoryList') : []
-        })
-      })
+      // hotApi.getHot(3).then(res => {
+      //   this.setData({
+      //     buildHotList: res,
+      //     buildHistoryList: wx.getStorageSync('buildHistoryList') ? wx.getStorageSync('buildHistoryList') : []
+      //   })
+      // })
     }
   },
   handleDel() {
@@ -173,12 +140,12 @@ Page({
   onLoad: function(options) {
     let type = options.type
     if (!type) {
-      hotApi.getHot(1).then(res => {
-        this.setData({
-          secondHotList: res,
-          secondHistoryList: wx.getStorageSync('secondHistoryList')
-        })
-      })
+      // hotApi.getHot(1).then(res => {
+      //   this.setData({
+      //     secondHotList: res,
+      //     secondHistoryList: wx.getStorageSync('secondHistoryList')
+      //   })
+      // })
     }
 
     if (type == 1) { //楼盘
@@ -186,12 +153,12 @@ Page({
         type: type,
         active: 2
       })
-      hotApi.getHot(3).then(res => {
-        this.setData({
-          buildHotList: res,
-          buildHistoryList: wx.getStorageSync('buildHistoryList')
-        })
-      })
+      // hotApi.getHot(3).then(res => {
+      //   this.setData({
+      //     buildHotList: res,
+      //     buildHistoryList: wx.getStorageSync('buildHistoryList')
+      //   })
+      // })
 
     }
 
@@ -200,13 +167,13 @@ Page({
         type: type,
         active: 0
       })
-      hotApi.getHot(1).then(res => {
-        this.setData({
-          secondHotList: res,
-          secondHistoryList: wx.getStorageSync('secondHistoryList')
+      // hotApi.getHot(1).then(res => {
+      //   this.setData({
+      //     secondHotList: res,
+      //     secondHistoryList: wx.getStorageSync('secondHistoryList')
 
-        })
-      })
+      //   })
+      // })
     }
 
     if (type == 3) { //出租
@@ -214,13 +181,13 @@ Page({
         type: type,
         active: 1
       })
-      hotApi.getHot(2).then(res => {
-        this.setData({
-          rentHotList: res,
-          rentHistoryList: wx.getStorageSync('rentHistoryList')
+      // hotApi.getHot(2).then(res => {
+      //   this.setData({
+      //     rentHotList: res,
+      //     rentHistoryList: wx.getStorageSync('rentHistoryList')
 
-        })
-      })
+      //   })
+      // })
     }
 
 

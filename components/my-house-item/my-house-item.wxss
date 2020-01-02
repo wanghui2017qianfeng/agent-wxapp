@@ -1,7 +1,7 @@
 /* components/my-house-item/my-house-item.wxss */
 @import "../../app.wxss";
 .house-item {
-margin:0 50rpx;
+margin:0 40rpx;
 padding:54rpx 0;
 border-bottom: 1rpx solid #eeeeee;
 
@@ -9,7 +9,7 @@ border-bottom: 1rpx solid #eeeeee;
 .right-box{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .house-item .roomImg{
   width:218rpx;

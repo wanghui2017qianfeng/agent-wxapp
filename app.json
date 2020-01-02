@@ -1,14 +1,23 @@
 {
   "pages": [
-    "pages/my-kehu/my-kehu",
+    "pages/index/index",
     
     "pages/my/my",
+    
+    "pages/rent/rent",
+    
+    "pages/msg/msg",
+    
+    "pages/login/login",
+    
+    
+    "pages/my-kehu/my-kehu",
+    
     
     "pages/my-house/my-house",
     
     "pages/album/album",
     
-    "pages/index/index",
     
     "pages/second-detail/second-detail",
     
@@ -25,11 +34,8 @@
     "pages/kehu/kehu",
     "pages/genjin-record/genjin-record",
     "pages/genjin/genjin",
-    "pages/rent/rent",
     "pages/rent-detail/rent-detail",
-    "pages/my-focus-kehu/my-focus-kehu",
-    "pages/login/login",
-    "pages/msg/msg"
+    "pages/my-focus-kehu/my-focus-kehu"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -64,6 +70,11 @@
         }
       ]
     },
+      "permission": {
+        "scope.userLocation": {
+          "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+      },
   "usingComponents": {
     "van-rate": "@vant/weapp/rate",
     "van-grid": "@vant/weapp/grid",

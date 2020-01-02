@@ -80,9 +80,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // this.setData({
-    //   userId:app.globalData.openid
-    // })
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid
+    })
 this.getRentData()
     this.getSecondData()
   },

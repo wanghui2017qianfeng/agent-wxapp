@@ -1,6 +1,9 @@
 {
   "navigationBarTitleText": "租房列表",
+    "enablePullDownRefresh": true,
+    
   "usingComponents": {
-    "rent-item": "/components/my-house-item/my-house-item"
+    "rent-item": "/components/my-house-item/my-house-item",
+    "no-data-comp":"/components/no-data/no-data"
   }
 }

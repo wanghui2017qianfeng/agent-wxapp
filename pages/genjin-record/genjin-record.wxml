@@ -1,13 +1,23 @@
-<block wx:for="{{list}}" wx:key='*this'>
-  <view class="content">
-    <view class="top flex-between">
-      <view>{{item.createPersonName?item.createPersonName:''}} {{item.createStoreName?"("+item.createStoreName+")":''}}</view>
-      <view>电话: {{item.followTypeName?item.followTypeName:'暂无'}}</view>
-    </view>
-    <view class="neirong">{{item.remark?item.remark:'暂无跟进内容'}}</view>
-    <view class='time'>
-      <text>{{item.createDate?item.createDate:'暂无'}}</text>
-    </view>
-  </view>
+<block wx:if="{{list.length>0}}">
 
+  <block wx:for="{{list}}" wx:key='*this'>
+    <view class="content">
+      <view class="top flex-between">
+        <view>{{item.createPersonName?item.createPersonName:''}} {{item.createStoreName?"("+item.createStoreName+")":''}}</view>
+        <view>{{item.followTypeName?item.followTypeName:'暂无'}}</view>
+      </view>
+      <view class="neirong">{{item.remark?item.remark:'暂无跟进内容'}}</view>
+      <view class='time'>
+        <text>{{item.createDate?item.createDate:'暂无'}}</text>
+      </view>
+    </view>
+
+  </block>
+</block>
+
+<block wx:else>
+  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+
+    <no-data-comp text="暂无数据"></no-data-comp>
+  </view>
 </block>

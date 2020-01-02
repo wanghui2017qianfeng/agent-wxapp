@@ -3,9 +3,9 @@ let app = getApp();
 import {
   secondApi
 } from "../../api/second.js"
-// import {
-//   focusApi
-// } from "../../api/focus.js"
+import {
+  houseCollectApi
+} from "../../api/houseCollect.js"
 Page({
 
   /**
@@ -21,16 +21,18 @@ Page({
   },
   goGenjinRecord() {
     wx.navigateTo({
-      url: '/pages/genjin-record/genjin-record?houseId='+this.data.id+"&type=1",
+      url: '/pages/genjin-record/genjin-record?houseId=' + this.data.info.houseId + "&type=1",
     })
   },
   goGenjin() {
+    console.log("id", this.data.id)
+    console.log("houseId",this.data.info.houseId)
     wx.navigateTo({
-      url: '/pages/genjin/genjin?houseId=' + this.data.id+'&houseName='+this.data.info.houseName+'&houseNo='+this.data.info.houseNo,
+      url: '/pages/genjin/genjin?houseId=' + this.data.info.houseId + '&houseName=' + this.data.info.houseName + '&houseNo=' + this.data.info.houseNo,
     })
   },
   toAlbum(e) {
-    console.log("album",e)
+    console.log("album", e)
     // var thisHouseId = e.currentTarget.dataset.id;
     //  1楼盘 2二手房 3租房
     wx.navigateTo({
@@ -53,12 +55,18 @@ Page({
   },
   //关注
   focus(e) {
-    let houseId = e.currentTarget.dataset.id;
-    let openid = this.data.openid;
+    let houseId = this.data.info.houseId;
+    let userId = this.data.userId;
     let isFocus = this.data.isFocus;
-    if (openid) { //有openid才可以关注,否则去登陆
+    let model = {
+      userId: this.data.userId,
+      houseId: houseId,
+      sellOrRentId: this.data.id,
+      type: 1
+    }
+    if (userId) { //有openid才可以关注,否则去登陆
       if (isFocus) {
-        focusApi.cancelFocus(openid, 2, houseId).then(res => {
+        houseCollectApi.cancelCollect(model).then(res => {
           wx.showToast({
             title: '取消成功',
           })
@@ -67,7 +75,7 @@ Page({
           })
         })
       } else {
-        focusApi.addFocus(openid, 2, houseId).then(res => {
+        houseCollectApi.addCollect(model).then(res => {
           wx.showToast({
             title: '关注成功',
           })
@@ -100,62 +108,32 @@ Page({
     }
 
   },
-  goMore() {
-    wx.navigateTo({
-      url: '/pages/more-detail/more-detail?id=' + this.data.id,
-    })
 
-  },
-  goBuildDetail(e) {
-    let id = e.currentTarget.dataset.periodid;
-    wx.navigateTo({
-      url: '/pages/build-detail/build-detail?stageId=' + id,
-    })
-  },
-  lookSecondMore() {
-    wx.navigateTo({
-      url: '/pages/second/second',
-    })
-  },
-  goSecondDetail(e) {
-
-    let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/second-detail/second-detail?id=' + id,
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      id: options.id
-    })
-    // wx.getStorage({
-    //   key: 'userInfo',
-    //   success: res => {
-    //     this.setData({
-    //       openid: res.data.openid
-    //     })
+    let userInfo = wx.getStorageSync('userInfo')
 
-    //   },
-    // })
+    this.setData({
+      id: options.id,
+      userId: userInfo.userid
+    })
+
+
     let model = {
       userId: this.data.userId,
       id: options.id
     }
 
     secondApi.getDetailInfo(model).then(res => {
-      console.log("详细", res)
       this.setData({
         info: res,
-
       })
-      //openid存在才去判断是否已关注
-      console.log(this.data.openid)
-      if (this.data.openid) {
+
+      if (this.data.userId) {
         this.setData({
-          isFocus: res.isFollow
+          isFocus: res.isCollect == 1 ? true : false
         })
 
       }

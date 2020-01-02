@@ -1,5 +1,7 @@
 // pages/msg/msg.js
-import {msgApi} from "../../api/msg.js"
+import {
+  msgApi
+} from "../../api/msg.js"
 
 Page({
 
@@ -11,7 +13,7 @@ Page({
     userId: '',
     pageNo: 1,
     pageSize: 10,
-    lastPage:false,
+    lastPage: false,
   },
   getList() {
     wx.showLoading({
@@ -38,8 +40,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(msgApi)
-this.getList()
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid
+    })
+    this.getList()
   },
 
   /**
@@ -69,24 +74,23 @@ this.getList()
   onUnload: function() {
 
   },
-loadInfinite(){
-  let model = {
-    userId: this.data.userId,
-    pageNo: this.data.pageNo,
-    pageSize: this.data.pageSize
+  loadInfinite() {
+    let model = {
+      userId: this.data.userId,
+      pageNo: this.data.pageNo,
+      pageSize: this.data.pageSize
 
-  }
+    }
     msgApi.getInfoList(model).then(res => {
-      this.setData({
-        lastPage: res.lastPage
-      })
+      
 
       let pageNo = this.data.pageNo + 1;
-      if (!res.lastPage) {//不是最后一页
+      if (!res.lastPage) { //不是最后一页
         this.setData({
           list: this.data.pageNo == 1 ? res.list : this.data.list.concat(res.list),
           showSearch: true,
-          pageNo: pageNo
+          pageNo: pageNo,
+          lastPage: res.lastPage
         })
         this.loadInfinite()
 
@@ -95,7 +99,7 @@ loadInfinite(){
       }
     })
 
-},
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -116,7 +120,7 @@ loadInfinite(){
 
     let pageNo = this.data.pageNo;
 
-    if (!this.data.lastPage) {//不是最后一页
+    if (!this.data.lastPage) { //不是最后一页
       this.setData({
         pageNo: pageNo + 1,
       })

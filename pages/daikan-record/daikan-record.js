@@ -1,4 +1,5 @@
 // pages/second/second.js
+import { kehuControlApi} from "../../api/kehuFollow.js"
 Page({
 
   /**
@@ -9,6 +10,13 @@ Page({
     dateTitle: '日期',
     typeTitle: '类型',
     typeIndex:0,
+    userId:'',
+    buyOrRent:'',
+    pageNo:1,
+    pageSize:5,
+    startDate:'',
+    endDate:''
+
   },
   goDaikanDetail(){
     wx.navigateTo({
@@ -65,10 +73,33 @@ Page({
 
     })
   },
+  getData(){
+    let model={
+      userId:this.data.userId,
+      startDate: this.data.startDate,
+      endDate: this.data.endDate,
+      pageNo: this.data.pageNo,
+      pageSize: this.data.pageSize,
+      buyOrRent: this.data.buyOrRent,
+
+
+
+    }
+    kehuControlApi.geLookRecord(model).then(res=>{
+
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let userInfo= wx.getStorageSync('userInfo');
+    this.setData({
+      userId:userInfo.userid,
+    })
+
+    this.getData()
 
   },
 

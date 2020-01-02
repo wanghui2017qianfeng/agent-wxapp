@@ -1,5 +1,7 @@
 /* components/no-data/no-data.wxss */
 
+
+
 .no-data{
 position: absolute;
 left:50%;

@@ -88,10 +88,12 @@
   <view class="border-left">
     备注
   </view>
-  <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
+  <view class="memo">{{info.remark?info.remark:'暂无备注'}}</view>
+
+  <!-- <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
   <view class="memo">周边配套:</view>
   <view class="memo">交通出行:</view>
-  <view class="memo">户型介绍:</view>
+  <view class="memo">户型介绍:</view> -->
 </view>
 <!-- 出售优势 -->
 <!-- <view class="huxing huxing1">
@@ -175,6 +177,7 @@
   <view class="border-left">
     查看电话
   </view>
+  <block wx:if="{{info.houseContacts.length>0}}">
   <block wx:for="{{info.houseContacts}}" wx:key="*this">
     <view class="flex-between yeji-item">
       <view class="name">{{item.contactsName?item.contactsName:'暂无'}}</view>
@@ -182,6 +185,10 @@
       <view class="phone-number">{{item.contactsPhone?item.contactsPhone:'暂无'}}</view>
       <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{item.contactsPhone}}"></image>
     </view>
+  </block>
+  </block>
+  <block wx:else>
+  <view>暂无电话信息</view>
   </block>
 </view>
 

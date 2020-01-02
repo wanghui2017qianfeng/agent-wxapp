@@ -22,6 +22,10 @@ page {
 
 .body-content{
   margin-top:225rpx;
+  /* position:fixed;
+  left:0;
+  right:0;
+  z-index:0 */
 }
 
 
@@ -56,6 +60,7 @@ page {
 .content {
   padding: 30rpx 18rpx 30rpx 26rpx;
   background: #fff;
+  z-index:2000;
 }
 
 .name {
@@ -262,7 +267,7 @@ page {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1005;
+  z-index: 2000;
 }
 .paixu{
   width:27rpx;height:27rpx;

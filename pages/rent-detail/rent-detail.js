@@ -1,11 +1,11 @@
 // pages/second-detail/second-detail.js
 let app = getApp();
-// import {
-//   secondApi
-// } from "../../api/second.js"
-// import {
-//   focusApi
-// } from "../../api/focus.js"
+import {
+  rentApi
+} from "../../api/rent.js"
+import {
+  houseCollectApi
+} from "../../api/houseCollect.js"
 Page({
 
   /**
@@ -17,40 +17,24 @@ Page({
     isFocus: false,
     info: {},
     nowImgIndex: 1,
-    tagList: ['学区房', '学区房', '学区房'],
-    markers: [{
-      iconPath: '../../assets/img/callout.png',
-      id: 0,
-      latitude: 23.099994,
-      longitude: 113.324520,
-      width: 20,
-      height: 25,
-      callout: {
-        content: '',
-        color: "#333333",
-        bgColor: "#ffffff",
-        padding: 5,
-        display: 'ALWAYS',
-        textAlign: "center"
-      },
 
-    }]
   },
   goGenjinRecord() {
     wx.navigateTo({
-      url: '/pages/genjin-record/genjin-record',
+      url: '/pages/genjin-record/genjin-record?houseId=' + this.data.info.houseId + "&type=2",
     })
   },
   goGenjin() {
     wx.navigateTo({
-      url: '/pages/genjin/genjin',
+      url: '/pages/genjin/genjin?houseId=' + this.data.info.houseId + '&houseName=' + this.data.info.houseName + '&houseNo=' + this.data.info.houseNo,
     })
   },
   toAlbum(e) {
-    var thisHouseId = e.currentTarget.dataset.id;
+    console.log("album", e)
+    // var thisHouseId = e.currentTarget.dataset.id;
     //  1楼盘 2二手房 3租房
     wx.navigateTo({
-      url: '/pages/album/album' + "?id=" + thisHouseId + "&type=2",
+      url: '/pages/album/album' + "?id=" + this.data.id + "&type=3",
     })
   },
   swiperChange(e) {
@@ -69,12 +53,18 @@ Page({
   },
   //关注
   focus(e) {
-    let houseId = e.currentTarget.dataset.id;
-    let openid = this.data.openid;
+    let houseId = this.data.info.houseId;
+    let userId = this.data.userId;
     let isFocus = this.data.isFocus;
-    if (openid) {//有openid才可以关注,否则去登陆
+    let model = {
+      userId: this.data.userId,
+      houseId: houseId,
+      sellOrRentId: this.data.id,
+      type: 2
+    }
+    if (userId) { //有openid才可以关注,否则去登陆
       if (isFocus) {
-        focusApi.cancelFocus(openid, 2, houseId).then(res => {
+        houseCollectApi.cancelCollect(model).then(res => {
           wx.showToast({
             title: '取消成功',
           })
@@ -83,7 +73,7 @@ Page({
           })
         })
       } else {
-        focusApi.addFocus(openid, 2, houseId).then(res => {
+        houseCollectApi.addCollect(model).then(res => {
           wx.showToast({
             title: '关注成功',
           })
@@ -116,61 +106,37 @@ Page({
     }
 
   },
-  goMore() {
-    wx.navigateTo({
-      url: '/pages/more-detail/more-detail?id=' + this.data.id,
-    })
 
-  },
-  goBuildDetail(e) {
-    let id = e.currentTarget.dataset.periodid;
-    wx.navigateTo({
-      url: '/pages/build-detail/build-detail?stageId=' + id,
-    })
-  },
-  lookSecondMore() {
-    wx.navigateTo({
-      url: '/pages/second/second',
-    })
-  },
-  goSecondDetail(e) {
-
-    let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/second-detail/second-detail?id=' + id,
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id: options.id
-    })
-    wx.getStorage({
-      key: 'userInfo',
-      success: res => {
-        this.setData({
-          openid: res.data.openid
-        })
-        secondApi.getInfoById(options.id, res.data.openid).then(res => {
-          console.log("详细", res)
-          this.setData({
-            info: res,
-            "markers[0].latitude": res.stageLatitude,
-            "markers[0].longitude": res.stageLongitude,
-            "markers[0].callout.content": `${res.houseName}\n 坐标:${res.stageLongitude}, ${res.stageLatitude}`
-          })
-          //openid存在才去判断是否已关注
-          console.log(this.data.openid)
-          if (this.data.openid) {
-            this.setData({
-              isFocus: res.isFollow
-            })
+    let userInfo = wx.getStorageSync('userInfo')
 
-          }
+    this.setData({
+      id: options.id,
+      userId: userInfo.userid
+    })
+
+
+    let model = {
+      userId: this.data.userId,
+      id: options.id
+    }
+
+    rentApi.getDetailInfo(model).then(res => {
+      this.setData({
+        info: res,
+
+      })
+      //openid存在才去判断是否已关注
+      console.log(this.data.openid)
+      if (this.data.openid) {
+        this.setData({
+          isFocus: res.isFollow
         })
-      },
+
+      }
     })
 
 
@@ -225,7 +191,7 @@ Page({
 
     return {
       title: this.data.info.houseName,
-      path: "/pages/rent-detail/rent-detail?id=" + this.data.id,
+      path: "/pages/second-detail/second-detail?id=" + this.data.id,
     }
 
   }

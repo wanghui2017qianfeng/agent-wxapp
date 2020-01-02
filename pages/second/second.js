@@ -2,6 +2,9 @@
 import {
   secondApi
 } from "../../api/second.js"
+import {
+  cityApi
+} from "../../api/city.js"
 Page({
 
   /**
@@ -367,7 +370,7 @@ Page({
     bedActive: 0,
     paixu: 0,
     showContent: false,
-    list: [0, 0],
+    list: [],
 
 
     sortActNum: 0,
@@ -379,10 +382,11 @@ Page({
     parkActive: 0,
     entrustActive: 0,
     otherActive: 0,
+    lastPage: false,
   },
   goSearch() {
     wx.navigateTo({
-      url: '/pages/search/search',
+      url: '/pages/search/search?type=2',
     })
   },
   chooseEntrust(e) {
@@ -488,23 +492,19 @@ Page({
 
 
   goDetail(e) {
-    console.log("二手房",e)
+    console.log("二手房", e.detail)
     wx.navigateTo({
-      url: '/pages/second-detail/second-detail',
+      url: '/pages/second-detail/second-detail?id=' + e.detail,
     })
   },
   sure() {
     this.setData({
-      showContent: false
+      showContent: false,
+      pageNum: 1
     })
     this.getData()
   },
-  clear() {
-    this.setData({
-      showContent: false
-    })
 
-  },
   chooseBed(e) {
     let item = e.currentTarget.dataset.item
     console.log("居室", item)
@@ -576,10 +576,86 @@ Page({
       sortActNum: index,
       sort: item.value,
       showContent: false,
+      pageNum: 1
     })
 
     this.getData()
 
+  },
+  clearPrice() {
+    this.setData({
+      startOffer: '',
+      endOffer: '',
+      showContent: false,
+      offerActive:0,
+    })
+  },
+  clearBed() {
+    this.setData({
+      bedroom: '',
+      bedActive: 0,
+      showContent: false,
+    })
+
+  },
+  clearMore() {
+    this.setData({
+      areaActive: 0, //面积
+      towardActive: 0,
+      decorateActive: 0,
+      levelActive: 0,
+      floorActive: 0,
+      parkActive: 0,
+      entrustActive: 0,
+      otherActive: 0,
+
+
+
+      startConstructionArea: '',
+      endConstructionArea: '',
+      toward: '',
+      level: '',
+      decorate: '',
+      floor: '',
+      parking: '',
+      entrust: '',
+      other: '',
+      showContent: false,
+
+    })
+
+  },
+  //选择区
+  tabThisArea(e) {
+    console.log("区域")
+    let thisIndex = e.currentTarget.dataset.index;
+    let thisText = e.currentTarget.dataset.text;
+    let areaId = e.currentTarget.dataset.id;
+    this.setData({
+      areaId: areaId,
+      // areaTitle:text,
+      areaActNum: thisIndex,
+      circleActNum: ''
+
+    })
+    this.getCircleList(areaId)
+  },
+  //选择商圈
+  tabThisCircle(e) {
+    console.log("商圈")
+
+    let thisIndex = e.currentTarget.dataset.index;
+    let thisText = e.currentTarget.dataset.text;
+    let circleId = e.currentTarget.dataset.id;
+    this.setData({
+      circleId: circleId,
+      areaTitle: thisText,
+      circleActNum: thisIndex,
+      showContent: false,
+      pageNum: 1
+    })
+
+    this.getData()
   },
   getData() {
     let model = {
@@ -604,10 +680,18 @@ Page({
       pageSize: this.data.pageSize
     }
     console.log("model", model)
-    secondApi.getPage(model).then(res => {
-      console.log('结果', res)
-      this.setData({
-        list:this.data.pageNum==1?res.list:this.data.list.concat(res.list)
+    wx.showLoading({
+      title: '正在加载',
+    })
+    return new Promise(ok => {
+      secondApi.getPage(model).then(res => {
+        console.log('结果', res)
+        this.setData({
+          list: this.data.pageNum == 1 ? res.list : this.data.list.concat(res.list),
+          lastPage: res.lastPage
+        })
+        wx.hideLoading()
+        ok(res)
       })
     })
 
@@ -616,7 +700,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-this.getData()
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid
+    })
+    this.getData()
   },
 
   /**
@@ -625,12 +713,43 @@ this.getData()
   onReady: function() {
 
   },
+  getCircleList(areaId) {
+    cityApi.getCircle(areaId).then(res => {
+      console.log("商圈列表", res)
+      res.unshift({
+        name: '不限',
+        id: ''
+      })
+      this.setData({
+        circleList: res,
+      })
+    })
 
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid
+    })
 
+    let city = wx.getStorageSync('city');
+    console.log("city", city)
+    cityApi.getArea(city.id).then(res => {
+      console.log('q区域', res)
+      res.unshift({
+        name: '不限',
+        id: ''
+      })
+      this.setData({
+        cityId: city.id,
+        areaList: res
+      })
+      this.getCircleList(res[0].id)
+      this.getData()
+    })
   },
 
   /**
@@ -646,18 +765,82 @@ this.getData()
   onUnload: function() {
 
   },
+  loadInfinite() {
+    let model = {
+      userId: this.data.userId,
+      houseName: this.data.houseName,
+      areaId: this.data.areaId,
+      circleId: this.data.circleId,
+      startOffer: this.data.startOffer,
+      endOffer: this.data.endOffer,
+      bedroom: this.data.bedroom,
+      startConstructionArea: this.data.startConstructionArea,
+      endConstructionArea: this.data.endConstructionArea,
+      toward: this.data.toward,
+      level: this.data.level,
+      decorate: this.data.decorate,
+      floor: this.data.floor,
+      parking: this.data.parking,
+      entrust: this.data.entrust,
+      other: this.data.other,
+      sort: this.data.sort,
+      pageNum: this.data.pageNum,
+      pageSize: this.data.pageSize
+    }
+    wx.showLoading({
+      title: '正在加载',
+    })
+    secondApi.getPage(model).then(res => {
+      let pageNum = this.data.pageNum + 1;
+      if (!res.lastPage) { //不是最后一页
+        this.setData({
+          list: this.data.pageNum == 1 ? res.list : this.data.list.concat(res.list),
+          pageNum: pageNum,
+          lastPage: res.lastPage
 
+        })
+        this.loadInfinite()
+
+      } else {
+        wx.hideLoading()
+      }
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.loadInfinite()
+    wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let pageNum = this.data.pageNum;
+
+    if (!this.data.lastPage) { //不是最后一页
+      this.setData({
+        pageNum: pageNum + 1,
+      })
+
+      this.getData().then(res => {
+        if (res.list.length == 0) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '没有更多啦',
+        icon: 'none',
+        duration: 1000
+      })
+    }
 
   },
 

@@ -49,32 +49,32 @@
   </view>
   <view class="info">
     <view class="info-item">
-      <text class="label">入住 : </text>{{info.univalent?info.univalent+"元/㎡":'-'}}</view>
+      <text class="label">入住 : </text>{{info.isKey?info.isKey:'-'}}</view>
     <view class="info-item">
-      <text class="label">发布 : </text>{{info.listingTime?info.listingTime:'-'}}</view>
+      <text class="label">发布 : </text>{{info.developerStoreId?info.developerStoreId:'-'}}</view>
     <view class="info-item">
       <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
     <view class="info-item">
       <text class="label">楼层 : </text>{{info.floor?info.floor+'层':''}}{{info.floorMax?'/共'+info.floorMax+'层':'-'}}</view>
     <view class="info-item">
-      <text class="label">楼型 : </text>{{info.buildingType?info.buildingType:'-'}}</view>
+      <text class="label">楼型 : </text>{{info.buildingStructureName?info.buildingStructureName:'-'}}</view>
     <view class="info-item">
-      <text class="label">梯户 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">梯户 : </text>{{info.elevator?info.elevator+'梯':'-'}}{{info.door?info.door+'户':'-'}}</view>
 
     <view class="info-item">
       <text class="label">装修 : </text>{{info.decorateName?info.decorateName:'-'}}</view>
     <view class="info-item">
-      <text class="label">车位 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">车位 : </text>{{info.parking?info.parking:'-'}}</view>
     <view class="info-item">
-      <text class="label">用途 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">用途 : </text>{{info.businessTypeName?info.businessTypeName:'-'}}</view>
     <view class="info-item">
-      <text class="label">看房 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">看房 : </text>{{info.lookWayName?info.lookWayName:'-'}}</view>
     <view class="info-item">
-      <text class="label">家电 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">家电 : </text>{{info.jiaDian?info.jiaDian:'-'}}</view>
     <view class="info-item">
-      <text class="label">付款 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">付款 : </text>{{info.payWayName?info.payWayName:'-'}}</view>
     <view class="info-item">
-      <text class="label">小区 : </text>{{info.buildingStructure?info.buildingStructure:'-'}}</view>
+      <text class="label">小区 : </text>{{info.stageName?info.stageName:'-'}}</view>
 
   </view>
 
@@ -86,13 +86,14 @@
   <view class="border-left">
     备注
   </view>
-  <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
+  <view class="memo">{{info.remark?info.remark:'暂无备注'}}</view>
+  <!-- <view class="memo">房源简介：小区基本都是在1995-2000年左右建成的，总共 有52栋楼，共划分为4个小院，停车位也比较足，基本方便.</view>
   <view class="memo">周边配套:</view>
   <view class="memo">交通出行:</view>
-  <view class="memo">户型介绍:</view>
+  <view class="memo">户型介绍:</view> -->
 </view>
 <!-- 出售优势 -->
-<view class="huxing huxing1">
+<!-- <view class="huxing huxing1">
   <view class="border-left">
     出售优势
   </view>
@@ -100,6 +101,24 @@
   <view class="memo">周边配套:</view>
   <view class="memo">交通出行:</view>
   <view class="memo">户型介绍:</view>
+</view> -->
+
+<view class="huxing huxing1">
+  <view class="border-left">
+    出租优势
+  </view>
+  <view class="yuan-name">- 户型描述</view>
+  <view class="yuan-text">{{info.advantage4?info.advantage4:'-'}}</view>
+  <view class="yuan-name">- 交通优势</view>
+  <view class="yuan-text">{{info.advantage2?info.advantage2:'-'}}</view>
+  <view class="yuan-name">- 地理优势</view>
+  <view class="yuan-text">{{info.advantage1?info.advantage1:'-'}}
+  </view>
+  <view class="yuan-name">- 学区优势</view>
+  <view class="yuan-text">{{info.advantage3?info.advantage3:'-'}}</view>
+  <view class="yuan-name">- 楼层优势</view>
+  <view class="yuan-text">{{info.advantage5?info.advantage5:'-'}}
+  </view>
 </view>
 
 <!-- 业绩归属 -->
@@ -107,14 +126,45 @@
   <view class="border-left">
     业绩归属
   </view>
-  <block wx:for="{{4}}">
-    <view class="flex-between yeji-item">
-      <image src="../../assets/img/ren.png" class="renImg"></image>
-      <view class="name">丽华</view>
-      <view class="tag">维护人</view>
-      <image src="../../assets/img/phone.png" class="phone"></image>
-    </view>
-  </block>
+  <view class="flex-between yeji-item" wx:if="{{info.whName}}">
+    <image src="{{info.whImage}}" class="renImg" wx:if="{{info.whImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.whName?info.whName:''}}</view>
+    <view class="tag">维护人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{info.whPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.lrName}}">
+    <image src="{{info.lrImage}}" class="renImg" wx:if="{{info.lrImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.lrName?info.lrName:''}}</view>
+    <view class="tag">录入人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.lrPhone}}"></image>
+  </view>
+  <view class="flex-between yeji-item" wx:if="{{info.skName}}">
+    <image src="{{info.skImage}}" class="renImg" wx:if="{{info.skImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.skName?info.skName:''}}</view>
+    <view class="tag">实勘人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.skPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.ysName}}">
+    <image src="{{info.ysImage}}" class="renImg" wx:if="{{info.ysImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+
+    <view class="name">{{info.ysName?info.ysName:''}}</view>
+    <view class="tag">钥匙人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.ysPhone}}"></image>
+  </view>
+
+  <view class="flex-between yeji-item" wx:if="{{info.wtName}}">
+    <image src="{{info.wtImage}}" class="renImg" wx:if="{{info.wtImage}}"></image>
+    <image src="../../assets/img/ren.png" class="renImg" wx:else></image>
+    <view class="name">{{info.wtName?info.wtName:''}}</view>
+    <view class="tag">委托人</view>
+    <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="'{{info.wtPhone}}"></image>
+  </view>
 </view>
 
 <!-- 查看电话 -->
@@ -122,15 +172,19 @@
   <view class="border-left">
     查看电话
   </view>
-  <block wx:for="{{4}}">
+  <block wx:if="{{info.houseContacts.length>0}}">
+
+  <block wx:for="{{info.houseContacts}}" wx:key="*this">
     <view class="flex-between yeji-item">
-      <view class="name">丽华</view>
-
-      <view class="tag">产权人</view>
-      <view class="phone-number">15072829596</view>
-
-      <image src="../../assets/img/phone.png" class="phone"></image>
+      <view class="name">{{item.contactsName?item.contactsName:'暂无'}}</view>
+      <view class="tag">{{item.owerRelationshipName?item.owerRelationshipName:'暂无'}}</view>
+      <view class="phone-number">{{item.contactsPhone?item.contactsPhone:'暂无'}}</view>
+      <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{item.contactsPhone}}"></image>
     </view>
+  </block>
+   </block>
+  <block wx:else>
+  <view>暂无电话信息</view>
   </block>
 </view>
 
