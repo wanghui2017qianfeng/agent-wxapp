@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "买卖客户详情",
-  "usingComponents": {}
+  "usingComponents": {
+      "no-data-comp": "/components/no-data/no-data"
+  }
 }

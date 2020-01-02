@@ -11,7 +11,7 @@ Page({
     typeTitle: '类型',
     typeIndex:0,
     userId:'',
-    buyOrRent:'',
+    buyOrRent:1,
     pageNo:1,
     pageSize:5,
     startDate:'',

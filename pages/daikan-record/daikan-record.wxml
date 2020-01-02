@@ -59,18 +59,21 @@
   <view class="record" bindtap="goDaikanDetail">
     <view class="flex-between top">
       <view class="flex">
-        <image src="../../assets/img/wendang.png"></image>
-        <view class="kehu">贾先生</view>
-        <view class="store">新城花园店-张小三</view>
-        <view class="tag">购看</view>
+
+        <image src="../../assets/img/wendang.png" ></image>
+        <view class="kehu">{{item.cusName}}</view>
+        <view class="store">{{item.createSrore}}-{{item.createPerson}}</view>
+        <view class="tag" wx:if="{{item.buyOrRent==1}}">购看</view>
+        <view class="tag" wx:if="{{item.buyOrRent==2}}">租看</view>
+
       </view>
-      <view class="time">1小时</view>
+      <view class="time">{{item.time?item.time:'-'}}分钟</view>
     </view>
-    <view class="context">业主最近不在北京，现在不能带看房子；业主下周三 回北京后可以周六日带客户看房</view>
+    <view class="context">{{item.context}}</view>
     <view class=" bottom">
       <view style="float:right;display:flex">
           <image src="../../assets/img/biji.png"></image>
-          <view class="createTime">2018-11-20 11：28</view>
+          <view class="createTime">{{item.createTime}}</view>
       </view>
     </view>
   </view>

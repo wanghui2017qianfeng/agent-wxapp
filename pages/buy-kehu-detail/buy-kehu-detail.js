@@ -76,7 +76,7 @@ Page({
 
   goGenjin() {
     wx.navigateTo({
-      url: '/pages/genjin/genjin',
+      url: '/pages/write-genjin/write-genjin',
     })
 
   },
