@@ -2,7 +2,8 @@
 <block wx:if="{{list.length>0}}">
 <block wx:for="{{list}}" wx:key="*this">
   <view class="house-item flex" bindtap="goDetail" data-id="{{item.id}}">
-    <image class="roomImg" src="{{item.firstImgUrl}}"></image>
+    <image class="roomImg" src="{{item.firstImgUrl}}" wx:if="{{item.firstImgUrl}}"></image>
+    <view wx:else class="zanwuPic">暂无图片</view>
     <view class="right-box">
       <view class="title">{{item.title?item.title:'暂无'}}</view>
       <view class="info">{{item.bedroom?item.bedroom+'室':'-'}}{{item.sittingRoom?item.sittingRoom+'厅':'-'}} / {{item.constructionArea?item.constructionArea+'㎡':'-'}} / {{item.towardName?item.towardName:'-'}} / {{item.decorateName?item.decorateName:'-'}}</view>

@@ -35,6 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    baseUrl:'https://hrzsbro.fxmsoft.com/hrzs-erp-bro/'
+    // baseUrl:'https://hrzsbro.fxmsoft.com/hrzs-erp-bro/',
+    baseUrl:'http://120.79.114.224:9011/hrzs-erp-bro/'
   }
 })

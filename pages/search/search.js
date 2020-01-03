@@ -6,12 +6,7 @@ import {
 import {
   rentApi
 } from "../../api/rent.js"
-// import {
-//   buildApi
-// } from "../../api/build.js"
-// import {
-//   hotApi
-// } from "../../api/hot.js"
+
 let app = getApp()
 
 Page({
@@ -23,7 +18,7 @@ Page({
     active: 0,
     active1: 0,
     keyword: '',
-    type: 2,
+    type: 1,
     secondHotList: [],
     rentHotList: [],
     buildHotList: [],
@@ -31,106 +26,32 @@ Page({
     secondHistoryList: [],
     rentHistoryList: [],
     buildHistoryList: [],
-
   },
-
-
-
   toRedirect(e) {
-
-
     wx.redirectTo({
       url: e.detail,
     })
   },
-  onChange(e) {
-    let {
-      index,
-      title
-    } = e.detail;
 
-    this.setData({
-      active: index
-    })
-    if (index == 0) {
-      this.setData({
-        type: 2
-      })
-      // hotApi.getHot(1).then(res => {
-      //   this.setData({
-      //     secondHotList: res,
-      //     secondHistoryList: wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : []
-      //   })
-      // })
-    }
-
-    if (index == 1) {
-      this.setData({
-        type: 3
-      })
-      // hotApi.getHot(2).then(res => {
-      //   this.setData({
-      //     rentHotList: res,
-      //     rentHistoryList: wx.getStorageSync('rentHistoryList') ? wx.getStorageSync('rentHistoryList') : []
-      //   })
-      // })
-    }
-
-
-    if (index == 2) {
-      this.setData({
-        type: 1
-      })
-      // hotApi.getHot(3).then(res => {
-      //   this.setData({
-      //     buildHotList: res,
-      //     buildHistoryList: wx.getStorageSync('buildHistoryList') ? wx.getStorageSync('buildHistoryList') : []
-      //   })
-      // })
-    }
-  },
   handleDel() {
-    if (index == 0) {
-      this.setData({
-        type: 2
-      })
-      wx.setStorage({
-        key: 'secondHistoryList',
-        data: [],
-      })
-      this.setData({
-        secondHistoryList: []
-      })
-    }
-
-    if (index == 1) {
-      this.setData({
-        type: 3
-      })
-    
-      wx.setStorage({
-        key: 'rentHistoryList',
-        data: [],
-      })
-      this.setData({
-        rentHistoryList: []
-      })
-    }
 
 
-    if (index == 2) {
-      this.setData({
-        type: 1
-      })
-      wx.setStorage({
-        key: 'buildHistoryList',
-        data: [],
-      })
-      this.setData({
-        buildHistoryList: []
-      })
 
-    }
+    // if (index == 0) {
+    //   this.setData({
+    //     type: 2
+    //   })
+    //   wx.setStorage({
+    //     key: 'secondHistoryList',
+    //     data: [],
+    //   })
+    //   this.setData({
+    //     secondHistoryList: []
+    //   })
+    // }
+
+   
+
   },
 
 
@@ -138,57 +59,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+
+    // type  1二手房  2租房 3.客户 
     let type = options.type
-    if (!type) {
-      // hotApi.getHot(1).then(res => {
-      //   this.setData({
-      //     secondHotList: res,
-      //     secondHistoryList: wx.getStorageSync('secondHistoryList')
-      //   })
-      // })
-    }
+    this.setData({
+      type:type
+    })
 
-    if (type == 1) { //楼盘
-      this.setData({
-        type: type,
-        active: 2
-      })
-      // hotApi.getHot(3).then(res => {
-      //   this.setData({
-      //     buildHotList: res,
-      //     buildHistoryList: wx.getStorageSync('buildHistoryList')
-      //   })
-      // })
+    
 
-    }
-
-    if (type == 2) { //二手房
-      this.setData({
-        type: type,
-        active: 0
-      })
-      // hotApi.getHot(1).then(res => {
-      //   this.setData({
-      //     secondHotList: res,
-      //     secondHistoryList: wx.getStorageSync('secondHistoryList')
-
-      //   })
-      // })
-    }
-
-    if (type == 3) { //出租
-      this.setData({
-        type: type,
-        active: 1
-      })
-      // hotApi.getHot(2).then(res => {
-      //   this.setData({
-      //     rentHotList: res,
-      //     rentHistoryList: wx.getStorageSync('rentHistoryList')
-
-      //   })
-      // })
-    }
+  
 
 
   },

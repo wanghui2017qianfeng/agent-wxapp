@@ -5,9 +5,9 @@
 <view class="search-content" wx:if="{{isInput}}">
   <block wx:if="{{list.length>0}}">
     <block wx:for="{{list}}" wx:key="*this">
-      <van-cell title="{{item.houseName}}" clickable data-name="{{item.houseName}}" data-item="{{item}}" bindtap="onCheckClick">
-        <van-radio slot="right-icon" use-icon-slot name="{{item.houseName}}">
-          <van-icon color="{{keyword==item.houseName?'#462E7C':'#ffffff'}}" name="success" />
+      <van-cell title="{{item.houseNo}}" clickable data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">
+        <van-radio slot="right-icon" use-icon-slot name="{{item.houseNo}}">
+          <van-icon color="{{keyword==item.houseNo?'#2F72F7':'#ffffff'}}" name="success" />
         </van-radio>
       </van-cell>
     </block>
@@ -26,18 +26,9 @@
 
     <view class=" tag-box">
       <block wx:for="{{historyList}}" wx:key="*this">
-        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseName}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseName}}</van-tag>
+        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseNo}}</van-tag>
       </block>
     </view>
   </block>
 
 </block>
-<!-- <view class="search-item flex-between hot">
-      <view>热门搜索</view>
-    </view>
-    
-    <view class=" tag-box">
-      <block wx:for="{{hotList}}" wx:key="*this">
-        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag">{{item.name}}</van-tag>
-      </block>
-    </view> -->

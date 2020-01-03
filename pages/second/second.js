@@ -386,7 +386,7 @@ Page({
   },
   goSearch() {
     wx.navigateTo({
-      url: '/pages/search/search?type=2',
+      url: '/pages/search/search?type=1',
     })
   },
   chooseEntrust(e) {
@@ -502,6 +502,9 @@ Page({
       showContent: false,
       pageNum: 1
     })
+    wx.showLoading({
+      title: '正在加载',
+    })
     this.getData()
   },
 
@@ -579,6 +582,10 @@ Page({
       pageNum: 1
     })
 
+    wx.showLoading({
+      title: '正在加载',
+    })
+
     this.getData()
 
   },
@@ -654,13 +661,15 @@ Page({
       showContent: false,
       pageNum: 1
     })
-
+    wx.showLoading({
+      title: '正在加载',
+    })
     this.getData()
   },
   getData() {
     let model = {
       userId: this.data.userId,
-      houseName: this.data.houseName,
+      houseName: this.data.houseName ? this.data.houseName:'',
       areaId: this.data.areaId,
       circleId: this.data.circleId,
       startOffer: this.data.startOffer,
@@ -680,9 +689,9 @@ Page({
       pageSize: this.data.pageSize
     }
     console.log("model", model)
-    wx.showLoading({
-      title: '正在加载',
-    })
+    // wx.showLoading({
+    //   title: '正在加载',
+    // })
     return new Promise(ok => {
       secondApi.getPage(model).then(res => {
         console.log('结果', res)
@@ -702,7 +711,8 @@ Page({
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      userId: userInfo.userid
+      userId: userInfo.userid,
+      houseName: options.houseName
     })
     this.getData()
   },
@@ -736,7 +746,7 @@ Page({
     })
 
     let city = wx.getStorageSync('city');
-    console.log("city", city)
+
     cityApi.getArea(city.id).then(res => {
       console.log('q区域', res)
       res.unshift({
@@ -748,6 +758,9 @@ Page({
         areaList: res
       })
       this.getCircleList(res[0].id)
+      wx.showLoading({
+        title: '正在加载',
+      })
       this.getData()
     })
   },
@@ -824,7 +837,9 @@ Page({
       this.setData({
         pageNum: pageNum + 1,
       })
-
+      wx.showLoading({
+        title: '正在加载',
+      })
       this.getData().then(res => {
         if (res.list.length == 0) {
           wx.showToast({

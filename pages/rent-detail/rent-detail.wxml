@@ -55,7 +55,7 @@
     <view class="info-item">
       <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
     <view class="info-item">
-      <text class="label">楼层 : </text>{{info.floor?info.floor+'层':''}}{{info.floorMax?'/共'+info.floorMax+'层':'-'}}</view>
+      <text class="label">楼层 : </text>{{info.floor?tools.floorName(info.floor):''}}{{info.floorMax?'/'+info.floorMax+'层':'-'}}</view>
     <view class="info-item">
       <text class="label">楼型 : </text>{{info.buildingStructureName?info.buildingStructureName:'-'}}</view>
     <view class="info-item">

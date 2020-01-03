@@ -43,7 +43,7 @@ Page({
   },
   goMyFoucsHouse() {
     wx.navigateTo({
-      url: '/pages/my-house/my-house',
+      url: '/pages/my-focus-house/my-focus-house',
     })
   },
   goMyFoucsKehu() {

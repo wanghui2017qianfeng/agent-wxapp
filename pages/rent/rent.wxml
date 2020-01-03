@@ -168,7 +168,7 @@
 </view>
 <view class="body-content">
   <block wx:if="{{list.length>0}}">
-    <rent-item list="{{list}}" isRent="1" bind:goDetail="goDetail"></rent-item>
+    <rent-item list="{{list}}" isRent="1" isCheck="0" bind:goDetail="goDetail"></rent-item>
   </block>
   <view wx:else style="padding-top:150rpx">
     <no-data-comp text="暂无相关房源"></no-data-comp>

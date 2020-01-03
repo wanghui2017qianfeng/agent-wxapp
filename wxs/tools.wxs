@@ -21,24 +21,15 @@ var toFixed = function(str, num) {
   }
 }
 
-var includes = function(arr, item) {
-  // console.log("数组", arr, arr.indexOf(item))
-  // console.log("shibushi",typeof(arr))
-var isTrue;
-  for(var i = 0 ;i<arr.length;i++){
-    if(arr[i]==item){
-      console.log("存在",arr[i])
-      isTrue= 1
-    }else{
-      console.log("不存在",)
-
-      isTrue= 0
-    }
+var floorName = function (floor) {
+  console.log("floor",floor)
+  if (floor >= 1 && floor < 5) {
+    return '低层'
+  } else if (floor >= 5 && floor < 10) {
+    return '中层'
+  } else if (floor >= 10) {
+    return '高层'
   }
-
-  return isTrue;
-  // console.log("index",item)
-  // return arr.includes(item)
 }
 
 module.exports = {
@@ -46,5 +37,5 @@ module.exports = {
   split: split,
   formatDate: formatDate,
   toFixed: toFixed,
-  includes: includes
+  floorName: floorName,
 };

@@ -3,6 +3,9 @@
 import {
   rentApi
 } from "../../api/rent.js"
+import {
+  cityApi
+} from "../../api/city.js"
 Page({
 
   /**
@@ -383,7 +386,7 @@ Page({
   },
   goSearch() {
     wx.navigateTo({
-      url: '/pages/search/search?type=3',
+      url: '/pages/search/search?type=2',
     })
   },
   chooseEntrust(e) {
@@ -533,6 +536,9 @@ Page({
     this.setData({
       showContent: false
     })
+    wx.showLoading({
+      title: '正在加载',
+    })
     this.getData()
   },
  
@@ -608,14 +614,50 @@ Page({
       sort: item.value,
       showContent: false,
     })
-
+    wx.showLoading({
+      title: '正在加载',
+    })
     this.getData()
 
+  },
+  //选择区
+  tabThisArea(e) {
+    console.log("区域")
+    let thisIndex = e.currentTarget.dataset.index;
+    let thisText = e.currentTarget.dataset.text;
+    let areaId = e.currentTarget.dataset.id;
+    this.setData({
+      areaId: areaId,
+      // areaTitle:text,
+      areaActNum: thisIndex,
+      circleActNum: ''
+
+    })
+    this.getCircleList(areaId)
+  },
+  //选择商圈
+  tabThisCircle(e) {
+    console.log("商圈")
+
+    let thisIndex = e.currentTarget.dataset.index;
+    let thisText = e.currentTarget.dataset.text;
+    let circleId = e.currentTarget.dataset.id;
+    this.setData({
+      circleId: circleId,
+      areaTitle: thisText,
+      circleActNum: thisIndex,
+      showContent: false,
+      pageNum: 1
+    })
+    wx.showLoading({
+      title: '正在加载',
+    })
+    this.getData()
   },
   getData() {
     let model = {
       userId: this.data.userId,
-      houseName: this.data.houseName,
+      houseName: this.data.houseName ? this.data.houseName:'',
       areaId: this.data.areaId,
       circleId: this.data.circleId,
       startOffer: this.data.startOffer,
@@ -634,9 +676,9 @@ Page({
       pageNum: this.data.pageNum,
       pageSize: this.data.pageSize
     }
-    wx.showLoading({
-      title: '正在加载',
-    })
+    // wx.showLoading({
+    //   title: '正在加载',
+    // })
     console.log("model", model)
     return new Promise(ok => {
       rentApi.getPage(model).then(res => {
@@ -652,13 +694,28 @@ Page({
 
 
   },
+
+  getCircleList(areaId) {
+    cityApi.getCircle(areaId).then(res => {
+      console.log("商圈列表", res)
+      res.unshift({
+        name: '不限',
+        id: ''
+      })
+      this.setData({
+        circleList: res,
+      })
+    })
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      userId: userInfo.userid
+      userId: userInfo.userid,
+      houseName: options.houseName
     })
     this.getData()
   },
@@ -674,9 +731,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let userInfo = wx.getStorageInfoSync('userInfo');
+    let userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      userId: userInfo.userId,
+      userId: userInfo.userid
+    })
+    let city = wx.getStorageSync('city');
+
+    cityApi.getArea(city.id).then(res => {
+      console.log('q区域', res)
+      res.unshift({
+        name: '不限',
+        id: ''
+      })
+      this.setData({
+        cityId: city.id,
+        areaList: res
+      })
+      this.getCircleList(res[0].id)
+      wx.showLoading({
+        title: '正在加载',
+      })
+      this.getData()
     })
 
   },
@@ -756,7 +831,9 @@ Page({
       this.setData({
         pageNum: pageNum + 1,
       })
-
+      wx.showLoading({
+        title: '正在加载',
+      })
       this.getData().then(res => {
         if (res.list.length == 0) {
           wx.showToast({

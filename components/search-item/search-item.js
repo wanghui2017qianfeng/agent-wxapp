@@ -5,9 +5,7 @@ import {
 import {
   rentApi
 } from "../../api/rent.js"
-// import {
-//   buildApi
-// } from "../../api/build.js"
+
 let app = getApp()
 Component({
   /**
@@ -48,19 +46,32 @@ Component({
     filterArr(arr) {
       let obj = {};
       arr = arr.reduce((cur, next) => {
-        obj[next.houseName] ? "" : obj[next.houseName] = true && cur.push(next);
+        obj[next.title] ? "" : obj[next.title] = true && cur.push(next);
         return cur;
       }, []) //设置cur默认类型为数组，并且初始值为空的数组
       return arr
     },
     changeInput(e) {
+      // type  1二手房  2租房 3客户 
+
       let keyword = e.detail.value;
-      if (this.data.type == 2) {
-        secondApi.getList({
-          houseName: keyword
+
+      let city = wx.getStorageSync('city');
+      let userInfo = wx.getStorageSync('userInfo');
+      let userId = userInfo.userid;
+      let cityId = city.id;
+
+      console.log('城市', city,this.data.type)
+
+      if (this.data.type == 1) {
+        secondApi.getPage({
+          houseName: keyword,
+          regionId: cityId,
+          pageNum:1,
+          pageSize:10,
+          userId:userId
         }).then(res => {
           console.log("二手房", res)
-
           this.setData({
             list: this.filterArr(res.list),
             isInput: keyword ? true : false
@@ -69,24 +80,17 @@ Component({
       }
 
 
-      if (this.data.type == 1) {
-        buildApi.getSeachList({
-          projectName: keyword
-        }).then(res => {
-          console.log("楼盘", res)
-          let arr = JSON.parse(JSON.stringify(res.list).replace(/name/g, 'houseName'))
-          this.setData({
-            list: this.filterArr(arr),
-            isInput: keyword ? true : false
-          })
-        })
-      }
 
-      if (this.data.type == 3) {
-        rentApi.getList({
-          houseName: keyword
+      if (this.data.type == 2) {
+        // console.log("搜索")
+        rentApi.getPage({
+          houseName: keyword,
+          regionId: cityId,
+          pageNum: 1,
+          pageSize: 10,
+          userId: userId
         }).then(res => {
-          console.log("出租", res)
+          console.log("租房", res)
           this.setData({
             list: this.filterArr(res.list),
             isInput: keyword ? true : false
@@ -106,34 +110,27 @@ Component({
         item,
         name
       } = e.currentTarget.dataset
-      console.log(e.currentTarget.dataset)
+
       this.setData({
         keyword: name
       })
 
-      let historyList = app.globalData.historyList;
-      historyList.push(item)
-      app.globalData.historyList = this.filterArr(historyList)
+      // let historyList = app.globalData.historyList;
+      // historyList.push(item)
+      // app.globalData.historyList = this.filterArr(historyList)
 
-      if (this.data.type == 1) { //楼盘
-        wx.redirectTo({
-          url: '/pages/build-list/build-list?projectName=' + name,
-        })
-
-      }
-      if (this.data.type == 2) { //二手
-        // wx.redirectTo({
-        //   url: '/pages/second/second?houseName=' + name,
-        // })
+     
+      if (this.data.type == 1) { //二手
         this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name)
-
       }
 
-      if (this.data.type == 3) { //租房
+      if (this.data.type == 2) { //租房
         wx.redirectTo({
           url: '/pages/rent/rent?houseName=' + name,
         })
       }
+
+
     }
   }
 })

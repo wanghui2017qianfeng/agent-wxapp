@@ -1,12 +1,61 @@
 <wxs src="../../wxs/tools.wxs" module="tools" />
-<van-checkbox-group value="{{ result }}" bind:change="onChange">
+
+<!-- 选择房源 -->
+<van-checkbox-group value="{{ result }}" bind:change="onChange" wx:if="{{isCheck==1}}">
+<block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="*this">
     <view class="house-item flex">
-     <van-checkbox  shape="square" checked-color="#666666" icon-size="14"  name="{{item.houseId}}-{{item.title}}" >
- 
+      <van-checkbox shape="square" checked-color="#666666" icon-size="14" name="{{item.houseId}}-{{item.title}}">
+        <view class="flex" bindtap="goDetail" data-id="{{item.id}}">
+          <image class="roomImg" src="{{item.firstImgUrl}}" wx:if="{{item.firstImgUrl}}"></image>
+          <view wx:else class="zanwuPic">暂无图片</view>
+          <view class="right-box">
+            <view class="title">{{item.title?item.title:''}} {{item.houseNo?item.houseNo:''}}</view>
+            <view class="info">{{item.bedroom?item.bedroom+'室':'-'}}{{item.sittingRoom?item.sittingRoom+'厅':'-'}} / {{item.constructionArea?item.constructionArea+'㎡':'-'}} / {{item.towardName?item.towardName:'-'}} / {{item.decorateName?item.decorateName:'-'}}</view>
+            <view class="flex">
+              <view class="tag" wx:if="{{item.isKey==1}}">钥匙</view>
+              <view class="tag" wx:if="{{item.isImg==1}}">实勘</view>
+              <view class="tag" wx:if="{{item.isWritten==1}}">委托</view>
+              <view class="tag" wx:if="{{item.isFocus==1}}">聚焦</view>
+              <view class="tag" wx:if="{{item.isOnly==1}}">唯一</view>
+            </view>
+            <view class="flex">
+              <view class="jibie">{{item.levelName?item.levelName:'-'}}</view>
+              <!-- 租房 -->
+              <block wx:if="{{isRent==1}}">
+                <view class="price">{{item.offer?tools.toFixed(item.offer,2)+'元/月':''}}</view>
+              </block>
+              <!-- 二手房 -->
+              <block wx:else>
+                <view class="price">{{item.offer?tools.toFixed(item.offer,2)+'万':''}}</view>
+                <view class="unit">{{item.univalent?tools.toFixed(item.univalent,2)+'元/㎡':''}}</view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </van-checkbox>
+    </view>
+  </block>
+  </block>
+  <block wx:else>
+  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+
+  <no-data-comp text="暂无数据"></no-data-comp>
+  </view>
+  </block>
+</van-checkbox-group>
+
+
+<!-- 房源列表 -->
+
+<block wx:else>
+<block wx:if="{{list.length>0}}">
+
+  <block wx:for="{{list}}" wx:key="*this">
+    <view class="house-item flex">
       <view class="flex" bindtap="goDetail" data-id="{{item.id}}">
         <image class="roomImg" src="{{item.firstImgUrl}}" wx:if="{{item.firstImgUrl}}"></image>
-          <view wx:else class="zanwuPic">暂无图片</view>
+        <view wx:else class="zanwuPic">暂无图片</view>
         <view class="right-box">
           <view class="title">{{item.title?item.title:''}} {{item.houseNo?item.houseNo:''}}</view>
           <view class="info">{{item.bedroom?item.bedroom+'室':'-'}}{{item.sittingRoom?item.sittingRoom+'厅':'-'}} / {{item.constructionArea?item.constructionArea+'㎡':'-'}} / {{item.towardName?item.towardName:'-'}} / {{item.decorateName?item.decorateName:'-'}}</view>
@@ -31,7 +80,13 @@
           </view>
         </view>
       </view>
-      </van-checkbox>
     </view>
   </block>
-  </van-checkbox-group>
+   </block>
+  <block wx:else>
+  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+
+  <no-data-comp text="暂无数据"></no-data-comp>
+  </view>
+  </block>
+</block>
