@@ -17,7 +17,7 @@ Page({
   goDetailBuy(e) {
     console.log("去买卖客户详情",e.detail)
     wx.navigateTo({
-      url: '/pages/buy-kehu-detail/buy-kehu-detail?cusId='+e.detail,
+      url: '/pages/buy-kehu-detail/buy-kehu-detail?cusId='+e.detail.id+"&cusName="+e.detail.name+"&cusNo="+e.detail.cusno,
     })
   },
   goDetailRent(e) {

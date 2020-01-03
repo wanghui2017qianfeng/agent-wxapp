@@ -8,13 +8,13 @@ Component({
       type: Number,
       value: 0
     },
-    isCheck:{//是否是选择带看房源
-      type:Number,
-      value:0,
+    isCheck: { //是否是选择带看房源
+      type: Number,
+      value: 0,
     },
-    list:{
-      type:Array,
-      value:[]
+    list: {
+      type: Array,
+      value: []
     }
   },
 
@@ -22,25 +22,41 @@ Component({
    * 组件的初始数据
    */
   data: {
-    checked:0,
+    houseNames: [],
+    houseIds: [],
 
+    result: []
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    submit(){
+      
+
+    },
+    onChange(event) {
+      console.log("event", event)
+      let result = event.detail
+      this.setData({
+        result: event.detail,
+
+      });
+      let houseIds = [],
+        houseNames = [];
+      result.forEach(item => {
+        houseIds.push(item.split("-")[0])
+        houseNames.push(item.split("-")[1])
+
+      })
+
+
+    },
     goDetail(e) {
-      console.log(this.data.list)
       let id = e.currentTarget.dataset.id;
       this.triggerEvent('goDetail', id)
 
     },
-    chooseHouse(e){
-      this.setData({
-        checked:e.currentTarget.dataset.index
-      })
-
-    }
   }
 })

@@ -30,8 +30,8 @@ Component({
     },
     goDetail(e) {
       console.log(this.data.list)
-      let id = e.currentTarget.dataset.id;
-      this.triggerEvent('goDetail', id)
+      let {id,name,cusno} = e.currentTarget.dataset;
+      this.triggerEvent('goDetail', { id, name, cusno })
 
     },
   }

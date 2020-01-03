@@ -1,11 +1,11 @@
 <view class="fixed">
-  <search-item></search-item>
+  <search-item bindtap="goSearch"></search-item>
 </view>
 
 <view class="border"></view>
 
-<my-house-item class="mb100"></my-house-item>
+<my-house-item class="mb100" id="houseItem" isCheck="1" list="{{list}}"></my-house-item>
 
 
 <view style="height:10rpx;margin-bottom:100rpx"></view>
-<view class="bottom-btn"  >提交选择</view>
+<view class="bottom-btn" bindtap="submit"  >提交选择</view>

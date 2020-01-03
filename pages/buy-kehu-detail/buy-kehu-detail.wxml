@@ -196,7 +196,7 @@
     <block wx:for="{{followList}}" wx:key="*this">
       <view class="content">
         <view class="top flex-between">
-          <view>{{item.followPerson?item.followPerson:'-'}} ({{item.followDept?intem.followDept:'-'}})</view>
+          <view>{{item.followPerson?item.followPerson:'-'}} ({{item.followDept?item.followDept:'-'}})</view>
           <view>{{item.followTypeTxt?item.followTypeTxt:'-'}}</view>
         </view>
         <view class="neirong">{{item.followRemark?item.followRemark:'-'}}</view>

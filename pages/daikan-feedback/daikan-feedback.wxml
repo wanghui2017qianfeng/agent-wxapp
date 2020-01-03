@@ -1,21 +1,32 @@
 <view class="content">
   <view class="form-item flex">
-    <view class="label">房源编号:H0023156</view>
-    <view> 客户姓名:测试</view>
+    <view class="label">客户编号:{{cusNo?cusNo:''}}</view>
+    <view> 客户姓名:{{cusName?cusName:''}}</view>
   </view>
 
-  <view class="form-item"> <view class="label daikan">带看房源</view></view>
+  <view class="form-item">
+    <view class="label daikan">带看房源</view>
+  </view>
   <view class="form-item flex">
     <view class="label" style="margin-right:0">房源编号:</view>
-    <view bindtap="chooseHouse">H0023156 东亚创展国际</view>
-    <view class="del" bindtap="del">删除</view>
+    <view style="width:500rpx;">
+      <block wx:for="{{4}}">
+      <view class="flex-between" style="margin-bottom:20rpx;">
+        <view bindtap="chooseHouse">房源名称</view>
+        <view class="del" bindtap="del">删除</view>
+      </view>
+        
+      </block>
+
+    </view>
+
   </view>
 
 
   <view class="form-item flex">
     <view class="label">跟进内容:</view>
     <view class="neirong">
-      <textarea placeholder="请输入跟进内容" style="width:100%;"></textarea>
+      <textarea placeholder="请输入跟进内容" value="{{remark}}" style="width:100%;" bindinput="inputRemark"></textarea>
     </view>
   </view>
 </view>

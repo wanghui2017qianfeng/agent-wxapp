@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/choose-daikan-house/choose-daikan-house",
+    
+    "pages/kehu/kehu",
+    
     "pages/index/index",
     
     "pages/my/my",
@@ -27,11 +31,9 @@
     "pages/daikan-record/daikan-record",
     "pages/daikan-feedback/daikan-feedback",
     "pages/write-genjin/write-genjin",
-    "pages/choose-daikan-house/choose-daikan-house",
     "pages/daikan-detail/daikan-detail",
     "pages/search/search",
     "pages/buy-kehu-detail/buy-kehu-detail",
-    "pages/kehu/kehu",
     "pages/genjin-record/genjin-record",
     "pages/genjin/genjin",
     "pages/rent-detail/rent-detail",
@@ -96,7 +98,9 @@
     "van-dropdown-menu": "@vant/weapp/dropdown-menu",
     "van-dropdown-item": "@vant/weapp/dropdown-item",
     "van-divider": "@vant/weapp/divider",
-    "van-overlay": "@vant/weapp/overlay"
+    "van-overlay": "@vant/weapp/overlay",
+    "van-checkbox": "@vant/weapp/checkbox",
+    "van-checkbox-group": "@vant/weapp/checkbox-group"
   },
   "sitemapLocation": "sitemap.json"
 }

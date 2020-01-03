@@ -14,6 +14,8 @@ Page({
   data: {
     info: {},
     cusId: '',
+    cusName:'',
+    cusNo:'',
     lookPageNo: 1,
     followPageNo: 1,
     pageSize: 5,
@@ -75,14 +77,15 @@ Page({
   },
 
   goGenjin() {
+    console.log(this.data.cusNo, this.data.cusName, this.data.cusId)
     wx.navigateTo({
-      url: '/pages/write-genjin/write-genjin',
+      url: '/pages/write-genjin/write-genjin?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId +"&buyRent=1&promotionType=2"
     })
 
   },
   goFeedback() {
     wx.navigateTo({
-      url: '/pages/daikan-feedback/daikan-feedback',
+      url: '/pages/daikan-feedback/daikan-feedback?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId +"&buyRent=1&promotionType=1",
     })
   },
 
@@ -90,8 +93,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log("options1",options)
     this.setData({
-      cusId: options.cusId
+      cusId: options.cusId,
+      cusName:options.cusName,
+      cusNo:options.cusNo
     })
 
     this.getData()

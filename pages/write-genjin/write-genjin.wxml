@@ -1,16 +1,16 @@
 <view class="content">
   <view class="form-item flex">
-    <view class="label">房源编号:H0023156</view>
-    <view> 客户姓名:测试</view>
+    <view class="label">客户编号:{{cusNo?cusNo:''}}</view>
+    <view> 客户姓名:{{cusName?cusName:''}}</view>
   </view>
    <view class="form-item flex">
     <view class="label">跟进内容:</view>
     <view class="neirong">
-    <textarea placeholder="请输入跟进内容" style="width:100%;"></textarea>
+    <textarea value="{{remark}}" placeholder="请输入跟进内容" style="width:100%;" bindinput="inputRemark"></textarea>
     </view>
   </view>
 </view>
 
 
-<view class="btn">保存</view>
+<view class="btn" bindtap="save">保存</view>
 

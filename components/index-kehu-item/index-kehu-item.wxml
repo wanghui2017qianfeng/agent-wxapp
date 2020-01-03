@@ -3,7 +3,7 @@
 
 <block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="*this">
-    <view class="kehu-item" bindtap="goDetail" data-id="{{item.id}}">
+    <view class="kehu-item" bindtap="goDetail" data-id="{{item.id}}" data-name='{{item.name}}' data-cusno="{{item.cusNo}}">
       <view class="top flex-between">
         <view class="name">{{item.name?item.name:''}} ({{item.cusNo?item.cusNo:'-'}})</view>
         <view class="focu flex">
