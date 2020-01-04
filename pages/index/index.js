@@ -81,14 +81,14 @@ Page({
     })
   },
   onLoad: function() {
-    let userInfo = wx.getStorageSync('userInfo')
-    console.log(userInfo)
-    this.setData({
-      userId: userInfo.userid
-    })
-    this.getBobao()
-    this.getFour()
-    this.getMyInfo()
+    // let userInfo = wx.getStorageSync('userInfo')
+    // console.log(userInfo)
+    // this.setData({
+    //   userId: userInfo.userid
+    // })
+    // this.getBobao()
+    // this.getFour()
+    // this.getMyInfo()
 
   },
   loadCurrentCity: function() {
@@ -177,6 +177,14 @@ Page({
 
   },
   onShow: function() {
+    let userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
+    this.setData({
+      userId: userInfo.userid
+    })
+    this.getBobao()
+    this.getFour()
+    this.getMyInfo()
     let city = wx.getStorageSync('city')
     if(!city.id){
 

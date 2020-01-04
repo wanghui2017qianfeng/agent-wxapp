@@ -1,34 +1,73 @@
-<view class="search-box flex">
-  <image src="../../assets/img/search.png"></image>
-  <input value="{{keyword}}" placeholder="请输入区域或楼盘名称" bindinput="changeInput"></input>
-</view>
-<view class="search-content" wx:if="{{isInput}}">
-  <block wx:if="{{list.length>0}}">
-    <block wx:for="{{list}}" wx:key="*this">
-      <van-cell title="{{item.houseNo}}" clickable data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">
-        <van-radio slot="right-icon" use-icon-slot name="{{item.houseNo}}">
-          <van-icon color="{{keyword==item.houseNo?'#2F72F7':'#ffffff'}}" name="success" />
-        </van-radio>
-      </van-cell>
+
+<!-- 客户 -->
+<block wx:if="{{buyOrRent==1||buyOrRent==2}}">
+  <view class="search-box flex">
+    <image src="../../assets/img/search.png"></image>
+    <input value="{{keyword}}" placeholder="请输入客户姓名或客户编号" bindinput="changeInput"></input>
+  </view>
+  <view class="search-content" wx:if="{{isInput}}">
+    <block wx:if="{{list.length>0}}">
+      <block wx:for="{{list}}" wx:key="*this">
+        <van-cell title="{{item.name}}" clickable data-name="{{item.name}}" data-item="{{item}}" bindtap="onCheckClick">
+          <van-radio slot="right-icon" use-icon-slot name="{{item.name}}">
+            <van-icon color="{{keyword==item.name?'#2F72F7':'#ffffff'}}" name="success" />
+          </van-radio>
+        </van-cell>
+      </block>
+    </block>
+    <block wx:else>
+      <view style="text-align:center;font-size:30rpx">未查询到对应数据</view>
+    </block>
+  </view>
+  <block wx:else>
+    <block wx:if="{{historyList.length>0}}">
+      <view class="search-item flex-between">
+        <view class="stext">历史搜索</view>
+        <image src="../../assets/img/del.png" class="del" bindtap="handleDel"></image>
+      </view>
+      <view class=" tag-box">
+        <block wx:for="{{historyList}}" wx:key="*this">
+          <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.name}}" data-item="{{item}}" bindtap="onCheckClick">{{item.name}}</van-tag>
+        </block>
+      </view>
     </block>
   </block>
-  <block wx:else>
-    <view style="text-align:center;font-size:30rpx">未查询到对应数据</view>
-  </block>
+</block>
+<!-- 租房 二手房 -->
 
-</view>
 <block wx:else>
-  <block wx:if="{{historyList.length>0}}">
-    <view class="search-item flex-between">
-      <view class="stext">历史搜索</view>
-      <image src="../../assets/img/del.png" class="del"  bindtap="handleDel"></image>
-    </view>
-
-    <view class=" tag-box">
-      <block wx:for="{{historyList}}" wx:key="*this">
-        <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseNo}}</van-tag>
+  <view class="search-box flex">
+    <image src="../../assets/img/search.png"></image>
+    <input value="{{keyword}}" placeholder="请输入区域或楼盘名称" bindinput="changeInput"></input>
+  </view>
+  <view class="search-content" wx:if="{{isInput}}">
+    <block wx:if="{{list.length>0}}">
+      <block wx:for="{{list}}" wx:key="*this">
+        <van-cell title="{{item.houseNo}}" clickable data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">
+          <van-radio slot="right-icon" use-icon-slot name="{{item.houseNo}}">
+            <van-icon color="{{keyword==item.houseNo?'#2F72F7':'#ffffff'}}" name="success" />
+          </van-radio>
+        </van-cell>
       </block>
-    </view>
-  </block>
+    </block>
+    <block wx:else>
+      <view style="text-align:center;font-size:30rpx">未查询到对应数据</view>
+    </block>
 
+  </view>
+  <block wx:else>
+    <block wx:if="{{historyList.length>0}}">
+      <view class="search-item flex-between">
+        <view class="stext">历史搜索</view>
+        <image src="../../assets/img/del.png" class="del" bindtap="handleDel"></image>
+      </view>
+
+      <view class=" tag-box">
+        <block wx:for="{{historyList}}" wx:key="*this">
+          <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseNo}}</van-tag>
+        </block>
+      </view>
+    </block>
+
+  </block>
 </block>

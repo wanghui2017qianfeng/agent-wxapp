@@ -1,3 +1,3 @@
 
-      <search-item-comp type="{{type}}" bindhandleDel="handleDel" bindtoRedirect="toRedirect" historyList="{{historyList}}" ></search-item-comp>
+      <search-item-comp type="{{type}}" buyOrRent="{{buyOrRent}}" bindhandleDel="handleDel" bindtoRedirect="toRedirect" historyList="{{historyList}}" ></search-item-comp>
 

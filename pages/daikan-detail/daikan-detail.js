@@ -1,10 +1,16 @@
 // pages/daikan-detail/daikan-detail.js
+
+import {
+  kehuControlApi
+} from "../../api/kehuFollow.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id:'',
+    userId:'',
     info:{
       cusName:'匹配',
       cusNo:'112233838',
@@ -21,11 +27,27 @@ Page({
     }
 
   },
+getData(){
+  let model={
+    id:this.data.id
+  }
+  kehuControlApi.geLookDetail(model).then(res=>{
+    this.setData({
+      info:res
+    })
+  })
 
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      id:options.id,
+      userId:userInfo.userid
+    })
+    this.getData()
 
   },
 

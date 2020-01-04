@@ -1,0 +1,14 @@
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab">
+  <van-tab title="二手房">
+
+ <my-house-item list="{{secondList}}" bind:goDetail="goDetailSecond"></my-house-item>
+
+
+
+
+  </van-tab>
+  <van-tab title=" 租房 ">
+ <my-house-item isRent='1' list="{{rentList}}" bind:goDetail="goDetailRent"></my-house-item>
+
+  </van-tab>
+</van-tabs>

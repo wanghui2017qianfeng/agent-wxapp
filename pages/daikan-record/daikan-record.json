@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "带看记录",
   "usingComponents": {
-    "search-item-comp": "/components/search-item/search-item"
+    "search-item-comp": "/components/search-item/search-item",
+      "no-data-comp": "/components/no-data/no-data"
   }
 }

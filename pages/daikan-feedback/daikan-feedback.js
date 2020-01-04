@@ -1,5 +1,7 @@
 // pages/daikan-feedback/daikan-feedback.js
-import { kehuControlApi } from "../../api/kehuFollow.js"
+import {
+  kehuControlApi
+} from "../../api/kehuFollow.js"
 
 Page({
 
@@ -14,8 +16,8 @@ Page({
     remark: "",
     buyRent: '', //客户类型 买卖1 租赁2
     promotionType: '', //跟进类型 1带看 2跟进
-    houseNames:[],
-    houseIds:[]
+    houseNames: [],
+    houseIds: []
   },
 
   inputRemark(e) {
@@ -28,7 +30,26 @@ Page({
       url: '/pages/choose-daikan-house/choose-daikan-house?isSell=1',
     })
   },
-  del() {
+  del(e) {
+    let index = e.currentTarget.dataset.index;
+    console.log("index", index)
+    let houseNames1 = this.data.houseNames;
+    let houseIds1 = this.data.houseIds;
+    let houseNames = [],
+      houseIds = [];
+    houseNames1.forEach((item, i) => {
+      if (i != index) {
+        houseNames.push(item)
+        houseIds.push(houseIds1[i])
+      }
+    })
+    // let houseNames = houseNames1.splice(index,1)
+    // let houseIds = houseIds1.splice(index, 1)
+    console.log(houseNames)
+    this.setData({
+      houseIds: houseIds,
+      houseNames: houseNames
+    })
 
   },
 
@@ -39,7 +60,9 @@ Page({
       buyRent: this.data.buyRent,
       promotionType: this.data.promotionType,
       remark: this.data.remark,
-      promotionMethods:0,
+      promotionMethods: 0,
+      houseIds: this.data.houseIds,
+      houseNames: this.data.houseNames
     }
 
     kehuControlApi.addFollow(model).then(res => {
@@ -48,7 +71,9 @@ Page({
         icon: 'none'
       })
       this.setData({
-        remark: ''
+        remark: '',
+        houseIds:[],
+        houseNames:[]
       })
     })
 
@@ -57,6 +82,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log("houseNames1111111111", this.data.houseNames)
 
     let userInfo = wx.getStorageSync('userInfo')
     this.setData({
@@ -80,6 +106,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    console.log("houseNames2222", this.data.houseNames)
 
   },
 

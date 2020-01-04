@@ -170,7 +170,11 @@
   <block wx:if="{{list.length>0}}">
     <rent-item list="{{list}}" isRent="1" isCheck="0" bind:goDetail="goDetail"></rent-item>
   </block>
-  <view wx:else style="padding-top:150rpx">
-    <no-data-comp text="暂无相关房源"></no-data-comp>
+  <view wx:else style="margin-top:300rpx;">
+
+    <view class="no-data">
+      <image src="../../assets/img/wushuju.png"></image>
+      <view class='text'>没有找到相关房源</view>
+    </view>
   </view>
 </view>

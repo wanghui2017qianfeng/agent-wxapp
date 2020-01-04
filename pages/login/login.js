@@ -65,15 +65,10 @@ Page({
                       wx.request({
                         url: app.globalData.baseUrl + 'brokerInfo/findByOpenId?openid='+openid,
                         method: 'post', //请求方式
-                        // data: {
-                        //   openid: openid
-                        // },
+                     
                         success: (res2) => {
                           console.log("获得经纪人信息", res2)
-                          // wx.setStorage({
-                          //   key: 'userInfo',
-                          //   data: res2,
-                          // })
+                          
 
                           if (res2.data.result) {
 

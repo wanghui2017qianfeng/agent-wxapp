@@ -1,43 +1,72 @@
 // pages/kehu/kehu.js
-import {kehuApi} from "../../api/kehu.js"
+import {
+  kehuApi
+} from "../../api/kehu.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userId:'',
-    buyList:[],
-    rentList:[],
-    cusName:'',
-    buyPageNo:1,
-    pageSize:5
+    userId: '',
+    buyList: [],
+    rentList: [],
+    cusName: '',
+    buyPageNo: 1,
+    pageSize: 5,
+    activeTab: 0,
 
   },
-  goDetailBuy(e) {
-    console.log("去买卖客户详情",e.detail)
+  goSearchBuy() {
     wx.navigateTo({
-      url: '/pages/buy-kehu-detail/buy-kehu-detail?cusId='+e.detail.id+"&cusName="+e.detail.name+"&cusNo="+e.detail.cusno,
+      url: '/pages/search/search?type=3&buyOrRent=1',
+    })
+  },
+  goSearchRent() {
+    wx.navigateTo({
+      url: '/pages/search/search?type=3&buyOrRent=2',
+    })
+  },
+  goDetailBuy(e) {
+    console.log("去买卖客户详情", e.detail)
+    wx.navigateTo({
+      url: '/pages/buy-kehu-detail/buy-kehu-detail?cusId=' + e.detail.id + "&cusName=" + e.detail.name + "&cusNo=" + e.detail.cusno,
     })
   },
   goDetailRent(e) {
     wx.navigateTo({
-      url: '/pages/rent-kehu-detail/rent-kehu-detail',
+      url: '/pages/rent-kehu-detail/rent-kehu-detail?cusId=' + e.detail.id + "&cusName=" + e.detail.name + "&cusNo=" + e.detail.cusno,
     })
   },
 
-  getBuyList(){
-    let model={
+  getBuyList() {
+    let model = {
       cusName: this.data.cusName,
       pageNo: this.data.buyPageNo,
-      buyOrRent:1,
+      buyOrRent: 1,
       pageSize: 5,
-      userId:this.data.userId
+      userId: this.data.userId
     }
 
-    kehuApi.getPage(model).then(res=>{
+    kehuApi.getPage(model).then(res => {
       this.setData({
-        buyList:res.list
+        buyList: res.list
+      })
+    })
+
+  },
+  getRentList() {
+    let model = {
+      cusName: this.data.cusName,
+      pageNo: this.data.buyPageNo,
+      buyOrRent: 2,
+      pageSize: 5,
+      userId: this.data.userId
+    }
+
+    kehuApi.getPage(model).then(res => {
+      this.setData({
+        rentList: res.list
       })
     })
 
@@ -48,10 +77,13 @@ Page({
   onLoad: function(options) {
     let userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      userId: userInfo.userid
+      userId: userInfo.userid,
+      cusName: options.cusName ? options.cusName:'',
+      activeTab:options.activeTab
     })
 
     this.getBuyList()
+    this.getRentList()
   },
 
   /**

@@ -26,6 +26,8 @@ Page({
     secondHistoryList: [],
     rentHistoryList: [],
     buildHistoryList: [],
+
+    buyOrRent:"",
   },
   toRedirect(e) {
     wx.redirectTo({
@@ -63,9 +65,10 @@ Page({
     // type  1二手房  2租房 3.客户 
     let type = options.type
     this.setData({
-      type:type
+      type:type,
+      buyOrRent: options.buyOrRent ? options.buyOrRent:'',
     })
-
+    console.log("optionszufang1", options.buyOrRent )
     
 
   

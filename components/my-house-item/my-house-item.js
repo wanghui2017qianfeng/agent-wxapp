@@ -32,17 +32,29 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    submit(){
-      
+    submit() {
+      console.log("提交选择", this.data.houseNames)
+
+      var pages = getCurrentPages();
+      var beforePage = pages[pages.length - 2];
+      beforePage.setData({ // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+
+        houseIds: this.data.houseIds, // 这里是修改了上一个页面数据:name
+        houseNames: this.data.houseNames
+      })
+
+
+      wx.navigateBack({
+        delta: 1,
+      })
+
+
 
     },
     onChange(event) {
       console.log("event", event)
       let result = event.detail
-      this.setData({
-        result: event.detail,
-
-      });
+     
       let houseIds = [],
         houseNames = [];
       result.forEach(item => {
@@ -51,7 +63,11 @@ Component({
 
       })
 
-
+      this.setData({
+        result: event.detail,
+        houseNames: houseNames,
+        houseIds: houseIds
+      });
     },
     goDetail(e) {
       let id = e.currentTarget.dataset.id;

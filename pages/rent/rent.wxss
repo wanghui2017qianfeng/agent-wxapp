@@ -259,7 +259,7 @@ page {
 
 .choose-content {
   position: fixed;
-  top: 200rpx;
+  top: 225rpx;
   bottom: 0;
   left: 0;
   right: 0;
@@ -268,4 +268,25 @@ page {
 }
 .paixu{
   width:27rpx;height:27rpx;
+}
+
+
+
+
+.no-data {
+  text-align: center
+}
+
+.no-data image {
+  width: 257rpx;
+  height: 169rpx;
+  margin:0 auto;
+}
+
+
+.no-data .text {
+  margin-top: 31rpx;
+  font-size: 27rpx;
+  color: #333;
+  text-align: center;
 }

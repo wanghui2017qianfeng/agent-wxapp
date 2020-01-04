@@ -11,28 +11,31 @@
   <view class="red">业绩排名 : {{myInfo.rank?'第'+myInfo.rank+'名':'暂无排名'}}</view>
 </view>
 
-<view class="card" style="background-image: url('../../assets/img/bg.png'); background-size: cover;background-repeat: no-repeat;">
-  <image src="../../assets/img/up.png" class="up"></image>
-  <view class="flex-between" style="width:100%;padding-right:20rpx">
-  <view>
-    <view class="name">本月签约业绩</view>
-    <view class="money">
-      <text>{{myInfo.monthAchievement?tools.toFixed(myInfo.monthAchievement,2):'-'}}</text>万</view>
-    <view class="last">{{myInfo.lastAchievement?tools.toFixed(myInfo.lastAchievement,2):'-'}}万(上月)</view>
-  </view>
-  <view class="yeji">
-    <view>
-      <text space="ensp">● 新房  {{myInfo.newAchievement?tools.toFixed(myInfo.newAchievement,2):'-'}}万</text>
-    </view>
-    <view>
-      <text space="ensp">● 二手  {{myInfo.sellAchievement?tools.toFixed(myInfo.sellAchievement,2):'-'}}万</text>
-    </view>
-    <view>
-      <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement,2):'-'}}万</text>
-    </view>
-  </view>
-  </view>
+<view class="card">
 
+  <image src="../../assets/img/bg.png" class="bg"></image>
+  <view class="content-box flex">
+    <image src="../../assets/img/up.png" class="up"></image>
+    <view class="flex-between" style="width:100%;padding-right:20rpx">
+      <view>
+        <view class="name">本月签约业绩</view>
+        <view class="money">
+          <text>{{myInfo.monthAchievement?tools.toFixed(myInfo.monthAchievement,2):'-'}}</text>万</view>
+        <view class="last">{{myInfo.lastAchievement?tools.toFixed(myInfo.lastAchievement,2):'-'}}万(上月)</view>
+      </view>
+      <view class="yeji">
+        <view>
+          <text space="ensp">● 新房  {{myInfo.newAchievement?tools.toFixed(myInfo.newAchievement,2):'-'}}万</text>
+        </view>
+        <view>
+          <text space="ensp">● 二手  {{myInfo.sellAchievement?tools.toFixed(myInfo.sellAchievement,2):'-'}}万</text>
+        </view>
+        <view>
+          <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement,2):'-'}}万</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
 
 <van-grid column-num="4" border="{{ false }}">
@@ -70,7 +73,7 @@
     </block>
   </block>
   <block wx:else>
-    <view style="padding-top:80rpx;height:300rpx;">
+    <view style="padding-top:80rpx;height:400rpx;">
       <no-data-comp text="暂无消息"></no-data-comp>
     </view>
   </block>

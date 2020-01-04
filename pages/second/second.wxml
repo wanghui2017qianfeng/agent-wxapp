@@ -3,7 +3,7 @@
     <view class="search-content">
       <view class="search-box flex" bindtap="goSearch">
         <image src="../../assets/img/search.png"></image>
-        <input value="{{houseName}}" placeholder="请输入楼盘名称、房间号或房源编号" ></input>
+        <input value="{{houseName}}" placeholder="请输入楼盘名称、房间号或房源编号"></input>
       </view>
     </view>
     <view style="height:20rpx;background:#ececec"></view>
@@ -148,7 +148,7 @@
             </view>
           </scroll-view>
           <view class="flex-between btn-box">
-            <view class="btn clear" catchtap="clearMore" >重置</view>
+            <view class="btn clear" catchtap="clearMore">重置</view>
             <view class="btn sure" catchtap="sure">确定</view>
           </view>
         </view>
@@ -170,6 +170,11 @@
     <second-item list="{{list}}" bind:goDetail="goDetail"></second-item>
   </block>
   <view wx:else style="margin-top:300rpx;">
-    <no-data-comp text="没有找到相关房源"></no-data-comp>
+    <!-- <no-data-comp text="没有找到相关房源"></no-data-comp> -->
+    <view class="no-data">
+      <image src="../../assets/img/wushuju.png"></image>
+      <view class='text'>没有找到相关房源</view>
+    </view>
+
   </view>
 </view>

@@ -6,6 +6,8 @@ import {
   rentApi
 } from "../../api/rent.js"
 
+import { kehuApi} from "../../api/kehu.js"
+
 let app = getApp()
 Component({
   /**
@@ -15,6 +17,9 @@ Component({
     type: {
       type: Number,
 
+    },
+    buyOrRent:{
+      type:Number
     },
     // type 2二手 3租房 1楼盘
     hotList: {
@@ -61,8 +66,8 @@ Component({
       let userId = userInfo.userid;
       let cityId = city.id;
 
-      console.log('城市', city,this.data.type)
-
+   
+// 二手房
       if (this.data.type == 1) {
         secondApi.getPage({
           houseName: keyword,
@@ -71,7 +76,6 @@ Component({
           pageSize:10,
           userId:userId
         }).then(res => {
-          console.log("二手房", res)
           this.setData({
             list: this.filterArr(res.list),
             isInput: keyword ? true : false
@@ -80,9 +84,8 @@ Component({
       }
 
 
-
+// 租房
       if (this.data.type == 2) {
-        // console.log("搜索")
         rentApi.getPage({
           houseName: keyword,
           regionId: cityId,
@@ -90,7 +93,6 @@ Component({
           pageSize: 10,
           userId: userId
         }).then(res => {
-          console.log("租房", res)
           this.setData({
             list: this.filterArr(res.list),
             isInput: keyword ? true : false
@@ -98,6 +100,39 @@ Component({
         })
       }
 
+      // 客户
+
+      if (this.data.type == 3&&this.data.buyOrRent==1) {//求购客户
+        kehuApi.getPage({
+          cusName: keyword,
+          pageNo: 1,
+          pageSize: 10,
+          userId: userId,
+          buyOrRent:1
+        }).then(res => {
+          this.setData({
+            list: this.filterArr(res.list),
+            isInput: keyword ? true : false
+          })
+        })
+      }
+
+      if (this.data.type == 3 && this.data.buyOrRent == 2) {//求租客户
+        kehuApi.getPage({
+          cusName: keyword,
+          pageNo: 1,
+          pageSize: 10,
+          userId: userId,
+          buyOrRent:2
+        }).then(res => {
+          this.setData({
+            list: this.filterArr(res.list),
+            isInput: keyword ? true : false
+          })
+        })
+      }
+
+      console.log()
 
     },
     handleDel() {
@@ -130,6 +165,16 @@ Component({
         })
       }
 
+      if (this.data.type == 3&&this.data.buyOrRent==1 ) { //求购客户
+        wx.redirectTo({
+          url: '/pages/kehu/kehu?cusName=' + name+"&activeTab=0",
+        })
+      }
+      if (this.data.type == 3 && this.data.buyOrRent == 2) { //求租客户
+        wx.redirectTo({
+          url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=1",
+        })
+      }
 
     }
   }

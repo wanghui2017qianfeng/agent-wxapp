@@ -29,10 +29,25 @@ line-height: 64rpx
   display: flex;
   padding-top:22rpx;
   box-sizing: border-box;
- 
+ position:relative;
 
 }
+.card .bg{
+  width:700rpx;
+  height:259rpx;
+  top:0;
+  left:0;right:0;
+  bottom:0;
+  position:absolute;
+}
 
+.card .content-box{
+  position: absolute;
+  top:22rpx;
+  left:0;right:0;
+  bottom:0;
+
+}
 .card  .up{
   width:49rpx;
   height:47rpx;

@@ -1,58 +1,81 @@
-// pages/my-kehu/my-kehu.js
+// pages/my-house/my-house.js
 const app = getApp()
-import { kehuCollectApi } from "../../api/kehuCollect.js"
+import {
+  houseCollectApi
+} from "../../api/houseCollect.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    rentList: [],
+    secondList: [],
     userId: '',
     rentPageNo: 1,
-    buyPageNo: 1,
-    pageSize: 5,
-    lastPage: false,
-    buyList: [],
-    rentList: []
+    rentPageSize: 5,
+    secondPageNo: 1,
+    secondPageSize: 5,
   },
+
+  goDetailSecond(e) {
+    let id = e.detail;
+    wx.navigateTo({
+      url: '/pages/second-detail/second-detail?id=' + id,
+    })
+  },
+
+  goDetailRent(e) {
+    let id = e.detail;
+
+    wx.navigateTo({
+      url: '/pages/rent-detail/rent-detail?id=' + id,
+    })
+  },
+
   getRentData() {
     let model = {
+      userId: this.data.userId,
       pageNo: this.data.rentPageNo,
-      pageSize: this.data.pageSize,
-      type: 2,
-      userId: this.data.userId,
-
+      pageSize: this.data.rentPageSize,
     }
+
     wx.showLoading({
       title: '正在加载',
+      icon: 'none'
     })
-    kehuCollectApi.getPage(model).then(res => {
+
+    houseCollectApi.getRentPage(model).then(res => {
+      console.log("rentlist", res)
       this.setData({
-        rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
-        lastPage: res.lastPage
+        rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list)
       })
       wx.hideLoading()
     })
+
   },
-  getBuyData() {
+  getSecondData() {
     let model = {
-      pageNo: this.data.buyPageNo,
-      pageSize: this.data.pageSize,
-      type: 1,
       userId: this.data.userId,
-
+      pageNo: this.data.secondPageNo,
+      pageSize: this.data.secondPageSize,
     }
+
     wx.showLoading({
       title: '正在加载',
+      icon: 'none'
     })
-    kehuCollectApi.getPage(model).then(res => {
+
+    houseCollectApi.getSecondPage(model).then(res => {
+      console.log("secondlist", res)
       this.setData({
-        buyList: this.data.rentPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
-        lastPage: res.lastPage
+        secondList: this.data.secondPageNo == 1 ? res.list : this.data.secondList.concat(res.list)
       })
       wx.hideLoading()
+
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -61,8 +84,8 @@ Page({
     this.setData({
       userId: userInfo.userid
     })
-    this.getBuyData()
     this.getRentData()
+    this.getSecondData()
   },
 
   /**

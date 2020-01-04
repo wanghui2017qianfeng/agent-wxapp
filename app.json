@@ -1,6 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    
+    "pages/daikan-feedback/daikan-feedback",
+    
+    "pages/daikan-record/daikan-record",
+    
     "pages/my-focus-house/my-focus-house",
     "pages/choose-daikan-house/choose-daikan-house",
     "pages/kehu/kehu",
@@ -14,8 +19,7 @@
     "pages/second-detail/second-detail",
     "pages/second/second",
     "pages/rent-kehu-detail/rent-kehu-detail",
-    "pages/daikan-record/daikan-record",
-    "pages/daikan-feedback/daikan-feedback",
+   
     "pages/write-genjin/write-genjin",
     "pages/daikan-detail/daikan-detail",
     "pages/search/search",
@@ -33,37 +37,38 @@
     "enablePullDownRefresh": false,
     "onReachBottomDistance": 100
   },
-    "tabBar": {
-      "color": "#999999",
-      "selectedColor": "#2F72F7",
-      "backgroundColor": "#ffffff",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "text": "工作台",
-          "iconPath": "assets/img/work1.png",
-          "selectedIconPath": "assets/img/work.png"
-        },
-        {
-          "pagePath": "pages/msg/msg",
-          "text": "消息",
-          "iconPath": "assets/img/msg1.png",
-          "selectedIconPath": "assets/img/msg.png"
-        },
-        {
-          "pagePath": "pages/my/my",
-          "text": "我的",
-          "iconPath": "assets/img/my1.png",
-          "selectedIconPath": "assets/img/my.png"
-        }
-      ]
-    },
-      "permission": {
-        "scope.userLocation": {
-          "desc": "你的位置信息将用于小程序位置接口的效果展示"
-        }
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2F72F7",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "工作台",
+        "iconPath": "assets/img/work1.png",
+        "selectedIconPath": "assets/img/work.png"
       },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "消息",
+        "iconPath": "assets/img/msg1.png",
+        "selectedIconPath": "assets/img/msg.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/img/my1.png",
+        "selectedIconPath": "assets/img/my.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "usingComponents": {
+    "van-datetime-picker": "@vant/weapp/datetime-picker",
     "van-rate": "@vant/weapp/rate",
     "van-grid": "@vant/weapp/grid",
     "van-grid-item": "@vant/weapp/grid-item",

@@ -10,16 +10,20 @@
   <view class="form-item flex">
     <view class="label" style="margin-right:0">房源编号:</view>
     <view style="width:500rpx;">
-      <block wx:for="{{4}}">
-      <view class="flex-between" style="margin-bottom:20rpx;">
-        <view bindtap="chooseHouse">房源名称</view>
-        <view class="del" bindtap="del">删除</view>
+    <block wx:if="{{houseNames.length>0}}">
+      <block wx:for="{{houseNames}}" wx:key="*this">
+      <view class="flex-between" style="margin-bottom:20rpx;margin-left:10rpx;">
+        <view bindtap="chooseHouse">{{item}}</view>
+        <view class="del" bindtap="del" data-index="{{index}}">删除</view>
       </view>
-        
       </block>
-
+      </block>
+      <block wx:else>
+       <view class="flex-between" style="margin-bottom:20rpx;margin-left:10rpx;">
+        <view bindtap="chooseHouse">请选择房源</view>
+      </view>
+      </block>
     </view>
-
   </view>
 
 
@@ -32,4 +36,4 @@
 </view>
 
 
-<view class="btn">保存</view>
+<view class="btn" bindtap="save">保存</view>

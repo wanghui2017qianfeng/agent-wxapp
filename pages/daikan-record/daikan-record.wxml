@@ -13,13 +13,15 @@
     <!-- 日期 -->
     <block wx:if="{{searchActive==0}}">
       <view class="content">
-        <view class="tag-box">
-          <block wx:for="{{offerList}}" wx:for-index="idx" wx:key="*this">
-            <view class="tag {{offerActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseOffer">{{item.text}}</view>
-          </block>
+        <view class="flex-around">
+          <view class="start date" bindtap="openStart">{{startDate}}</view>
+          <view>-</view>
+          <view class="end date" bindtap="openEnd">{{endDate}}</view>
         </view>
+
+
         <view class="flex-between">
-          <view class="btn clear" catchtap="clear">重置</view>
+          <view class="btn clear" catchtap="clearDate">重置</view>
           <view class="btn sure" catchtap="sure">确定</view>
         </view>
       </view>
@@ -55,26 +57,45 @@
   </view>
 </view>
 
-<block wx:for="{{3}}" wx:key="*this">
-  <view class="record" bindtap="goDaikanDetail">
-    <view class="flex-between top">
-      <view class="flex">
 
-        <image src="../../assets/img/wendang.png" ></image>
-        <view class="kehu">{{item.cusName}}</view>
-        <view class="store">{{item.createSrore}}-{{item.createPerson}}</view>
-        <view class="tag" wx:if="{{item.buyOrRent==1}}">购看</view>
-        <view class="tag" wx:if="{{item.buyOrRent==2}}">租看</view>
+<block wx:if="{{list.length>0}}">
+  <block wx:for="{{list}}" wx:key="*this">
+    <view class="record" bindtap="goDaikanDetail" data-id="{{item.id}}">
+      <view class="flex-between top">
+        <view class="flex">
 
+          <image src="../../assets/img/wendang.png"></image>
+          <view class="kehu">{{item.cusName}}</view>
+          <view class="store">{{item.createSrore}}-{{item.createPerson}}</view>
+          <view class="tag" wx:if="{{item.buyOrRent==1}}">购看</view>
+          <view class="tag" wx:if="{{item.buyOrRent==2}}">租看</view>
+
+        </view>
+        <view class="time">{{item.time?item.time:'-'}}分钟</view>
       </view>
-      <view class="time">{{item.time?item.time:'-'}}分钟</view>
-    </view>
-    <view class="context">{{item.context}}</view>
-    <view class=" bottom">
-      <view style="float:right;display:flex">
+      <view class="context">{{item.context}}</view>
+      <view class=" bottom">
+        <view style="float:right;display:flex">
           <image src="../../assets/img/biji.png"></image>
           <view class="createTime">{{item.createTime}}</view>
+        </view>
       </view>
     </view>
+  </block>
+</block>
+<block wx:else>
+  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+    <no-data-comp text="暂无数据"></no-data-comp>
   </view>
 </block>
+
+<van-popup show="{{ showStart }}" round position="bottom" bind:close="onClose">
+  <van-datetime-picker type="date" value="{{ currentDate }}" bind:confirm="onInputStart" min-date="{{miniDate}}" bind:cancel="onClose" />
+
+</van-popup>
+
+
+<van-popup show="{{ showEnd }}" round position="bottom" bind:close="onClose">
+  <van-datetime-picker type="date" value="{{ currentDate1 }}" bind:confirm="onInputEnd" min-date="{{miniDate}}" bind:cancel="onClose" />
+
+</van-popup>

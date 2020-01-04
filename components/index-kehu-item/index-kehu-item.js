@@ -1,6 +1,8 @@
 // components/index-kehu-item/index-kehu-item.js
 import { kehuApi } from "../../api/kehu.js"
-
+import {
+  kehuCollectApi
+} from "../../api/kehuCollect.js"
 Component({
   /**
    * 组件的属性列表
@@ -23,6 +25,42 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    cancelCollect(e) {
+      let userInfo = wx.getStorageSync('userInfo');
+      let userId = userInfo.userid;
+      let cusid = e.currentTarget.dataset.cusid;
+      let model = {
+        customerId: cusid,
+        userId: userId
+
+      }
+      kehuCollectApi.cancelCollect(model).then(() => {
+        wx.showToast({
+          title: '取消关注',
+        })
+        this.triggerEvent('refresh')
+
+
+      })
+
+    },
+    addCollect(e) {
+      let userInfo = wx.getStorageSync('userInfo');
+      let userId = userInfo.userid;
+      let cusid = e.currentTarget.dataset.cusid;
+      let model = {
+        customerId: cusid,
+        userId: userId
+
+      }
+      kehuCollectApi.addCollect(model).then(() => {
+        wx.showToast({
+          title: '关注成功'
+        })
+        this.triggerEvent('refresh')
+      })
+
+    },
     openPhone(e){
       kehuApi.getContacts(e.currentTarget.dataset.id).then(res=>{
         console.log(res)

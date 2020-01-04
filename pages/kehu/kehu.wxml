@@ -1,19 +1,16 @@
-<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'>
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'   active="{{ activeTab }}">
   <van-tab title="买卖客户">
-  <view class="search-box flex">
-  <image src="../../assets/img/search.png"></image>
-  <input value="{{keyword}}" placeholder="请输入楼盘名称/关键词" bindinput="changeInput"></input>
-</view>
-
-
- <index-kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy"></index-kehu-item-comp>
-
-
-
-
+    <view class="search-box flex" bindtap="goSearchBuy">
+      <image src="../../assets/img/search.png"></image>
+      <input value="{{cusName}}" placeholder="请输入客户姓名或客户编号" readonly></input>
+    </view>
+    <index-kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyList"></index-kehu-item-comp>
   </van-tab>
   <van-tab title=" 租赁客户 ">
- <index-kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"></index-kehu-item-comp>
-
+    <view class="search-box flex" bindtap="goSearchRent">
+      <image src="../../assets/img/search.png"></image>
+      <input value="{{cusName}}" placeholder="请输入楼盘名称/关键词" readonly></input>
+    </view>
+    <index-kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"  bind:refresh="getRentList"></index-kehu-item-comp>
   </van-tab>
 </van-tabs>
