@@ -81,7 +81,7 @@ Page({
       cusName: options.cusName ? options.cusName:'',
       activeTab:options.activeTab
     })
-
+console.log("options====",options)
     this.getBuyList()
     this.getRentList()
   },

@@ -489,6 +489,8 @@ Page({
       showContent: false,
       offerActive: 0,
     })
+    this.getData()
+
   },
   clearBed() {
     this.setData({
@@ -496,6 +498,7 @@ Page({
       bedActive: 0,
       showContent: false,
     })
+    this.getData()
 
   },
   clearMore() {
@@ -523,6 +526,8 @@ Page({
       showContent: false,
 
     })
+    this.getData()
+
 
   },
 

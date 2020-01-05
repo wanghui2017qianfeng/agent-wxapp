@@ -596,6 +596,7 @@ Page({
       showContent: false,
       offerActive:0,
     })
+    this.getData()
   },
   clearBed() {
     this.setData({
@@ -603,6 +604,9 @@ Page({
       bedActive: 0,
       showContent: false,
     })
+
+    this.getData()
+
 
   },
   clearMore() {
@@ -615,9 +619,7 @@ Page({
       parkActive: 0,
       entrustActive: 0,
       otherActive: 0,
-
-
-
+      
       startConstructionArea: '',
       endConstructionArea: '',
       toward: '',
@@ -630,6 +632,9 @@ Page({
       showContent: false,
 
     })
+
+    this.getData()
+
 
   },
   //选择区

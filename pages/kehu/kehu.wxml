@@ -9,7 +9,7 @@
   <van-tab title=" 租赁客户 ">
     <view class="search-box flex" bindtap="goSearchRent">
       <image src="../../assets/img/search.png"></image>
-      <input value="{{cusName}}" placeholder="请输入楼盘名称/关键词" readonly></input>
+      <input value="{{cusName}}" placeholder="请输入客户姓名或客户编号" readonly></input>
     </view>
     <index-kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"  bind:refresh="getRentList"></index-kehu-item-comp>
   </van-tab>

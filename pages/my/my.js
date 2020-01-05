@@ -3,7 +3,9 @@ const app = getApp()
 import {
   msgApi
 } from "../../api/msg.js"
-import {cityApi} from "../../api/city.js"
+import {
+  cityApi
+} from "../../api/city.js"
 Page({
 
   /**
@@ -13,9 +15,9 @@ Page({
     isLogin: false,
     userId: '',
     info: {},
-    avatar:'',
+    avatar: '',
     openid: '',
-    cityList:[]
+    cityList: []
   },
   getData() {
     msgApi.getMyInfo(this.data.userId).then(res => {
@@ -24,16 +26,16 @@ Page({
       })
     })
   },
-  logout(){
+  logout() {
     this.setData({
-      isLogin:false,
-      info:{},
+      isLogin: false,
+      info: {},
 
     })
-  wx.setStorage({
-    key: 'userInfo',
-    data: {},
-  })
+    wx.setStorage({
+      key: 'userInfo',
+      data: {},
+    })
   },
   goLogin(e) {
     wx.navigateTo({
@@ -67,17 +69,16 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-  },
-getAllCity(){
-  cityApi.getAllCity().then(res=>{
-    console.log("res",res)
-    this.setData({
-      cityList:res
+  onLoad: function(options) {},
+  getAllCity() {
+    cityApi.getAllCity().then(res => {
+      console.log("res", res)
+      this.setData({
+        cityList: res
+      })
     })
-  })
 
-},
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -100,17 +101,19 @@ getAllCity(){
         let userInfo = res.data
         console.log("结果", userInfo.userid)
 
-        // if (userInfo && userInfo.openid)
+        if (userInfo.userid){
           that.setData({
-         
+
             avatar: userInfo.avatarUrl,
             phone: userInfo.phoneNumber,
             openid: userInfo.openid,
             userId: userInfo.userid,
             isLogin: true
           })
-        console.log("userId", that.data.userId)
-    that.getData()
+          console.log("userId", that.data.userId)
+          that.getData()
+        }
+   
 
 
       },

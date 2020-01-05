@@ -14,17 +14,28 @@ Page({
   data: {
     info: {},
     cusId: '',
-    cusName:'',
-    cusNo:'',
+    cusName: '',
+    cusNo: '',
     lookPageNo: 1,
     followPageNo: 1,
     pageSize: 5,
     lookList: [],
     followList: [],
-    lookLastPage:false,
-    followLastPage:false
+    lookLastPage: false,
+    followLastPage: false
   },
-  openPhone(e){
+  changeTab(e) {
+    let index = e.detail.index
+    if (index == 0) {
+      this.getData()
+    } else if (index == 1) {
+      this.getFollowList()
+    } else if (index == 2) {
+      this.getLookList()
+    }
+
+  },
+  openPhone(e) {
     let phone = e.currentTarget.dataset.phone;
     if (phone != null) {
       wx.makePhoneCall({
@@ -79,13 +90,13 @@ Page({
   goGenjin() {
     console.log(this.data.cusNo, this.data.cusName, this.data.cusId)
     wx.navigateTo({
-      url: '/pages/write-genjin/write-genjin?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId +"&buyRent=1&promotionType=2"
+      url: '/pages/write-genjin/write-genjin?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=1&promotionType=2"
     })
 
   },
   goFeedback() {
     wx.navigateTo({
-      url: '/pages/daikan-feedback/daikan-feedback?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId +"&buyRent=1&promotionType=1",
+      url: '/pages/daikan-feedback/daikan-feedback?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=1&promotionType=1",
     })
   },
 
@@ -93,11 +104,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("options1",options)
+    console.log("options1", options)
     this.setData({
       cusId: options.cusId,
-      cusName:options.cusName,
-      cusNo:options.cusNo
+      cusName: options.cusName,
+      cusNo: options.cusNo
     })
 
     this.getData()

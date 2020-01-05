@@ -25,9 +25,9 @@ Page({
 
     secondHistoryList: [],
     rentHistoryList: [],
-    buildHistoryList: [],
+    kehuHistoryList: [],
 
-    buyOrRent:"",
+    buyOrRent: "",
   },
   toRedirect(e) {
     wx.redirectTo({
@@ -37,22 +37,39 @@ Page({
 
   handleDel() {
 
+    let type = this.data.type;
+    if (type == 1) { //清空 二手房
+
+      wx.setStorage({
+        key: 'secondHistoryList',
+        data: [],
+      })
+      this.setData({
+        secondHistoryList: []
+      })
+    }
 
 
-    // if (index == 0) {
-    //   this.setData({
-    //     type: 2
-    //   })
-    //   wx.setStorage({
-    //     key: 'secondHistoryList',
-    //     data: [],
-    //   })
-    //   this.setData({
-    //     secondHistoryList: []
-    //   })
-    // }
+    if (type == 2) { //清空 租房
+      wx.setStorage({
+        key: 'rentHistoryList',
+        data: [],
+      })
+      this.setData({
+        rentHistoryList: []
+      })
+    }
 
-   
+    if (type == 3) { //清空 客户
+      wx.setStorage({
+        key: 'kehuHistoryList',
+        data: [],
+      })
+      this.setData({
+        kehuHistoryList: []
+      })
+    }
+
 
   },
 
@@ -65,13 +82,13 @@ Page({
     // type  1二手房  2租房 3.客户 
     let type = options.type
     this.setData({
-      type:type,
-      buyOrRent: options.buyOrRent ? options.buyOrRent:'',
+      type: type,
+      buyOrRent: options.buyOrRent ? options.buyOrRent : '',
     })
-    console.log("optionszufang1", options.buyOrRent )
-    
+    console.log("optionszufang1", options.buyOrRent)
 
-  
+
+
 
 
   },
@@ -94,7 +111,7 @@ Page({
     this.setData({
       rentHistoryList: wx.getStorageSync('rentHistoryList'),
       secondHistoryList: wx.getStorageSync('secondHistoryList'),
-      buildHistoryList: wx.getStorageSync('buildHistoryList')
+      kehuHistoryList: wx.getStorageSync('kehuHistoryList')
       //  historyList: app.globalData.historyList
     })
 
