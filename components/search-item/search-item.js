@@ -6,7 +6,9 @@ import {
   rentApi
 } from "../../api/rent.js"
 
-import { kehuApi} from "../../api/kehu.js"
+import {
+  kehuApi
+} from "../../api/kehu.js"
 
 let app = getApp()
 Component({
@@ -18,8 +20,8 @@ Component({
       type: Number,
 
     },
-    buyOrRent:{
-      type:Number
+    buyOrRent: {
+      type: Number
     },
     // type 2二手 3租房 1楼盘
     hotList: {
@@ -42,8 +44,8 @@ Component({
     keyword: ''
   },
   lifetimes: {
-    attached: function () {
-     console.log("history",this.data.historyList)
+    attached: function() {
+      console.log("history", this.data.historyList)
     },
   },
   /**
@@ -55,7 +57,16 @@ Component({
     filterArr(arr) {
       let obj = {};
       arr = arr.reduce((cur, next) => {
-        obj[next.title] ? "" : obj[next.title] = true && cur.push(next);
+        obj[next.projectName] ? "" : obj[next.projectName] = true && cur.push(next);
+        return cur;
+      }, []) //设置cur默认类型为数组，并且初始值为空的数组
+      return arr
+    },
+    //数组去重
+    filterArrKehu(arr) {
+      let obj = {};
+      arr = arr.reduce((cur, next) => {
+        obj[next.name] ? "" : obj[next.name] = true && cur.push(next);
         return cur;
       }, []) //设置cur默认类型为数组，并且初始值为空的数组
       return arr
@@ -70,15 +81,15 @@ Component({
       let userId = userInfo.userid;
       let cityId = city.id;
 
-   
-// 二手房
+
+      // 二手房
       if (this.data.type == 1) {
         secondApi.getPage({
           houseName: keyword,
-          regionId: cityId,
-          pageNum:1,
-          pageSize:10,
-          userId:userId
+          // regionId: cityId,
+          pageNum: 1,
+          pageSize: 10,
+          userId: userId
         }).then(res => {
           this.setData({
             list: this.filterArr(res.list),
@@ -88,11 +99,11 @@ Component({
       }
 
 
-// 租房
+      // 租房
       if (this.data.type == 2) {
         rentApi.getPage({
           houseName: keyword,
-          regionId: cityId,
+          // regionId: cityId,
           pageNum: 1,
           pageSize: 10,
           userId: userId
@@ -106,13 +117,13 @@ Component({
 
       // 客户
 
-      if (this.data.type == 3&&this.data.buyOrRent==1) {//求购客户
+      if (this.data.type == 3 && this.data.buyOrRent == 1) { //求购客户
         kehuApi.getPage({
           cusName: keyword,
           pageNo: 1,
           pageSize: 10,
           userId: userId,
-          buyOrRent:1
+          buyOrRent: 1
         }).then(res => {
           this.setData({
             list: this.filterArr(res.list),
@@ -121,13 +132,13 @@ Component({
         })
       }
 
-      if (this.data.type == 3 && this.data.buyOrRent == 2) {//求租客户
+      if (this.data.type == 3 && this.data.buyOrRent == 2) { //求租客户
         kehuApi.getPage({
           cusName: keyword,
           pageNo: 1,
           pageSize: 10,
           userId: userId,
-          buyOrRent:2
+          buyOrRent: 2
         }).then(res => {
           this.setData({
             list: this.filterArr(res.list),
@@ -152,8 +163,8 @@ Component({
         keyword: name
       })
 
-     
-     
+
+
       if (this.data.type == 1) { //二手
         this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name);
         let secondHistoryList = wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : [];
@@ -181,27 +192,36 @@ Component({
       }
 
 
-      if (this.data.type == 3){
-        if (this.data.buyOrRent == 1){
+      if (this.data.type == 3) {
+        if (this.data.buyOrRent == 1) {
           wx.redirectTo({
             url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=0",
           })
-        }else if(this.data.buyOrRent==2){
+          let kehuBuyHistoryList = wx.getStorageSync('kehuBuyHistoryList') ? wx.getStorageSync('kehuBuyHistoryList') : [];
+
+          kehuBuyHistoryList.push(item)
+          console.log("客户buy", kehuBuyHistoryList,item)
+
+          wx.setStorage({
+            key: 'kehuBuyHistoryList',
+            data: this.filterArrKehu(kehuBuyHistoryList),
+          })
+        } else if (this.data.buyOrRent == 2) {
           wx.redirectTo({
             url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=1",
           })
+          let kehuRentHistoryList = wx.getStorageSync('kehuRentHistoryList') ? wx.getStorageSync('kehuRentHistoryList') : [];
+          kehuRentHistoryList.push(item)
+          wx.setStorage({
+            key: 'kehuRentHistoryList',
+            data: this.filterArrKehu(kehuRentHistoryList),
+          })
         }
 
-        let kehuHistoryList = wx.getStorageSync('kehuHistoryList') ? wx.getStorageSync('kehuHistoryList') : [];
-        kehuHistoryList.push(item)
-        wx.setStorage({
-          key: 'kehuHistoryList',
-          data: this.filterArr(kehuHistoryList),
-        })
+
 
       }
 
-      
 
     }
   }

@@ -1,8 +1,13 @@
 {
   "pages": [
+    "pages/index/index",
+    
+    "pages/kehu/kehu",
+    
     "pages/my/my",
     
-    "pages/index/index",
+    "pages/my-house/my-house",
+    
     
     "pages/daikan-feedback/daikan-feedback",
     
@@ -10,12 +15,11 @@
     
     "pages/my-focus-house/my-focus-house",
     "pages/choose-daikan-house/choose-daikan-house",
-    "pages/kehu/kehu",
     "pages/rent/rent",
     "pages/msg/msg",
     "pages/login/login",
     "pages/my-kehu/my-kehu",
-    "pages/my-house/my-house",
+    
     "pages/album/album",
     "pages/second-detail/second-detail",
     "pages/second/second",

@@ -129,11 +129,10 @@ Page({
         info: res,
 
       })
-      //openid存在才去判断是否已关注
-      console.log(this.data.openid)
-      if (this.data.openid) {
+      
+      if (this.data.userId) {
         this.setData({
-          isFocus: res.isFollow
+          isFocus: res.isCollect == 1 ? true : false
         })
 
       }

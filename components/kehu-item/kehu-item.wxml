@@ -1,11 +1,13 @@
+
+<wxs src="../../wxs/tools.wxs" module="tools" />
 <block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="*this">
     <view class="kehu-item"  bindtap="goDetail" data-id="{{item.id}}" data-name='{{item.name}}' data-cusno="{{item.cusNo}}">
       <view class="top flex-between">
         <view class="name">{{item.name?item.name:''}} ({{item.cusNo?item.cusNo:'-'}})</view>
         <view class="focu flex">
-          <van-icon name="like" color="#EC4613 " wx:if="{{item.isCollect==1}}" catchtap="cancelCollect" data-cusid="{{item.id}}"/>
-          <van-icon name="like-o" color="#EC4613 " wx:else catchtap="addCollect" data-cusid="{{item.id}}"/>
+          <!-- <van-icon name="like" color="#EC4613 " wx:if="{{item.isCollect==1}}" catchtap="cancelCollect" data-cusid="{{item.id}}"/>
+          <van-icon name="like-o" color="#EC4613 " wx:else catchtap="addCollect" data-cusid="{{item.id}}"/> -->
           <image src="../../assets/img/red-phone.png" class="phone" catchtap="openPhone" data-phone="{{item.phone}}"></image>
         </view>
       </view>
@@ -23,7 +25,7 @@
           <view class="price1">{{item.bed?item.bed:'-'}}</view>
         </view>
       </view>
-      <view class="date">录入日期 : {{item.lastFollowTime?item.lastFollowTime:''}}</view>
+      <view class="date">录入日期 : {{item.lastFollowTime?tools.sub(item.lastFollowTime,0,10):''}}</view>
 
     </view>
 
@@ -32,7 +34,7 @@
 </block>
 
 <block wx:else>
-  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+  <view style="margin-top:300rpx;position:relative;width:100%;height:400rpx">
 
   <no-data-comp text="暂无数据"></no-data-comp>
 </view>

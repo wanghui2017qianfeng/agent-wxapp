@@ -1,14 +1,23 @@
-<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" custom-class="customClass" bind:change="changeTab">
+<view class="fixed-tab">
+  <view class="tab-item {{index==0?'active-tab':''}}" bindtap="changeTabIndex" data-index="0">
+    <view>二手房</view>
+  </view>
+  <view class="tab-item {{index==1?'active-tab':''}}" bindtap="changeTabIndex" data-index="1">
+    <view>租房</view>
+  </view>
+</view>
+<view style="margin-top:100rpx;"></view>
+
+    <my-house-item list="{{secondList}}" bind:goDetail="goDetailSecond" wx:if="{{index==0}}"></my-house-item>
+
+
+    <my-house-item isRent='1' list="{{rentList}}" bind:goDetail="goDetailRent" wx:else></my-house-item>
+
+<!-- <van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" custom-class="customClass" bind:change="changeTab">
   <van-tab title="二手房">
-
- <my-house-item list="{{secondList}}" bind:goDetail="goDetailSecond"></my-house-item>
-
-
-
-
+    <my-house-item list="{{secondList}}" bind:goDetail="goDetailSecond"></my-house-item>
   </van-tab>
   <van-tab title=" 租房 ">
- <my-house-item isRent='1' list="{{rentList}}" bind:goDetail="goDetailRent"></my-house-item>
-
+    <my-house-item isRent='1' list="{{rentList}}" bind:goDetail="goDetailRent"></my-house-item>
   </van-tab>
-</van-tabs>
+</van-tabs> -->

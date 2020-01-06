@@ -1,14 +1,26 @@
+<view class="fixed-tab">
+  <view class="tab-item {{index==0?'active-tab':''}}" bindtap="changeTabIndex" data-index="0">
+    <view>求购客户</view>
+  </view>
+  <view class="tab-item {{index==1?'active-tab':''}}" bindtap="changeTabIndex" data-index="1">
+    <view>求租客户</view>
+  </view>
+</view>
+<view style="margin-top:100rpx;"></view>
+
+
+ <kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyData" wx:if="{{index==0}}" ></kehu-item-comp>
+ <kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent" bind:refresh="getRentData" wx:else></kehu-item-comp>
+
+
+<!-- 
 <van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab">
   <van-tab title="求购客户">
 
  <kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyData" ></kehu-item-comp>
-
-
-
-
   </van-tab>
   <van-tab title=" 求租客户 ">
  <kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent" bind:refresh="getRentData"></kehu-item-comp>
 
   </van-tab>
-</van-tabs>
+</van-tabs> -->

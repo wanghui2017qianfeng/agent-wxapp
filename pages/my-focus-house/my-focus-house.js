@@ -20,12 +20,11 @@ Page({
     secondLastPage: false,
     index: 0, //判断是二手还是租房
   },
-  changeTab(e) {
-    let index = e.detail.index;
+  changeTabIndex(e){
+    let index = e.currentTarget.dataset.index;
     this.setData({
       index: index
     })
-
   },
   goDetailSecond(e) {
     let id = e.detail;
@@ -49,13 +48,12 @@ Page({
       pageSize: this.data.rentPageSize,
     }
 
-    // wx.showLoading({
-    //   title: '正在加载',
-    //   icon: 'none'
-    // })
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
     return new Promise(ok => {
       houseCollectApi.getRentPage(model).then(res => {
-        console.log("rentlist", res)
         this.setData({
           rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
           rentLastPage: res.lastPage
@@ -74,13 +72,12 @@ Page({
       pageSize: this.data.secondPageSize,
     }
 
-    // wx.showLoading({
-    //   title: '正在加载',
-    //   icon: 'none'
-    // })
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
     return new Promise(ok => {
       houseCollectApi.getSecondPage(model).then(res => {
-        console.log("secondlist", res)
         this.setData({
           secondList: this.data.secondPageNo == 1 ? res.list : this.data.secondList.concat(res.list),
           secondLastPage: res.lastPage
@@ -139,7 +136,7 @@ Page({
     }
 
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
       icon: 'none'
     })
 
@@ -168,7 +165,7 @@ Page({
     }
 
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
       icon: 'none'
     })
     houseCollectApi.getRentPage(model).then(res => {

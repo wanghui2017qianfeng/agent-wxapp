@@ -13,9 +13,20 @@ Page({
     rentList: [],
     cusName: '',
     buyPageNo: 1,
+    buyLastPage:false,
+    rentPageNo:1,
+    rentLastPage:false,
     pageSize: 5,
     activeTab: 0,
-
+    cusNameRent: '',
+    cusNameBuy: '',
+    index: 0,
+  },
+  changeTabIndex(e) {
+    let index = e.currentTarget.dataset.index;
+    this.setData({
+      index: index
+    })
   },
   goSearchBuy() {
     wx.navigateTo({
@@ -41,7 +52,7 @@ Page({
 
   getBuyList() {
     let model = {
-      cusName: this.data.cusName,
+      cusName: this.data.cusNameBuy,
       pageNo: this.data.buyPageNo,
       buyOrRent: 1,
       pageSize: 5,
@@ -50,15 +61,16 @@ Page({
 
     kehuApi.getPage(model).then(res => {
       this.setData({
-        buyList: res.list
+        buyList: this.data.buyPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
+        buyLastPage: res.lastPage
       })
     })
 
   },
   getRentList() {
     let model = {
-      cusName: this.data.cusName,
-      pageNo: this.data.buyPageNo,
+      cusName: this.data.cusNameRent,
+      pageNo: this.data.rentPageNo,
       buyOrRent: 2,
       pageSize: 5,
       userId: this.data.userId
@@ -66,7 +78,8 @@ Page({
 
     kehuApi.getPage(model).then(res => {
       this.setData({
-        rentList: res.list
+        rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
+        rentLastPage: res.lastPage
       })
     })
 
@@ -78,10 +91,11 @@ Page({
     let userInfo = wx.getStorageSync('userInfo')
     this.setData({
       userId: userInfo.userid,
-      cusName: options.cusName ? options.cusName:'',
-      activeTab:options.activeTab
+      cusNameBuy: options.activeTab == 0 ? options.cusName : '',
+      cusNameRent: options.activeTab == 1 ? options.cusName : '',
+      activeTab: options.activeTab,
+      index: options.activeTab ? options.activeTab:0,
     })
-console.log("options====",options)
     this.getBuyList()
     this.getRentList()
   },

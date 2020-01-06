@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "我的客户资源",
+    "enablePullDownRefresh": true,
+    
   "usingComponents": {
     "kehu-item-comp": "/components/kehu-item/kehu-item"
   }

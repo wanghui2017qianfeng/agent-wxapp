@@ -118,6 +118,7 @@ page {
 .width374{
   width:374rpx;
   text-align: center;
+  color:#fff;
 
 }
 

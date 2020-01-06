@@ -25,8 +25,8 @@ Page({
 
     secondHistoryList: [],
     rentHistoryList: [],
-    kehuHistoryList: [],
-
+    kehuRentHistoryList: [],
+    kehuBuyHistoryList:[],
     buyOrRent: "",
   },
   toRedirect(e) {
@@ -60,13 +60,23 @@ Page({
       })
     }
 
-    if (type == 3) { //清空 客户
+    if (type == 3&&this.data.buyOrRent==1) { //清空 客户
       wx.setStorage({
-        key: 'kehuHistoryList',
+        key: 'kehuBuyHistoryList',
         data: [],
       })
       this.setData({
-        kehuHistoryList: []
+        kehuBuyHistoryList: []
+      })
+    }
+
+    if (type == 3 && this.data.buyOrRent == 2) { //清空 客户
+      wx.setStorage({
+        key: 'kehuRentHistoryList',
+        data: [],
+      })
+      this.setData({
+        kehuRentHistoryList: []
       })
     }
 
@@ -81,7 +91,8 @@ Page({
     this.setData({
       rentHistoryList: wx.getStorageSync('rentHistoryList'),
       secondHistoryList: wx.getStorageSync('secondHistoryList'),
-      kehuHistoryList: wx.getStorageSync('kehuHistoryList')
+      kehuRentHistoryList: wx.getStorageSync('kehuRentHistoryList'),
+      kehuBuyHistoryList: wx.getStorageSync('kehuBuyHistoryList')
 
     })
 
@@ -100,13 +111,16 @@ Page({
       this.setData({
         historyList: this.data.rentHistoryList
       })
-    }else if(type==3){
+    } else if (type == 3 && options.buyOrRent==1){//买卖
       this.setData({
-        historyList: this.data.kehuHistoryList
+        historyList: this.data.kehuBuyHistoryList
+      })
+    } else if (type == 3 && options.buyOrRent == 2) {//租赁
+      this.setData({
+        historyList: this.data.kehuRentHistoryList
       })
     }
-    console.log("搜索页的his", this.data.historyList)
-    console.log("optionszufang1", options.buyOrRent)
+console.log("history",this.data.historyList)
 
 
 

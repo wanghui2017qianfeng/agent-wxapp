@@ -57,10 +57,10 @@ page{
 
 .options {
   border-bottom: 1rpx solid #ececec;
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   padding-left: 20rpx;
-  font-size: 26rpx;
+  font-size: 30rpx;
   color:#B3B3B3;
 }
 

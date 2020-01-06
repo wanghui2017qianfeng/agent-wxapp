@@ -19,7 +19,7 @@
       <view style="text-align:center;font-size:30rpx">未查询到对应数据</view>
     </block>
   </view>
-  <block wx:else>
+  <!-- <block wx:else> -->
     <block wx:if="{{historyList.length>0}}">
       <view class="search-item flex-between">
         <view class="stext">历史搜索</view>
@@ -31,7 +31,7 @@
         </block>
       </view>
     </block>
-  </block>
+  <!-- </block> -->
 </block>
 <!-- 租房 二手房 -->
 
@@ -43,9 +43,9 @@
   <view class="search-content" wx:if="{{isInput}}">
     <block wx:if="{{list.length>0}}">
       <block wx:for="{{list}}" wx:key="*this">
-        <van-cell title="{{item.houseNo}}" clickable data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">
-          <van-radio slot="right-icon" use-icon-slot name="{{item.houseNo}}">
-            <van-icon color="{{keyword==item.houseNo?'#2F72F7':'#ffffff'}}" name="success" />
+        <van-cell title="{{item.projectName}}" clickable data-name="{{item.projectName}}" data-item="{{item}}" bindtap="onCheckClick">
+          <van-radio slot="right-icon" use-icon-slot name="{{item.projectName}}">
+            <van-icon color="{{keyword==item.projectName?'#2F72F7':'#ffffff'}}" name="success" />
           </van-radio>
         </van-cell>
       </block>
@@ -55,7 +55,7 @@
     </block>
 
   </view>
-  <block wx:else>
+  <!-- <block wx:else> -->
     <block wx:if="{{historyList.length>0}}">
       <view class="search-item flex-between">
         <view class="stext">历史搜索</view>
@@ -64,10 +64,10 @@
 
       <view class=" tag-box">
         <block wx:for="{{historyList}}" wx:key="*this">
-          <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.houseNo}}" data-item="{{item}}" bindtap="onCheckClick">{{item.houseNo}}</van-tag>
+          <van-tag color="#f5f5f5" text-color="#666666" custom-class="tag" data-name="{{item.projectName}}" data-item="{{item}}" bindtap="onCheckClick">{{item.projectName}}</van-tag>
         </block>
       </view>
-    </block>
+    <!-- </block> -->
 
   </block>
 </block>

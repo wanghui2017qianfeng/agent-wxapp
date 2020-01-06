@@ -46,11 +46,11 @@
     
   </view>
 </van-cell>
-<van-cell is-link  bindtap="goMyFoucsKehu">
+<!-- <van-cell is-link  bindtap="goMyFoucsKehu">
   <view slot="title" class="my-item">
     <image src="../../assets/img/f1.png"></image> <view class="inner-title">我关注的客户</view>
   </view>
-</van-cell>
+</van-cell> -->
 
 
 
