@@ -38,9 +38,7 @@ Page({
       userId: this.data.userId,
 
     }
-    wx.showLoading({
-      title: '正在加载',
-    })
+  
     resourceApi.getList(model).then(res => {
       this.setData({
         rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
@@ -57,9 +55,7 @@ Page({
       userId: this.data.userId,
 
     }
-    wx.showLoading({
-      title: '正在加载',
-    })
+  
     resourceApi.getList(model).then(res => {
       this.setData({
         buyList: this.data.rentPageNo == 1 ? res.list : this.data.buyList.concat(res.list),

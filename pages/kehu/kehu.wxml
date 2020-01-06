@@ -1,4 +1,4 @@
-<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'   active="{{ activeTab }}">
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000'   active="{{ activeTab }}" custom-class="customClass" >
   <van-tab title="买卖客户">
     <view class="search-box flex" bindtap="goSearchBuy">
       <image src="../../assets/img/search.png"></image>

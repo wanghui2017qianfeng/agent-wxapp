@@ -3,3 +3,6 @@
   color:#2F72F7;
   font-weight:700;
 }
+.customClass .van-tab {
+  font-size: 32rpx !important;
+}

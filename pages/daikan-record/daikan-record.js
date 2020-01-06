@@ -16,7 +16,7 @@ Page({
     typeTitle: '类型',
     typeIndex: 0,
     userId: '',
-    buyOrRent: 1,
+    buyOrRent: '',
     pageNo: 1,
     pageSize: 5,
     startDate: '',
@@ -26,7 +26,8 @@ Page({
     currentDate: new Date().getTime(),
     currentDate1: new Date().getTime(),
     miniDate: new Date(2018, 1, 1).getTime(),
-    list:[]
+    list: [],
+    lastPage:false,
   },
   openStart() {
     this.setData({
@@ -63,9 +64,9 @@ Page({
 
 
   },
-  goDaikanDetail() {
+  goDaikanDetail(e) {
     wx.navigateTo({
-      url: '/pages/daikan-detail/daikan-detail?id='+e.currentTarget.dataset.id,
+      url: '/pages/daikan-detail/daikan-detail?id=' + e.currentTarget.dataset.id,
     })
 
   },
@@ -81,19 +82,22 @@ Page({
       startDate: '',
       endDate: ''
     })
+    this.getData()
   },
-  clear() {
+  clearType() {
     this.setData({
       showContent: false,
-
+      buyOrRent: '',
     })
+    this.getData()
 
   },
   chooseType(e) {
+    // 1是购看 2是租看
     let index = e.currentTarget.dataset.index
-
     this.setData({
       typeIndex: e.currentTarget.dataset.index,
+      buyOrRent: index
     })
   },
 
@@ -135,9 +139,6 @@ Page({
       pageNo: this.data.pageNo,
       pageSize: this.data.pageSize,
       buyOrRent: this.data.buyOrRent,
-
-
-
     }
     return new Promise(ok => {
       kehuControlApi.geLookRecord(model).then(res => {
@@ -193,10 +194,47 @@ Page({
 
   },
 
+  loadInfinite() {
+
+    let model = {
+      userId: this.data.userId,
+      startDate: this.data.startDate,
+      endDate: this.data.endDate,
+      pageNo: this.data.pageNo,
+      pageSize: this.data.pageSize,
+      buyOrRent: this.data.buyOrRent,
+    }
+  
+      kehuControlApi.geLookRecord(model).then(res => {
+        let pageNo = this.data.pageNo + 1;
+        if (!res.lastPage) { //不是最后一页
+          this.setData({
+            list: this.data.pageNo == 1 ? res.list : this.data.list.concat(res.list),
+            pageNo: pageNo,
+            lastPage: res.lastPage
+
+          })
+          this.loadInfinite()
+
+        } else {
+          wx.hideLoading()
+        }
+      })
+
+
+
+
+  },  
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
+    wx.showLoading({
+      title: '正在加载',
+    })
+    this.loadInfinite();
+    wx.stopPullDownRefresh()
 
   },
 
@@ -204,7 +242,29 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    let pageNo = this.data.pageNo;
 
+    if (!this.data.lastPage) { //不是最后一页
+      this.setData({
+        pageNo: pageNo + 1,
+      })
+
+      this.getData().then(res => {
+        if (res.list.length == 0) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '没有更多啦',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
 
   /**

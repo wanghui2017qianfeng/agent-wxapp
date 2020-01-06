@@ -41,12 +41,14 @@
 <view style="margin-top:220rpx;"></view>
 <van-cell is-link bindtap="goMyFoucsHouse">
   <view slot="title" class="my-item">
-    <image src="../../assets/img/f2.png"></image>我关注的房源
+    <image src="../../assets/img/f2.png"></image>
+    <view class="inner-title">我关注的房源</view>
+    
   </view>
 </van-cell>
 <van-cell is-link  bindtap="goMyFoucsKehu">
   <view slot="title" class="my-item">
-    <image src="../../assets/img/f1.png"></image>我关注的客户
+    <image src="../../assets/img/f1.png"></image> <view class="inner-title">我关注的客户</view>
   </view>
 </van-cell>
 
@@ -54,13 +56,13 @@
 
 <van-cell is-link  bindtap="goMyHouse">
   <view slot="title" class="my-item">
-    <image src="../../assets/img/f3.png"></image>我的房源资源
+    <image src="../../assets/img/f3.png"></image> <view class="inner-title">我的房源资源</view>
   </view>
 </van-cell>
 
 <van-cell is-link  bindtap="goMyKehu">
   <view slot="title" class="my-item">
-    <image src="../../assets/img/f4.png"></image>我的客户资源
+    <image src="../../assets/img/f4.png"></image> <view class="inner-title">我的客户资源</view>
   </view>
 </van-cell>
 

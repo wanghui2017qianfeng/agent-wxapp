@@ -9,7 +9,7 @@
         <view class="focu flex">
           <van-icon name="like" color="#EC4613 " wx:if="{{item.isCollect==1}}" catchtap="cancelCollect" data-cusid="{{item.id}}" />
           <van-icon name="like-o" color="#EC4613 " wx:else catchtap="addCollect" data-cusid="{{item.id}}" />
-          <image src="../../assets/img/red-phone.png" class="phone" bindtap="openPhone" ></image>
+          <image src="../../assets/img/red-phone.png" class="phone" catchtap="openPhone" data-phone="{{item.phone}}"></image>
         </view>
       </view>
       <view class="content flex-between">
@@ -23,7 +23,7 @@
         </view>
         <view class="pingjia qu">
           <view class="flex">
-            <van-rate value="{{ 3 }}" color="#FF4657" void-color="#DCDCDC" bind:change="onChange" />
+            <van-rate value="{{ item.starLevel }}" color="#FF4657" void-color="#DCDCDC" bind:change="onChange" />
             <view style="color:#EC4613;font-size:24rpx;margin-left:23rpx;margin-top:7rpx;">{{item.days?item.days:'-'}}天掉</view>
 
           </view>

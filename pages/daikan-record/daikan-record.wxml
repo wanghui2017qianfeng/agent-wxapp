@@ -1,4 +1,6 @@
-<search-item-comp></search-item-comp>
+
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
 
 <view class="choose-wrapper" catchtouchmove='ture' bind:tap="openShow">
   <view class="memu-box">
@@ -49,7 +51,7 @@
 
 
         <view class="flex-between">
-          <view class="btn clear" catchtap="clear">重置</view>
+          <view class="btn clear" catchtap="clearType">重置</view>
           <view class="btn sure" catchtap="sure">确定</view>
         </view>
       </view>
@@ -57,7 +59,7 @@
   </view>
 </view>
 
-
+<view style="margin-top:100rpx;"></view>
 <block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="*this">
     <view class="record" bindtap="goDaikanDetail" data-id="{{item.id}}">
@@ -66,12 +68,12 @@
 
           <image src="../../assets/img/wendang.png"></image>
           <view class="kehu">{{item.cusName}}</view>
-          <view class="store">{{item.createSrore}}-{{item.createPerson}}</view>
+          <view class="store">{{item.createStore}}-{{item.createPerson}}</view>
           <view class="tag" wx:if="{{item.buyOrRent==1}}">购看</view>
           <view class="tag" wx:if="{{item.buyOrRent==2}}">租看</view>
 
         </view>
-        <view class="time">{{item.time?item.time:'-'}}分钟</view>
+        <view class="time">{{item.time?item.time:'暂无'}}</view>
       </view>
       <view class="context">{{item.context}}</view>
       <view class=" bottom">
@@ -84,7 +86,7 @@
   </block>
 </block>
 <block wx:else>
-  <view style="margin-top:150rpx;position:relative;width:100%;height:400rpx">
+  <view style="margin-top:200rpx;position:relative;width:100%;height:400rpx">
     <no-data-comp text="暂无数据"></no-data-comp>
   </view>
 </block>

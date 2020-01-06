@@ -24,29 +24,35 @@ padding:65rpx 0 101rpx 26rpx
 }
 .yeji .title{
   margin:42rpx 0 56rpx 38rpx;
+  font-size: 32rpx;
 }
 .my-yeji{
 
   text-align: center;
 }
 .my-yeji .price{
-  font-size: 23rpx;
+  font-size: 24rpx;
   color:#EB5B55;
   margin-bottom:24rpx;
 
 }
 .my-yeji .name{
-  font-size: 25rpx;
+  font-size: 26rpx;
   color:#333;
 }
 .my-item {
-  line-height: 47rpx;
+  font-size: 32rpx;
+  display:flex;
+}
+
+.inner-title{
+    font-size: 32rpx;
+    line-height:48rpx;
 }
 .my-item image{
   width:47rpx;
   height:47rpx;
   margin-right: 40rpx;
-  margin-top:10rpx
 
 }
 
@@ -57,7 +63,7 @@ padding:65rpx 0 101rpx 26rpx
   line-height: 90rpx;
   text-align: center;
   color: #333;
-  font-size: 30rpx;
+  font-size: 32rpx;
   border-radius: 14rpx;
 }
 

@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "带看记录",
+  "enablePullDownRefresh": true,
+  
   "usingComponents": {
     "search-item-comp": "/components/search-item/search-item",
       "no-data-comp": "/components/no-data/no-data"

@@ -11,13 +11,13 @@ page {
   right: 0;
 }
 
-.date{
-  width:300rpx;
-  height:60rpx;
-  line-height:60rpx;
-  padding-left:10rpx;
+.date {
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 10rpx;
   border-radius: 5rpx;
-  border:1rpx solid #cccccc;
+  border: 1rpx solid #ccc;
   font-size: 28rpx;
 }
 
@@ -247,9 +247,17 @@ page {
 
 /* choose-wrapper */
 
+.choose-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+}
+
 .choose-content {
   position: fixed;
-  top: 200rpx;
+  top: 98rpx;
   bottom: 0;
   left: 0;
   right: 0;
@@ -283,30 +291,34 @@ page {
   color: #2f72f7;
 }
 
-
-.record{
-  margin: 0 48rpx;
-  padding:48rpx 0;
-  border-bottom: 1rpx solid #F4F4F4
+.record {
+  margin: 0 30rpx;
+  padding: 48rpx 0;
+  border-bottom: 1rpx solid #f4f4f4;
 }
-.top{
+
+.top {
   line-height: 34rpx;
 }
-.top .kehu{
-  font-size: 34rpx;
+
+.top .kehu {
+  font-size: 32rpx;
 }
+
 .top image {
   width: 26rpx;
   height: 34rpx;
-  margin-right: 26rpx;
+  margin-right: 16rpx;
 }
-top .name{
+
+top .name {
   font-size: 34rpx;
 }
+
 .top .store {
   color: #999;
   font-size: 24rpx;
-  margin:0 13rpx 0rpx 34rpx;
+  margin: 0 13rpx 0rpx 25rpx;
 }
 
 .top .tag {
@@ -328,8 +340,8 @@ top .name{
 .context {
   color: #999;
   font-size: 28rpx;
-  margin-top:36rpx;
-  margin-bottom:31rpx;
+  margin-top: 36rpx;
+  margin-bottom: 31rpx;
 }
 
 .bottom image {
@@ -341,6 +353,6 @@ top .name{
 .bottom {
   color: #999;
   font-size: 28rpx;
- text-align: right;
- overflow: hidden;
+  text-align: right;
+  overflow: hidden;
 }

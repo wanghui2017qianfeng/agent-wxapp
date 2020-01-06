@@ -211,7 +211,7 @@ page {
   height: 97rpx;
   line-height: 97rpx;
   color: #333;
-  font-size: 27rpx;
+  font-size:30rpx;
   background: #fff;
   z-index: 100;
   border-bottom:2rpx solid #F4F4F4

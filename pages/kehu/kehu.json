@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "客户",
+    "enablePullDownRefresh": true,
+    
  "usingComponents": {
   "index-kehu-item-comp": "/components/index-kehu-item/index-kehu-item"
 }

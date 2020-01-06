@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "我关注的房源",
+  "enablePullDownRefresh": true,
+  
   "usingComponents": {
     "my-house-item": "/components/my-house-item/my-house-item"
   }

@@ -25,6 +25,20 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    openPhone(e) {
+      let phone = e.currentTarget.dataset.phone;
+      if (phone != null) {
+        wx.makePhoneCall({
+          phoneNumber: phone // 仅为示例，并非真实的电话号码
+        })
+      } else {
+        wx.showToast({
+          title: '暂无电话',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    },
     cancelCollect(e) {
       let userInfo = wx.getStorageSync('userInfo');
       let userId = userInfo.userid;

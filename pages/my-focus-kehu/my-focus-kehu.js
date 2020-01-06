@@ -13,7 +13,16 @@ Page({
     pageSize: 5,
     lastPage: false,
     buyList: [],
-    rentList: []
+    rentList: [],
+    index: 0, //判断是求购 求租
+  },
+
+  changeTab(e) {
+    let index = e.detail.index;
+    this.setData({
+      index: index
+    })
+
   },
   getRentData() {
     let model = {

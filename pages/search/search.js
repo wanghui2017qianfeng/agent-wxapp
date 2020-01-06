@@ -78,13 +78,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      rentHistoryList: wx.getStorageSync('rentHistoryList'),
+      secondHistoryList: wx.getStorageSync('secondHistoryList'),
+      kehuHistoryList: wx.getStorageSync('kehuHistoryList')
 
+    })
+
+    console.log("搜索框====", this.data.secondHistoryList)
     // type  1二手房  2租房 3.客户 
     let type = options.type
     this.setData({
       type: type,
       buyOrRent: options.buyOrRent ? options.buyOrRent : '',
     })
+    if (type == 1) {
+      this.setData({
+        historyList: this.data.secondHistoryList
+      })
+    }else if(type==2){
+      this.setData({
+        historyList: this.data.rentHistoryList
+      })
+    }else if(type==3){
+      this.setData({
+        historyList: this.data.kehuHistoryList
+      })
+    }
+    console.log("搜索页的his", this.data.historyList)
     console.log("optionszufang1", options.buyOrRent)
 
 
@@ -107,13 +128,8 @@ Page({
     //二手历史
 
 
-    let historyList = wx.getStorageSync('historyList')
-    this.setData({
-      rentHistoryList: wx.getStorageSync('rentHistoryList'),
-      secondHistoryList: wx.getStorageSync('secondHistoryList'),
-      kehuHistoryList: wx.getStorageSync('kehuHistoryList')
-      //  historyList: app.globalData.historyList
-    })
+  
+  
 
   },
 

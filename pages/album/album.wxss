@@ -39,7 +39,7 @@ swiper image {
   display: inline-block;
   height:40rpx;
   line-height:40rpx;
-  padding:0 12rpx;
+  padding:0 6rpx;
   border-radius:5rpx;
 }
 

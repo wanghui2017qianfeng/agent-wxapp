@@ -1,3 +1,5 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
 <view style='position: relative;'>
   <swiper interval="5000" duration="1000" bindchange="swiperChange">
     <block wx:for="{{info.houseImage}}" wx:key="id">
@@ -51,7 +53,7 @@
     <view class="info-item">
       <text class="label">入住 : </text>{{info.isKey?info.isKey:'-'}}</view>
     <view class="info-item">
-      <text class="label">发布 : </text>{{info.developerStoreId?info.developerStoreId:'-'}}</view>
+      <text class="label">发布 : </text>{{info.developerStoreId?tools.timeToZn(info.developerStoreId):'-'}}</view>
     <view class="info-item">
       <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
     <view class="info-item">

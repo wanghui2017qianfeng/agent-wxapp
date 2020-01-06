@@ -1,14 +1,8 @@
-<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab">
+<van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" custom-class="customClass" bind:change="changeTab" >
   <van-tab title="求购客户">
-
- <kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" ></kehu-item-comp>
-
-
-
-
+    <kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy"></kehu-item-comp>
   </van-tab>
   <van-tab title=" 求租客户 ">
- <kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"></kehu-item-comp>
-
+    <kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"></kehu-item-comp>
   </van-tab>
 </van-tabs>

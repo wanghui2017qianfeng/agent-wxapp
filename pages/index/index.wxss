@@ -1,78 +1,84 @@
-page{
-  padding:22rpx 25rpx 0 26rpx;
+page {
+  padding: 22rpx 25rpx 0 26rpx;
   box-sizing: border-box;
 }
 
-.top image{
-  width:64rpx;
-  height:64rpx;
+.top image {
+  width: 64rpx;
+  height: 64rpx;
 }
 
-.top .name{
-  color:#333;font-size: 30rpx;
-  margin-left:16rpx;
-line-height: 64rpx
-}
-
-.top .red{
-  color:#E63F12;
-  font-size: 26rpx;
-line-height: 64rpx
-
-}
-
-.card{
-  margin-top:35rpx;
-  height:259rpx;
-  width:100%;
-  color:#fff;
-  display: flex;
-  padding-top:22rpx;
-  box-sizing: border-box;
- position:relative;
-
-}
-.card .bg{
-  width:700rpx;
-  height:259rpx;
-  top:0;
-  left:0;right:0;
-  bottom:0;
-  position:absolute;
-}
-
-.card .content-box{
-  position: absolute;
-  top:22rpx;
-  left:0;right:0;
-  bottom:0;
-
-}
-.card  .up{
-  width:49rpx;
-  height:47rpx;
-  margin-right:44rpx;
-  margin-left:31rpx;
-}
-
-.card .name{
+.top .name {
+  color: #333;
   font-size: 30rpx;
-  margin-top:10rpx;
+  margin-left: 16rpx;
+  line-height: 64rpx;
 }
-.card .last{
+
+.top .red {
+  color: #e63f12;
+  font-size: 26rpx;
+  line-height: 64rpx;
+}
+
+.card {
+  margin-top: 35rpx;
+  height: 259rpx;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  padding-top: 22rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card .bg {
+  width: 700rpx;
+  height: 259rpx;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.card .content-box {
+  position: absolute;
+  top: 22rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.card  .up {
+  width: 49rpx;
+  height: 47rpx;
+  margin-right: 44rpx;
+  margin-left: 31rpx;
+}
+
+.card .name {
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+
+.card .last {
   font-size: 24rpx;
 }
-.card .money{
+
+.card .money {
   font-size: 21rpx;
-  margin-bottom:25rpx;
-  margin-top:20rpx;
+  margin-bottom: 25rpx;
+  margin-top: 20rpx;
 }
-.card .money text{
+
+.card .money text {
   font-size: 46rpx;
 }
-.card .yeji{
+
+.card .yeji {
   /* margin-left:180rpx; */
-  margin-top:50rpx;
+  margin-top: 50rpx;
   display: felx;
   flex-direction: column;
   justify-content: space-between;
@@ -80,85 +86,92 @@ line-height: 64rpx
   line-height: 40rpx;
 }
 
-
 .iconBox {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
   margin-bottom: 28rpx;
-  margin-top:20rpx;
+  margin-top: 20rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.bobao{
-  margin-top:20rpx;
+.bobao {
+  margin-top: 20rpx;
 }
 
-.bobao .border-r{
-border-right: 3rpx solid #CCCCCC;
-  height:86rpx;
-
+.bobao .border-r {
+  /* border-right: 3rpx solid #CCCCCC; */
+  height: 86rpx;
 }
 
-.bobao .border-r image{
-  width:78rpx;
-  height:86rpx;
+.bobao .border-r image {
+  width: 78rpx;
+  height: 86rpx;
 }
+
 .bobao .person {
-  margin:0 20rpx;
-  font-size: 22rpx;
-  width:130rpx;
+  margin: 0 15rpx;
+  font-size: 26rpx;
+  width: 130rpx;
   text-align: center;
 }
-.bobao .person image{
-  width:47rpx;
-  height:47rpx;
-  margin-bottom:5rpx;
-  margin-top:3rpx;
+
+.bobao .person image {
+  width: 47rpx;
+  height: 47rpx;
+  margin-bottom: 5rpx;
+  margin-top: 3rpx;
   border-radius: 50%;
 }
 
-.bobao  .info{
-  font-size: 24rpx;
+.bobao  .info {
+  
+
+  font-size: 26rpx;
   line-height: 40rpx;
-  margin-top:5rpx;
-  	display: -webkit-box;
-    -webkit-line-clamp:2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
+  margin-top: 5rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
 }
-.msg-center{
-  margin-top:78rpx;
+
+.msg-center {
+  margin-top: 78rpx;
 }
-.msg-center .title{
+
+.msg-center .title {
   font-size: 32rpx;
   font-weight: 700;
 }
 
-.msg-center .title image{
-    width:46rpx;
-  height:38rpx;
-  margin-right:16rpx;
+.msg-center .title image {
+  width: 46rpx;
+  height: 38rpx;
+  margin-right: 16rpx;
 }
 
-.msg-item{
-  border-bottom:1rpx solid #eeeeee;
-  padding-bottom:31rpx;
-  padding-top:28rpx;
+.msg-item {
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 31rpx;
+  padding-top: 28rpx;
 }
-.msg-title{
-  font-size: 26rpx;
-  color:#888888;
-}
-.item{
-  margin-top:27rpx;
+
+.msg-title {
   font-size: 28rpx;
-  color:#333333;
+  color: #888;
 }
-.time{
-  color:#D0D0D0;
+
+.item {
+  margin-top: 27rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.time {
+  color: #d0d0d0;
   font-size: 27rpx;
 }

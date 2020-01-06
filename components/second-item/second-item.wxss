@@ -19,37 +19,40 @@ border-bottom: 1rpx solid #eeeeee;
 }
 
 .house-item .title{
-  font-size: 30rpx;
+  font-size: 32rpx;
   color:#333;
   font-weight:bold;
+  margin-top:-5rpx;
 }
 .house-item .info{
   color:#9A9A9A;
-  font-size: 24rpx;
+  font-size: 26rpx;
 }
 .house-item .tag{
   background: #F2F3F5;
   border-radius:5rpx;
   color:#889AAE;
   font-size: 18rpx;
-  padding:10rpx 6rpx 6rpx;
+  padding:0 6rpx;
+  height:30rpx;
+  line-height:30rpx;
   margin-right:16rpx;
 }
-.house-item .price{
+/* .house-item .price{
   font-size: 25rpx;
   color:#333333;
-}
+} */
 
 .house-item .price{
   color:#EE3C52;
   font-size: 30rpx;
-  margin:0 38rpx 0 24rpx
+  margin:5rpx 38rpx 0 24rpx
 
 }
 .code{
-  font-size: 16rpx;color:#CCCCCC
+  font-size: 18rpx;color:#CCCCCC
 }
 .unit{
   font-size: 20rpx;
-  margin-top:10rpx;
+  margin-top:15rpx;
 }

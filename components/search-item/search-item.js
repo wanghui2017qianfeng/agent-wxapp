@@ -41,7 +41,11 @@ Component({
     list: [],
     keyword: ''
   },
-
+  lifetimes: {
+    attached: function () {
+     console.log("history",this.data.historyList)
+    },
+  },
   /**
    * 组件的方法列表
    */
@@ -132,8 +136,6 @@ Component({
         })
       }
 
-      console.log()
-
     },
     handleDel() {
 
@@ -150,31 +152,56 @@ Component({
         keyword: name
       })
 
-      // let historyList = app.globalData.historyList;
-      // historyList.push(item)
-      // app.globalData.historyList = this.filterArr(historyList)
-
+     
      
       if (this.data.type == 1) { //二手
-        this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name)
+        this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name);
+        let secondHistoryList = wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : [];
+        secondHistoryList.push(item)
+        wx.setStorage({
+          key: 'secondHistoryList',
+          data: this.filterArr(secondHistoryList),
+        })
+
+        console.log("二手房历史列表", wx.getStorageSync('secondHistoryList'))
       }
 
       if (this.data.type == 2) { //租房
         wx.redirectTo({
           url: '/pages/rent/rent?houseName=' + name,
         })
+        let rentHistoryList = wx.getStorageSync('rentHistoryList') ? wx.getStorageSync('rentHistoryList') : [];
+        rentHistoryList.push(item)
+        wx.setStorage({
+          key: 'rentHistoryList',
+          data: this.filterArr(rentHistoryList),
+        })
+
+
       }
 
-      if (this.data.type == 3&&this.data.buyOrRent==1 ) { //求购客户
-        wx.redirectTo({
-          url: '/pages/kehu/kehu?cusName=' + name+"&activeTab=0",
+
+      if (this.data.type == 3){
+        if (this.data.buyOrRent == 1){
+          wx.redirectTo({
+            url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=0",
+          })
+        }else if(this.data.buyOrRent==2){
+          wx.redirectTo({
+            url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=1",
+          })
+        }
+
+        let kehuHistoryList = wx.getStorageSync('kehuHistoryList') ? wx.getStorageSync('kehuHistoryList') : [];
+        kehuHistoryList.push(item)
+        wx.setStorage({
+          key: 'kehuHistoryList',
+          data: this.filterArr(kehuHistoryList),
         })
+
       }
-      if (this.data.type == 3 && this.data.buyOrRent == 2) { //求租客户
-        wx.redirectTo({
-          url: '/pages/kehu/kehu?cusName=' + name + "&activeTab=1",
-        })
-      }
+
+      
 
     }
   }

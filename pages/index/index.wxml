@@ -41,7 +41,7 @@
 <van-grid column-num="4" border="{{ false }}">
   <van-grid-item use-slot wx:for="{{ list }}" wx:key="index" class="grid" bindtap="goBuild" data-index="{{index}}">
     <image src="{{item.src}}" class="iconBox"></image>
-    <view style="font-size:29rpx;">{{item.text?item.text:'暂无'}}</view>
+    <view style="font-size:30rpx;">{{item.text?item.text:'暂无'}}</view>
   </van-grid-item>
 </van-grid>
 

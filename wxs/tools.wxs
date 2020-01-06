@@ -14,10 +14,8 @@ var formatDate = function(str) {
 var toFixed = function(str, num) {
   if (typeof str == 'string') {
     return Number(str).toFixed(num)
-
   } else {
     return str.toFixed(num)
-
   }
 }
 
@@ -32,10 +30,18 @@ var floorName = function (floor) {
   }
 }
 
+var timeToZn=function(str){
+  var time= str.substring(0,9);
+  var arr = time.split("-");
+  return arr[0]+'年'+arr[1]+"月"+arr[2]+"日"
+
+}
+
 module.exports = {
   sub: sub,
   split: split,
   formatDate: formatDate,
   toFixed: toFixed,
   floorName: floorName,
+  timeToZn: timeToZn
 };
