@@ -16,6 +16,30 @@
   background: #ffffff
 }
 
+
+.search-box {
+  width: 696.5rpx;
+  height: 62.5rpx;
+  line-height: 62.5rpx;
+  background: #f4f3f3;
+  box-sizing: border-box;
+  margin: 36rpx 28rpx;
+  border-radius: 18rpx;
+}
+
+.search-box image {
+  width: 35rpx;
+  height: 35rpx;
+  margin: 16rpx 12rpx 16rpx 23rpx;
+}
+
+.search-box input {
+  height: 62.5rpx;
+  width: 660rpx;
+  font-size: 28rpx;
+}
+
+
 .bottom-btn {
   background: #2F72F7;
   color: #fff;

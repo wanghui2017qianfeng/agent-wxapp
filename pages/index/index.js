@@ -179,18 +179,33 @@ Page({
   onShow: function() {
     let userInfo = wx.getStorageSync('userInfo')
     console.log(userInfo)
-    this.setData({
-      userId: userInfo.userid
-    })
-    this.getBobao()
-    this.getFour()
-    this.getMyInfo()
-    let city = wx.getStorageSync('city')
-    if(!city.id){
 
-      this.loadCurrentCity()
+    if(userInfo.userid){
+      console.log("有userId")
+      this.setData({
+        userId: userInfo.userid
+      })
+      this.getBobao()
+      this.getFour()
+      this.getMyInfo()
+      let city = wx.getStorageSync('city')
+      if (!city.id) {
 
+        this.loadCurrentCity()
+
+      }
+    }else{
+      wx.showToast({
+        title: '请先登录',
+        icon:'none'
+      })
+      this.setData({
+        bobaoInfo: {}, //播报
+        myInfo: {}, //顶部业绩
+        infoList: [], //底部四个信息
+      })
     }
+    
 
 
   }

@@ -1,4 +1,3 @@
-
 <view class="fixed-tab">
   <view class="tab-item {{index==0?'active-tab':''}}" bindtap="changeTabIndex" data-index="0">
     <view>买卖客户</view>
@@ -9,21 +8,21 @@
 </view>
 <view style="margin-top:130rpx;"></view>
 <view wx:if="{{index==0}}">
- <view class="search-box flex" bindtap="goSearchBuy">
-      <image src="../../assets/img/search.png"></image>
-      <input value="{{cusNameBuy}}" placeholder="请输入客户姓名或客户编号" readonly></input>
-    </view>
-    <index-kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyList"></index-kehu-item-comp>
+  <view class="search-box flex" bindtap="goSearchBuy">
+    <image src="../../assets/img/search.png"></image>
+    <input value="{{cusNameBuy}}" placeholder="请输入客户姓名或客户编号" readonly></input>
+  </view>
+  <index-kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyList"></index-kehu-item-comp>
 
 </view>
 
 <view wx:else>
 
- <view class="search-box flex" bindtap="goSearchRent">
-      <image src="../../assets/img/search.png"></image>
-      <input value="{{cusNameRent}}" placeholder="请输入客户姓名或客户编号" readonly></input>
-    </view>
-    <index-kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent"  bind:refresh="getRentList"></index-kehu-item-comp>
+  <view class="search-box flex" bindtap="goSearchRent">
+    <image src="../../assets/img/search.png"></image>
+    <input value="{{cusNameRent}}" placeholder="请输入客户姓名或客户编号" readonly></input>
+  </view>
+  <index-kehu-item-comp list="{{rentList}}" bind:goDetail="goDetailRent" bind:refresh="getRentList"></index-kehu-item-comp>
 </view>
 
 

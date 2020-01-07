@@ -170,7 +170,7 @@
     <second-item list="{{list}}" bind:goDetail="goDetail"></second-item>
   </block>
   <view wx:else style="margin-top:300rpx;">
-    <!-- <no-data-comp text="没有找到相关房源"></no-data-comp> -->
+ 
     <view class="no-data">
       <image src="../../assets/img/wushuju.png"></image>
       <view class='text'>没有找到相关房源</view>

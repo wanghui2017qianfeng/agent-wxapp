@@ -9,6 +9,7 @@ import {
 import {
   kehuApi
 } from "../../api/kehu.js"
+import { kehuControlApi} from "../../api/kehuFollow.js"
 
 let app = getApp()
 Component({
@@ -83,7 +84,7 @@ Component({
 
 
       // 二手房
-      if (this.data.type == 1) {
+      if (this.data.type == 1 ) {
         secondApi.getPage({
           houseName: keyword,
           // regionId: cityId,
@@ -99,7 +100,7 @@ Component({
       }
 
 
-      // 租房
+      // 租房 和带看租赁房源
       if (this.data.type == 2) {
         rentApi.getPage({
           houseName: keyword,
@@ -146,6 +147,41 @@ Component({
           })
         })
       }
+
+      // 二手房带看
+      if ( this.data.type == 4) {
+        kehuControlApi.getSecondPage({
+          condition: keyword,
+          // regionId: cityId,
+          pageNo: 1,
+          pageSize: 10,
+          userId: userId
+        }).then(res => {
+          this.setData({
+            list: this.filterArr(res.list),
+            isInput: keyword ? true : false
+          })
+        })
+      }
+
+
+      // 租房 和带看租赁房源
+      if ( this.data.type == 5) {
+        kehuControlApi.getRentPage({
+          condition: keyword,
+          // regionId: cityId,
+          pageNo: 1,
+          pageSize: 10,
+          userId: userId
+        }).then(res => {
+          this.setData({
+            list: this.filterArr(res.list),
+            isInput: keyword ? true : false
+          })
+        })
+      }
+
+
 
     },
     handleDel() {
@@ -200,7 +236,7 @@ Component({
           let kehuBuyHistoryList = wx.getStorageSync('kehuBuyHistoryList') ? wx.getStorageSync('kehuBuyHistoryList') : [];
 
           kehuBuyHistoryList.push(item)
-          console.log("客户buy", kehuBuyHistoryList,item)
+          console.log("客户buy", kehuBuyHistoryList, item)
 
           wx.setStorage({
             key: 'kehuBuyHistoryList',
@@ -217,7 +253,44 @@ Component({
             data: this.filterArrKehu(kehuRentHistoryList),
           })
         }
+      }
 
+
+
+
+      if (this.data.type == 4) { //二手  选择带看房源
+        // wx.redirectTo({url: '/pages/choose-daikan-house/choose-daikan-house?isSell=1&condition=' + name})
+        var pages = getCurrentPages();   //当前页面
+        var prevPage = pages[pages.length - 2];   //上一页面
+        prevPage.setData({
+          //直接给上一个页面赋值
+          isSell:1,
+          condition:name
+        });
+
+        wx.navigateBack({
+          delta: 1
+        })
+        let secondLookHistoryList = wx.getStorageSync('secondLookHistoryList') ? wx.getStorageSync('secondLookHistoryList') : [];
+        secondLookHistoryList.push(item)
+        wx.setStorage({
+          key: 'secondLookHistoryList',
+          data: this.filterArr(secondLookHistoryList),
+        })
+
+        console.log("二手房历史列表", wx.getStorageSync('secondHistoryList'))
+      }
+
+      if (this.data.type == 5) { //租房 选择带看房源
+        wx.redirectTo({
+          url: '/pages/choose-daikan-house/choose-daikan-house?isSell=2&condition=' + name,
+        })
+        let rentLookHistoryList = wx.getStorageSync('rentLookHistoryList') ? wx.getStorageSync('rentLookHistoryList') : [];
+        rentLookHistoryList.push(item)
+        wx.setStorage({
+          key: 'rentLookHistoryList',
+          data: this.filterArr(rentLookHistoryList),
+        })
 
 
       }

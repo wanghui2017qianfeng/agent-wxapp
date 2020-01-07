@@ -356,3 +356,21 @@ top .name {
   text-align: right;
   overflow: hidden;
 }
+
+
+.no-data {
+  text-align: center
+}
+
+.no-data image {
+  width: 257rpx;
+  height: 169rpx;
+  margin:0 auto;
+}
+
+.no-data .text {
+  margin-top: 31rpx;
+  font-size: 27rpx;
+  color: #333;
+  text-align: center;
+}

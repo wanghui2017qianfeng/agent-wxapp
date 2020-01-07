@@ -27,6 +27,8 @@ Page({
     rentHistoryList: [],
     kehuRentHistoryList: [],
     kehuBuyHistoryList:[],
+    rentLookHistoryList:[],
+    secondLookHistoryList:[],
     buyOrRent: "",
   },
   toRedirect(e) {
@@ -80,6 +82,26 @@ Page({
       })
     }
 
+    if(type==4){ //选择房源 买卖
+      wx.setStorage({
+        key: 'secondLookHistoryList',
+        data: [],
+      })
+      this.setData({
+        secondLookHistoryList: []
+      })
+    }
+
+    if (type == 4) { //选择房源 租房
+      wx.setStorage({
+        key: 'rentLookHistoryList',
+        data: [],
+      })
+      this.setData({
+        rentLookHistoryList: []
+      })
+    }
+
 
   },
 
@@ -92,7 +114,9 @@ Page({
       rentHistoryList: wx.getStorageSync('rentHistoryList'),
       secondHistoryList: wx.getStorageSync('secondHistoryList'),
       kehuRentHistoryList: wx.getStorageSync('kehuRentHistoryList'),
-      kehuBuyHistoryList: wx.getStorageSync('kehuBuyHistoryList')
+      kehuBuyHistoryList: wx.getStorageSync('kehuBuyHistoryList'),
+      secondLookHistoryList: wx.getStorageSync('secondLookHistoryList'),
+      rentLookHistoryList: wx.getStorageSync('rentLookHistoryList'),
 
     })
 
@@ -118,6 +142,14 @@ Page({
     } else if (type == 3 && options.buyOrRent == 2) {//租赁
       this.setData({
         historyList: this.data.kehuRentHistoryList
+      })
+    } else if (type == 4){//选择房源 买卖房源  二手房
+      this.setData({
+        historyList: this.data.secondLookHistoryList
+      })
+    } else if (type == 5) {//选择房源 租赁房源  租房
+      this.setData({
+        historyList: this.data.rentLookHistoryList
       })
     }
 console.log("history",this.data.historyList)

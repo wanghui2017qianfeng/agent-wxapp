@@ -19,9 +19,16 @@ Page({
     lastPage: false,
   },
   goSearch(){
-// wx.navigateTo({
-//   url: '/pages/search/search?type=',
-// })
+    if(this.data.isSell==1){//二手房
+      wx.navigateTo({
+        url: '/pages/search/search?type=4',//买卖带看房源
+      })
+    }else { //租房
+      wx.navigateTo({
+        url: '/pages/search/search?type=5',//租赁带看房源
+      })
+    }
+
   },
   submit(){
     this.houseItem.submit()
@@ -80,7 +87,8 @@ Page({
     console.log("userInfo", userInfo)
     this.setData({
       userId: userInfo.userid,
-      isSell: options.isSell
+      isSell: options.isSell,
+      condition: options.condition ? options.condition:'',
     })
     this.getData()
     this.houseItem = this.selectComponent('#houseItem');
@@ -97,6 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.getData()
 
   },
 

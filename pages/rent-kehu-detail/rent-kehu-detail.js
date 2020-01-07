@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userId:'',
     info: {},
     cusId: '',
     cusName: '',
@@ -22,7 +23,22 @@ Page({
     lookList: [],
     followList: [],
     lookLastPage: false,
-    followLastPage: false
+    followLastPage: false,
+  index: 0, //判断是不是详情,跟进,带看
+  },
+  changeTab(e) {
+    let index = e.detail.index
+    this.setData({
+      index: index
+    })
+    if (index == 0) {
+      this.getData()
+    } else if (index == 1) {
+      this.getFollowList()
+    } else if (index == 2) {
+      this.getLookList()
+    }
+
   },
   openPhone(e) {
     let phone = e.currentTarget.dataset.phone;
@@ -54,10 +70,16 @@ Page({
       pageNo: this.data.followPageNo,
       pageSize: this.data.pageSize
     }
-    kehuControlApi.getFollowList(model).then(res => {
-      this.setData({
-        followList: this.data.followPageNo == 1 ? res.list : this.data.followList.concat(res.list),
-        followLastPage: res.lastPage
+    wx.showLoading({
+      title: '加载中',
+    })
+    return new Promise(ok => {
+      kehuControlApi.getFollowList(model).then(res => {
+        this.setData({
+          followList: this.data.followPageNo == 1 ? res.list : this.data.followList.concat(res.list),
+          followLastPage: res.lastPage
+        })
+        wx.hideLoading()
       })
     })
   },
@@ -66,12 +88,22 @@ Page({
     let model = {
       customerId: this.data.cusId,
       pageNo: this.data.lookPageNo,
-      pageSize: this.data.pageSize
+      pageSize: this.data.pageSize,
+      userId: this.data.userId,
+
     }
-    kehuControlApi.getLookList(model).then(res => {
-      this.setData({
-        lookList: this.data.lookPageNo == 1 ? res.list : this.data.lookList.concat(res.list),
-        lookLastPage: res.lastPage
+
+    wx.showLoading({
+      title: '加载中',
+    })
+
+    return new Promise(ok => {
+      kehuControlApi.getLookList(model).then(res => {
+        this.setData({
+          lookList: this.data.lookPageNo == 1 ? res.list : this.data.lookList.concat(res.list),
+          lookLastPage: res.lastPage
+        })
+        wx.hideLoading()
       })
     })
   },
@@ -94,10 +126,13 @@ Page({
    */
   onLoad: function (options) {
     console.log("options1", options)
+    let userInfo = wx.getStorageSync('userInfo')
     this.setData({
       cusId: options.cusId,
       cusName: options.cusName,
-      cusNo: options.cusNo
+      cusNo: options.cusNo,
+      userId: userInfo.userid,
+
     })
 
     this.getData()
@@ -126,7 +161,59 @@ Page({
   onHide: function () {
 
   },
+  loadInfiniteFollow() {
 
+    let model = {
+      customerId: this.data.cusId,
+      pageNo: this.data.followPageNo,
+      pageSize: this.data.pageSize
+    }
+    wx.showLoading({
+      title: '加载中',
+    })
+    kehuControlApi.getFollowList(model).then(res => {
+
+
+      let followPageNo = this.data.followPageNo + 1;
+      if (!res.lastPage) { //不是最后一页
+        this.setData({
+          followList: this.data.followPageNo == 1 ? res.list : this.data.followList.concat(res.list),
+          followPageNo: followPageNo,
+          followLastPage: res.lastPage
+
+        })
+        this.loadInfiniteFollow()
+
+      } else {
+        wx.hideLoading()
+      }
+    })
+  },
+
+  loadInfiniteLook() {
+    let model = {
+      customerId: this.data.cusId,
+      pageNo: this.data.lookPageNo,
+      pageSize: this.data.pageSize,
+      userId:this.data.userId,
+    }
+    kehuControlApi.getLookList(model).then(res => {
+
+      let lookPageNo = this.data.lookPageNo + 1;
+      if (!res.lastPage) { //不是最后一页
+        this.setData({
+          lookList: this.data.lookPageNo == 1 ? res.list : this.data.lookList.concat(res.list),
+          lookPageNo: lookPageNo,
+          lookLastPage: res.lastPage
+
+        })
+        this.loadInfiniteLook()
+
+      } else {
+        wx.hideLoading()
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面卸载
    */

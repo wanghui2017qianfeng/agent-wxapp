@@ -16,7 +16,7 @@ Page({
     typeTitle: '类型',
     typeIndex: 0,
     userId: '',
-    buyOrRent: '',
+    buyOrRent: 1,
     pageNo: 1,
     pageSize: 5,
     startDate: '',
@@ -146,6 +146,8 @@ Page({
           list: this.data.pageNo == 1 ? res.list : this.data.list.concat(res.list),
           lastPage: res.lastPage
         })
+
+        console.log("list",res.list)
         wx.hideLoading()
         ok(res)
       })
