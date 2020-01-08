@@ -186,7 +186,7 @@ Component({
     },
     handleDel() {
 
-      this.triggerEvent('handleDel')
+      this.triggerEvent('handleDel',this.data.type)
     },
     onCheckClick(e) {
       console.log("点击")

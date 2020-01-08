@@ -38,7 +38,7 @@ Page({
   },
 
   handleDel() {
-
+console.log("删除",this.data.type)
     let type = this.data.type;
     if (type == 1) { //清空 二手房
 
