@@ -19,10 +19,15 @@ border-bottom: 1rpx solid #eeeeee;
 }
 
 .house-item .title{
-  font-size: 32rpx;
-  color:#333;
-  font-weight:bold;
-  margin-top:-5rpx;
+   font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  margin-top: -5rpx;
+  width:454rpx;
+overflow:hidden; 
+text-overflow:ellipsis;
+white-space:nowrap;
+
 }
 .house-item .info{
   color:#9A9A9A;

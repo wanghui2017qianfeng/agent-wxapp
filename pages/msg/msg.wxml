@@ -1,17 +1,20 @@
-<view class="msg-center">
-<block wx:if="{{list.length>0}}">
-<block wx:for="{{list}}" wx:key="*this">
-<view class="msg-item">
-  <view class="msg-title">{{item.context}}</view>
-  <view class="flex-between item">
-    <view class="msg1">{{item.type}}</view>
-    <view class="time">{{item.date}}</view>
-  </view>
-</view>
-</block>
-</block>
 
- <block wx:else>
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
+<view class="msg-center">
+  <block wx:if="{{list.length>0}}">
+    <block wx:for="{{list}}" wx:key="*this">
+      <view class="msg-item">
+        <view class="msg-title">{{item.context!=null?item.context:'暂无'}}</view>
+        <view class="flex-between item">
+          <view class="msg1">{{item.type?item.type:'暂无'}}</view>
+          <view class="time">{{item.date?tools.sub(item.date,0,10):'暂无'}}</view>
+        </view>
+      </view>
+    </block>
+  </block>
+
+  <block wx:else>
     <view style="padding-top:200rpx;height:300rpx;">
       <no-data-comp text="暂无消息"></no-data-comp>
     </view>

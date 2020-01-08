@@ -21,7 +21,7 @@
           <view class="price">{{item.area?item.area:'-'}}</view>
         </view>
         <view class="pingjia qu">
-          <van-rate value="{{ item.starLevel  }}" color="#FF4657" void-color="#DCDCDC" readonly />
+          <van-rate value="{{ item.starLevel  }}" color="#FF4657" void-color="#DCDCDC" readonly   />
           <view class="price1">{{item.bed?item.bed:'-'}}</view>
         </view>
       </view>

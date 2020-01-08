@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     
+      "pages/buy-kehu-detail/buy-kehu-detail",
+    
     "pages/kehu/kehu",
     
     "pages/my/my",
@@ -28,7 +30,7 @@
     "pages/write-genjin/write-genjin",
     "pages/daikan-detail/daikan-detail",
     "pages/search/search",
-    "pages/buy-kehu-detail/buy-kehu-detail",
+ 
     "pages/genjin-record/genjin-record",
     "pages/genjin/genjin",
     "pages/rent-detail/rent-detail",

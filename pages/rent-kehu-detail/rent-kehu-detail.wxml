@@ -103,7 +103,7 @@
       </view>
       <view class="box-item">
         <view class="label">面积:</view>
-        <view>{{info.acreage?info.acreage+'㎡':''}}</view>
+        <view>{{info.acreage?info.acreage:''}}</view>
       </view>
       <view class="box-item">
         <view class="label">价格:</view>
@@ -127,21 +127,21 @@
       </view>
       <view class="box-item">
         <view class="label">楼层:</view>
-        <view>{{info.floorMin?info.floorMin:''}}{{info.floorMax?info.floorMax:''}}</view>
+           <view>{{info.floorMin?info.floorMin+'层':''}}-{{info.floorMax?info.floorMax+'层':''}}</view>
       </view>
       <view class="box-item" style="border:none">
         <view class="label"></view>
-        <view>{{info.bottom?info.bottom:''}}{{info.top?info.top:''}}</view>
+         <view class="flex"><view style="margin-right:40rpx;">{{info.bottom?info.bottom:''}}</view><view>{{info.top?info.top:''}}</view></view>
       </view>
       <view class="box-item">
         <view class="label">付款方式:</view>
         <view>{{info.pay?info.pay:''}}</view>
       </view>
-      <view class="box-item">
+      <view class="box-item"  style="height:auto;min-height:45px;">
         <view class="label">求购商圈:</view>
         <view>
           <block wx:for="{{info.circles}}" wx:key="*this">
-            {{item.key?info.key+' ':''}}
+            {{item.name?item.name+' ':''}}
           </block>
         </view>
       </view>

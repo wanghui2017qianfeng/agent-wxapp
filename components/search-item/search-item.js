@@ -202,7 +202,17 @@ Component({
 
 
       if (this.data.type == 1) { //二手
-        this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name);
+        // this.triggerEvent('toRedirect', '/pages/second/second?houseName=' + name);
+        var pages = getCurrentPages();   //当前页面
+        var prevPage = pages[pages.length - 2];   //上一页面
+        prevPage.setData({
+          //直接给上一个页面赋值
+          houseName: name
+        });
+
+        wx.navigateBack({
+          delta: 1
+        })
         let secondHistoryList = wx.getStorageSync('secondHistoryList') ? wx.getStorageSync('secondHistoryList') : [];
         secondHistoryList.push(item)
         wx.setStorage({

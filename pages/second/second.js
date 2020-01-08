@@ -33,8 +33,8 @@ Page({
 
     showSearch: true,
     areaTitle: '区域',
-    offerText: '价格',
-    bedroomText: '户型',
+    offerText: '售价',
+    bedroomText: '居室',
     offerList: [{
         text: '不限',
         value: 1,
@@ -714,12 +714,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let userInfo = wx.getStorageSync('userInfo')
-    this.setData({
-      userId: userInfo.userid,
-      houseName: options.houseName
-    })
-    this.getData()
+
+    
   },
 
   /**
@@ -745,15 +741,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let userInfo = wx.getStorageSync('userInfo')
-    this.setData({
-      userId: userInfo.userid
-    })
-
     let city = wx.getStorageSync('city');
 
     cityApi.getArea(city.id).then(res => {
-      console.log('q区域', res)
       res.unshift({
         name: '不限',
         id: ''
@@ -763,11 +753,18 @@ Page({
         areaList: res
       })
       this.getCircleList(res[0].id)
-      wx.showLoading({
-        title: '正在加载',
-      })
-      this.getData()
+
     })
+    let userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userId: userInfo.userid,
+
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.getData()
+
   },
 
   /**
