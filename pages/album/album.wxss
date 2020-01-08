@@ -8,14 +8,23 @@ page {
   top: 0;
 }
 
-swiper {
-  height: 635rpx;
-  margin-top: 228rpx;
-  overflow: hidden;
+.swiper {
+  height: 358px;
+  margin-top: 94rpx;
 }
+.swiper-item{
+  height: 358px;
+width:100%;
+}
+.size{
+  color:#fff;
+  font-size: 36rpx;
+  text-align: center;
+margin-top:20rpx;
 
-swiper image {
-  width: 100%;
+}
+.swiper image {
+  height: 358px;
 }
 
 .typeList {

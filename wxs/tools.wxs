@@ -31,7 +31,7 @@ var floorName = function (floor) {
 }
 
 var timeToZn=function(str){
-  var time= str.substring(0,9);
+  var time= str.substring(0,10);
   var arr = time.split("-");
   return arr[0]+'年'+arr[1]+"月"+arr[2]+"日"
 

@@ -5,7 +5,7 @@
 <block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="*this">
     <view class="house-item flex house-item1">
-      <van-checkbox shape="square" checked-color="#666666" icon-size="14" name="{{item.houseId}}-{{item.title}}">
+      <van-checkbox shape="square" checked-color="#666666" icon-size="14" name="{{item.houseId}}-{{item.projectName}}{{item.houseNo}}">
         <view class="flex" bindtap="goDetail" data-id="{{item.id}}">
           <image class="roomImg" src="{{item.firstImgUrl}}" wx:if="{{item.firstImgUrl}}"></image>
           <view wx:else class="zanwuPic">暂无图片</view>

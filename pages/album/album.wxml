@@ -1,14 +1,16 @@
-<swiper indicator-dots="true" interval="5000" duration="1000">
+<swiper indicator-dots="true" interval="5000" duration="1000" class="swiper">
   <block wx:for="{{typeList[typeAct].imgs}}" wx:key="{{index}}">
-    <swiper-item>
-      <image src="{{item.imageUrl}}" class="slide-image" mode="widthFix" />
+    <swiper-item class="swiper-item">
+      <image src="{{item.imageUrl}}"/>
+      
     </swiper-item>
   </block>
 </swiper>
+ <view class="size">375x358</view>
 <view class='typeList'>
 	<view  bindtap='thisType' class="albumLi {{typeAct==index?'greenThis':''}}" wx:for="{{typeList}}" wx:key="{{index}}" data-index="{{index}}">
   
   <view>{{item.name}}({{item.imgs.length}})</view>
- 
+
 </view>
 </view>

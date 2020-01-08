@@ -53,7 +53,7 @@
     <view class="info-item">
       <text class="label">单价 : </text>{{info.univalent?tools.toFixed(info.univalent,2)+"元/㎡":'-'}}</view>
     <view class="info-item">
-      <text class="label">挂牌 : </text>{{info.developerStoreId?info.developerStoreId:'-'}}</view>
+      <text class="label">挂牌 : </text>{{info.developerStoreId?tools.timeToZn(info.developerStoreId):'-'}}</view>
     <view class="info-item">
       <text class="label">朝向 : </text>{{info.towardName?info.towardName:'-'}}</view>
     <view class="info-item">
@@ -61,7 +61,7 @@
     <view class="info-item">
       <text class="label">楼型 : </text>{{info.buildingStructureName?info.buildingStructureName:'-'}}</view>
     <view class="info-item">
-      <text class="label">年代 : </text>{{info.buildingYears?tools.sub(info.buildingYears,0,4):'-'}}</view>
+      <text class="label">年代 : </text>{{info.years?info.years+'年':'-'}}</view>
 
     <view class="info-item">
       <text class="label">装修 : </text>{{info.decorateName?info.decorateName:'-'}}</view>

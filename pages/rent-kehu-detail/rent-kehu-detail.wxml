@@ -109,10 +109,7 @@
         <view class="label">价格:</view>
         <view>{{info.price?info.price:''}}</view>
       </view>
-      <view class="box-item">
-        <view class="label">购房资质:</view>
-        <view>{{info.seniority?info.seniority:''}}</view>
-      </view>
+     
       <view class="box-item">
         <view class="label">朝向:</view>
         <view>{{info.toward?info.toward:''}}</view>

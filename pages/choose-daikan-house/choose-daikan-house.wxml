@@ -2,7 +2,7 @@
   <!-- <search-item bindtap="goSearch"></search-item> -->
   <view class="search-box flex" bindtap="goSearch">
     <image src="../../assets/img/search.png"></image>
-    <input value="{{condition}}" placeholder="请输入客户姓名或客户编号" readonly></input>
+    <input value="{{condition}}" placeholder="请输入楼盘名,房源编号或维护人姓名" readonly></input>
   </view>
 </view>
 

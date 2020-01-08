@@ -26,9 +26,9 @@ Page({
     secondHistoryList: [],
     rentHistoryList: [],
     kehuRentHistoryList: [],
-    kehuBuyHistoryList:[],
-    rentLookHistoryList:[],
-    secondLookHistoryList:[],
+    kehuBuyHistoryList: [],
+    rentLookHistoryList: [],
+    secondLookHistoryList: [],
     buyOrRent: "",
   },
   toRedirect(e) {
@@ -38,7 +38,7 @@ Page({
   },
 
   handleDel() {
-console.log("删除",this.data.type)
+    console.log("删除", this.data.type)
     let type = this.data.type;
     if (type == 1) { //清空 二手房
 
@@ -62,7 +62,7 @@ console.log("删除",this.data.type)
       })
     }
 
-    if (type == 3&&this.data.buyOrRent==1) { //清空 客户
+    if (type == 3 && this.data.buyOrRent == 1) { //清空 客户
       wx.setStorage({
         key: 'kehuBuyHistoryList',
         data: [],
@@ -82,7 +82,7 @@ console.log("删除",this.data.type)
       })
     }
 
-    if(type==4){ //选择房源 买卖
+    if (type == 4) { //选择房源 买卖
       wx.setStorage({
         key: 'secondLookHistoryList',
         data: [],
@@ -101,7 +101,9 @@ console.log("删除",this.data.type)
         rentLookHistoryList: []
       })
     }
-
+this.setData({
+  historyList:[]
+})
 
   },
 
@@ -131,28 +133,28 @@ console.log("删除",this.data.type)
       this.setData({
         historyList: this.data.secondHistoryList
       })
-    }else if(type==2){
+    } else if (type == 2) {
       this.setData({
         historyList: this.data.rentHistoryList
       })
-    } else if (type == 3 && options.buyOrRent==1){//买卖
+    } else if (type == 3 && options.buyOrRent == 1) { //买卖
       this.setData({
         historyList: this.data.kehuBuyHistoryList
       })
-    } else if (type == 3 && options.buyOrRent == 2) {//租赁
+    } else if (type == 3 && options.buyOrRent == 2) { //租赁
       this.setData({
         historyList: this.data.kehuRentHistoryList
       })
-    } else if (type == 4){//选择房源 买卖房源  二手房
+    } else if (type == 4) { //选择房源 买卖房源  二手房
       this.setData({
         historyList: this.data.secondLookHistoryList
       })
-    } else if (type == 5) {//选择房源 租赁房源  租房
+    } else if (type == 5) { //选择房源 租赁房源  租房
       this.setData({
         historyList: this.data.rentLookHistoryList
       })
     }
-console.log("history",this.data.historyList)
+    console.log("history", this.data.historyList)
 
 
 
@@ -174,8 +176,8 @@ console.log("history",this.data.historyList)
     //二手历史
 
 
-  
-  
+
+
 
   },
 
