@@ -6,9 +6,9 @@ var split = function(str, p) {
   return str.split(p)
 }
 // 2019-12-30 17:24:12=>2019/12/30
-var formatDate = function(str) {
-  var date = str.substring(0, 9)
-  return date.split("-").join("/")
+var formatDate = function(str,str1) {
+  var date = str.substring(0, 10)
+  return date.split("-").join(str1)
 }
 
 var toFixed = function(str, num) {
@@ -37,11 +37,34 @@ var timeToZn=function(str){
 
 }
 
+var toStar=function(str){
+  if(str==1){
+    return "一星"
+
+  } else if (str == 2) {
+    return "二星"
+
+  } else if (str == 3) {
+    return "三星"
+
+  } else if (str == 4) {
+    return "四星"
+
+  } else if (str == 5) {
+    return "五星"
+
+  }else{
+    return "暂无"
+  }
+
+}
+
 module.exports = {
   sub: sub,
   split: split,
   formatDate: formatDate,
   toFixed: toFixed,
   floorName: floorName,
-  timeToZn: timeToZn
+  timeToZn: timeToZn,
+  toStar: toStar
 };

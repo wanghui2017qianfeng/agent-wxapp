@@ -26,9 +26,16 @@ Page({
     })
   },
   chooseHouse() {
-    wx.navigateTo({
-      url: '/pages/choose-daikan-house/choose-daikan-house?isSell=1',
-    })
+    if(this.data.buyRent==1){
+      wx.navigateTo({
+        url: '/pages/choose-daikan-house/choose-daikan-house?isSell=1',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/choose-daikan-house/choose-daikan-house?isSell=2',
+      })
+    }
+   
   },
   del(e) {
     let index = e.currentTarget.dataset.index;
@@ -54,6 +61,7 @@ Page({
   },
 
   save() {
+    console.log("buyRent",this.data.buyRent)
     let model = {
       userId: this.data.userId,
       customerId: this.data.cusId,
@@ -65,17 +73,26 @@ Page({
       houseNames: this.data.houseNames
     }
 
-    kehuControlApi.addFollow(model).then(res => {
+    if (this.data.houseIds && this.data.houseIds.length>0){
+      kehuControlApi.addFollow(model).then(res => {
+        wx.showToast({
+          title: '保存成功',
+          icon: 'none'
+        })
+        this.setData({
+          remark: '',
+          houseIds: [],
+          houseNames: []
+        })
+      })
+    }else{
       wx.showToast({
-        title: '保存成功',
-        icon: 'none'
+        title: '请先选择房源',
+        icon:'none'
       })
-      this.setData({
-        remark: '',
-        houseIds:[],
-        houseNames:[]
-      })
-    })
+    }
+
+   
 
   },
   /**

@@ -1,3 +1,5 @@
+<wxs src="../../wxs/tools.wxs" module="tools" />
+
 <van-tabs sticky swipeable color="#2F72F7" tab-active-class="activeTab" z-index='1000' bind:change="changeTab">
   <van-tab title="详情">
 
@@ -68,7 +70,7 @@
       </view>
       <view class="box-item">
         <view class="label">客户星级:</view>
-        <view>{{info.star?info.star:''}}</view>
+        <view>{{info.star?tools.toStar(info.star):''}}</view>
       </view>
     </view>
 
@@ -139,12 +141,13 @@
       </view>
       <view class="box-item" style="height:auto;min-height:45px;">
         <view class="label" >求购商圈:</view>
-        <view >
+        <view wx:if="{{info.circles.length>0}}">
           <block wx:for="{{info.circles}}" wx:key="*this">
             {{item.name?item.name+' ':''}}
           </block>
           
         </view>
+        <view wx:else>不限</view>
       </view>
       <view class="box-item">
         <view class="label">备注:</view>
@@ -237,7 +240,7 @@
             <view class="time">{{item.followTime?item.followTime:'-'}}</view>
           </view>
           <view class="neirong flex-between">
-            <view>{{item.followDept?intem.followDept:'-'}}（{{item.followPerson?item.followPerson:'-'}}组)</view>
+            <view>{{item.followDept?item.followDept:'-'}}（{{item.followPerson?item.followPerson:'-'}}组)</view>
             <view>{{item.followPerson?item.followPerson:'-'}} </view>
           </view>
           <view class="desc">{{item.followRemark?item.followRemark:'-'}}</view>

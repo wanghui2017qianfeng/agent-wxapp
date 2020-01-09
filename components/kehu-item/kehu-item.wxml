@@ -6,8 +6,7 @@
       <view class="top flex-between">
         <view class="name">{{item.name?item.name:''}} ({{item.cusNo?item.cusNo:'-'}})</view>
         <view class="focu flex">
-          <!-- <van-icon name="like" color="#EC4613 " wx:if="{{item.isCollect==1}}" catchtap="cancelCollect" data-cusid="{{item.id}}"/>
-          <van-icon name="like-o" color="#EC4613 " wx:else catchtap="addCollect" data-cusid="{{item.id}}"/> -->
+       
           <image src="../../assets/img/red-phone.png" class="phone" catchtap="openPhone" data-phone="{{item.phone}}"></image>
         </view>
       </view>
@@ -20,8 +19,9 @@
           <view class="name">{{item.use?item.use:'-'}}</view>
           <view class="price">{{item.area?item.area:'-'}}</view>
         </view>
-        <view class="pingjia qu">
-          <van-rate value="{{ item.starLevel  }}" color="#FF4657" void-color="#DCDCDC" readonly   />
+        <view class="pingjia qu ">
+        <view class="rate">
+          <van-rate  value="{{ item.starLevel  }}"  size="24"  color="#FF4657" void-color="#DCDCDC" readonly   /></view>
           <view class="price1">{{item.bed?item.bed:'-'}}</view>
         </view>
       </view>

@@ -25,6 +25,7 @@ margin-top:20rpx;
 }
 .swiper image {
   height: 358px;
+  width:750rpx;
 }
 
 .typeList {

@@ -22,8 +22,8 @@
           <view class="price">{{item.area?item.area:'-'}}</view>
         </view>
         <view class="pingjia qu">
-          <view class="flex">
-            <van-rate value="{{ item.starLevel }}" color="#FF4657" void-color="#DCDCDC"  readonly />
+          <view class="flex rate">
+            <van-rate value="{{ item.starLevel }}" size="24" color="#FF4657" void-color="#DCDCDC"  readonly />
             <view style="color:#EC4613;font-size:24rpx;margin-left:23rpx;margin-top:7rpx;">{{item.days?item.days:'-'}}天掉</view>
 
           </view>

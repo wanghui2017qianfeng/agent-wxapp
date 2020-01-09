@@ -1,4 +1,3 @@
-/* components/second-item/second-item.wxss *//* components/my-house-item/my-house-item.wxss */
 @import "../../app.wxss";
 .house-item {
 margin:0 40rpx;
@@ -10,7 +9,8 @@ border-bottom: 1rpx solid #eeeeee;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height:180rpx;
+  height:188rpx;
+  /* background: pink; */
 }
 .house-item .roomImg{
   width:218rpx;
@@ -22,7 +22,7 @@ border-bottom: 1rpx solid #eeeeee;
    font-size: 32rpx;
   color: #333;
   font-weight: bold;
-  margin-top: -5rpx;
+  margin-top: -10rpx;
   width:454rpx;
 overflow:hidden; 
 text-overflow:ellipsis;
@@ -43,6 +43,11 @@ white-space:nowrap;
   line-height:30rpx;
   margin-right:16rpx;
 }
+
+.jibie{
+  margin-top:10rpx;
+  font-size: 26rpx;
+}
 /* .house-item .price{
   font-size: 25rpx;
   color:#333333;
@@ -51,7 +56,7 @@ white-space:nowrap;
 .house-item .price{
   color:#EE3C52;
   font-size: 30rpx;
-  margin:5rpx 38rpx 0 24rpx
+  margin:7rpx 38rpx 0 24rpx
 
 }
 .code{
@@ -59,5 +64,5 @@ white-space:nowrap;
 }
 .unit{
   font-size: 20rpx;
-  margin-top:15rpx;
+  margin-top:19rpx;
 }

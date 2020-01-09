@@ -55,7 +55,7 @@
         <view class="content">
           <view class="tag-box">
             <block wx:for="{{offerList}}" wx:for-index="idx" wx:key="*this">
-              <view class="tag {{offerActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseOffer">{{item.text}}</view>
+              <view class="tag1 {{offerActive==idx?'areaActive':''}}" data-index="{{idx}}" data-item="{{item}}" catchtap="chooseOffer">{{item.text}}</view>
             </block>
           </view>
           <view class="flex-between">

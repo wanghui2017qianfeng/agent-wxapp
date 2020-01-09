@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   width:454rpx;
+  height:188rpx;
 
 }
 
@@ -53,7 +54,7 @@ white-space:nowrap;
 .house-item .price {
   color: #ee3c52;
   font-size: 32rpx;
-  margin: 10rpx 38rpx 0 24rpx;
+  margin: 20rpx 38rpx 0 24rpx;
 }
 .jibie{
   margin-top:25rpx;

@@ -111,13 +111,13 @@ Page({
   goGenjin() {
     console.log(this.data.cusNo, this.data.cusName, this.data.cusId)
     wx.navigateTo({
-      url: '/pages/write-genjin/write-genjin?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=1&promotionType=2"
+      url: '/pages/write-genjin/write-genjin?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=2&promotionType=2"
     })
 
   },
   goFeedback() {
     wx.navigateTo({
-      url: '/pages/daikan-feedback/daikan-feedback?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=1&promotionType=1",
+      url: '/pages/daikan-feedback/daikan-feedback?cusNo=' + this.data.cusNo + "&cusName=" + this.data.cusName + "&cusId=" + this.data.cusId + "&buyRent=2&promotionType=1",
     })
   },
 

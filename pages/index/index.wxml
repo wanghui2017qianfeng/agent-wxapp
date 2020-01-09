@@ -25,13 +25,13 @@
       </view>
       <view class="yeji">
         <view>
-          <text space="ensp">● 新房  {{myInfo.newAchievement?tools.toFixed(myInfo.newAchievement/10000,2):'-'}}万</text>
+          <text space="ensp">● 新房  {{myInfo.newAchievement?tools.toFixed(myInfo.newAchievement/10000,2):'0.00'}}万</text>
         </view>
         <view>
-          <text space="ensp">● 二手  {{myInfo.sellAchievement?tools.toFixed(myInfo.sellAchievement/10000,2):'-'}}万</text>
+          <text space="ensp">● 二手  {{myInfo.sellAchievement?tools.toFixed(myInfo.sellAchievement/10000,2):'0.00'}}万</text>
         </view>
         <view>
-          <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement/10000,2):'-'}}万</text>
+          <text space="ensp">● 租赁  {{myInfo.rentAchievement?tools.toFixed(myInfo.rentAchievement/10000,2):'0.00'}}万</text>
         </view>
       </view>
     </view>
@@ -67,7 +67,7 @@
         <view class="msg-title">{{item.context!=null?item.context:'暂无'}}</view>
         <view class="flex-between item">
           <view class="msg1">{{item.type?item.type:'暂无'}}</view>
-          <view class="time">{{item.date?tools.sub(item.date,0,10):'暂无'}}</view>
+          <view class="time">{{item.date?tools.formatDate(item.date,'.'):'暂无'}}</view>
         </view>
       </view>
     </block>

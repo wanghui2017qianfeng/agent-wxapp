@@ -35,68 +35,56 @@ Page({
 
     showSearch: true,
     areaTitle: '区域',
-    offerText: '价格',
+    offerText: '租金',
     bedroomText: '户型',
     offerList: [{
-        text: '不限',
-        value: 1,
-        startOffer: '',
-        endOffer: ''
-      },
-      {
-        text: '50万以下',
-        value: 2,
-        startOffer: 0,
-        endOffer: 50
-      },
-      {
-        text: '50-100万',
-        value: 3,
-        startOffer: 50,
-        endOffer: 100
-      },
-      {
-        text: '100-150万',
-        value: 4,
-        startOffer: 100,
-        endOffer: 150
-      },
-      {
-        text: '150-200万',
-        value: 5,
-        startOffer: 300,
-        endOffer: 200
-      },
-      {
-        text: '200-300万',
-        value: 6,
-        startOffer: 200,
-        endOffer: 300
-      },
-      {
-        text: '300-500万',
-        value: 7,
-        startOffer: 300,
-        endOffer: 500
-      },
-      {
-        text: '500-1000万',
-        value: 8,
-        startOffer: 500,
-        endOffer: 1000
-      },
-      {
-        text: '1000-1500万',
-        value: 9,
-        startOffer: 1000,
-        endOffer: 1500
-      },
-      {
-        text: '1500万以上',
-        value: 10,
-        startOffer: 1500,
-        endOffer: ''
-      }
+      text: '不限',
+      value: 1,
+      startOffer: '',
+      endOffer: ''
+    },
+    {
+      text: '1000元/月以下',
+      value: 2,
+      startOffer: 0,
+      endOffer: 1000
+    },
+    {
+      text: '1000-2000元/月',
+      value: 3,
+      startOffer: 1000,
+      endOffer: 2000
+    },
+    {
+      text: '2000-3000元/月',
+      value: 4,
+      startOffer: 2000,
+      endOffer: 3000
+    },
+    {
+      text: '3000-4000元/月',
+      value: 5,
+      startOffer: 3000,
+      endOffer: 4000
+    },
+    {
+      text: '4000-5000元/月',
+      value: 6,
+      startOffer: 4000,
+      endOffer: 5000
+    },
+    {
+      text: '5000-6000元/月',
+      value: 7,
+      startOffer: 5000,
+      endOffer: 6000
+    },
+    {
+      text: '6000元/月以上',
+      value: 8,
+      startOffer: 6000,
+      endOffer: ''
+    }
     ],
     bedroomList: [{
         text: '不限',
