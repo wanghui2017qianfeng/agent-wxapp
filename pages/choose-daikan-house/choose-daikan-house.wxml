@@ -8,7 +8,7 @@
 
 <view class="border"></view>
 
-<my-house-item class="mb100" id="houseItem" isCheck="1" list="{{list}}"></my-house-item>
+<my-house-item class="mb100" id="houseItem" isCheck="1" isRent="{{isSell==2?1:0}}" list="{{list}}"></my-house-item>
 
 
 <view style="height:10rpx;margin-bottom:100rpx"></view>

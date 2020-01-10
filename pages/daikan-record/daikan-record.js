@@ -46,21 +46,67 @@ Page({
     })
   },
   onInputStart(event) {
-    this.setData({
-      currentDate: event.detail,
-      startDate: formatTime(event.detail),
-      showStart: false
 
-    });
+    if(this.data.endDate){
+      let startDate = formatTime(event.detail);
+      let startTime = new Date(startDate).getTime();
+      let endTime = new Date(this.data.endDate).getTime()
+      if (startTime > endTime){
+        wx.showToast({
+          title: '开始日期不能大于结束日期',
+          icon:"none"
+        })
+
+      }else{
+        this.setData({
+          currentDate: event.detail,
+          startDate: formatTime(event.detail),
+          showStart: false
+
+        });
+      }
+
+    }else{
+      this.setData({
+        currentDate: event.detail,
+        startDate: formatTime(event.detail),
+        showStart: false
+
+      });
+    }
+   
 
 
   },
   onInputEnd(event) {
-    this.setData({
-      currentDate1: event.detail,
-      endDate: formatTime(event.detail),
-      showEnd: false
-    });
+
+    if (this.data.startDate) {
+      let endDate = formatTime(event.detail);
+      let startTime = new Date(this.data.startDate).getTime();
+      let endTime = new Date(endDate).getTime()
+      if (startTime > endTime) {
+        wx.showToast({
+          title: '开始日期不能大于结束日期',
+          icon: "none"
+        })
+
+      } else {
+        this.setData({
+          currentDate1: event.detail,
+          endDate: formatTime(event.detail),
+          showEnd: false
+        });
+      }
+
+    } else {
+      this.setData({
+        currentDate1: event.detail,
+        endDate: formatTime(event.detail),
+        showEnd: false
+      });
+    }
+
+    
 
 
   },

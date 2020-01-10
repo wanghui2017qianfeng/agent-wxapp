@@ -17,6 +17,7 @@ Page({
     userId: '',
     isSell: '',
     lastPage: false,
+    
   },
   goSearch(){
     if(this.data.isSell==1){//二手房

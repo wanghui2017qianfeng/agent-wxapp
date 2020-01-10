@@ -138,11 +138,14 @@
         <view>{{info.pay?info.pay:''}}</view>
       </view>
       <view class="box-item"  style="height:auto;min-height:45px;">
-        <view class="label">求购商圈:</view>
-        <view>
+        <view class="label">求租商圈:</view>
+        <view wx:if="{{info.circles.length>0}}">
           <block wx:for="{{info.circles}}" wx:key="*this">
             {{item.name?item.name+' ':''}}
           </block>
+        </view>
+        <view wx:else>
+        不限
         </view>
       </view>
       <view class="box-item">

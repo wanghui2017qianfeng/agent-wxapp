@@ -1,6 +1,4 @@
 <wxs src="../../wxs/tools.wxs" module="tools" />
-
-
 <view class="flex-between top">
   <view class="flex">
     <image src='{{myInfo.image}}' wx:if="{{myInfo.image}}"></image>
@@ -12,7 +10,6 @@
 </view>
 
 <view class="card">
-
   <image src="../../assets/img/bg.png" class="bg"></image>
   <view class="content-box flex">
     <image src="../../assets/img/up.png" class="up"></image>
@@ -20,8 +17,8 @@
       <view>
         <view class="name">本月签约业绩</view>
         <view class="money">
-          <text>{{myInfo.monthAchievement?tools.toFixed(myInfo.monthAchievement,2):'-'}}</text>万</view>
-        <view class="last">{{myInfo.lastAchievement?tools.toFixed(myInfo.lastAchievement/10000,2):'-'}}万(上月)</view>
+          <text>{{myInfo.monthAchievement?tools.toFixed(myInfo.monthAchievement,2):'0.00'}}</text>元</view>
+        <view class="last">{{myInfo.lastAchievement?tools.toFixed(myInfo.lastAchievement/10000,2):'0.00'}}万(上月)</view>
       </view>
       <view class="yeji">
         <view>
