@@ -11,7 +11,7 @@
   </block>
 
   <view  wx:else >
-  <button class="login-btn flex" open-type='getUserInfo' bindgetuserinfo="goLogin">
+  <button class="login-btn flex" bindtap="goLogin">
     <image src="../../assets/img/denglu.png"></image>
     <view  style="line-height:100rpx">请点击登录</view>
     </button>

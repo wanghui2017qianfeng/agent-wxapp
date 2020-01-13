@@ -25,10 +25,15 @@ Page({
   goLogin(e) {
     var getUser = e.detail;
     var that = this;
+    console.log("getUser", getUser)
     wx.login({
       success: (res) => {
         if (res.code) {
-          let loginCode = res.code
+          let loginCode = res.code;
+          console.log("js_code,", loginCode)
+          console.log("encrypted,", getUser.encryptedData)
+          console.log("iv,", getUser.iv)
+
           wx.request({
             url: app.globalData.baseUrl + 'brokerInfo/authorize',
             method: 'post', //请求方式

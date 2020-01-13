@@ -3,7 +3,7 @@
 <block wx:if="{{buyOrRent==1||buyOrRent==2}}">
   <view class="search-box flex">
     <image src="../../assets/img/search.png"></image>
-    <input value="{{keyword}}" placeholder="请输入客户姓名或客户编号" bindinput="changeInput"></input>
+    <input value="{{keyword}}" placeholder="请输入客户姓名或客户编号" bindinput="changeInput" focus="{{inputShowed}}"></input>
   </view>
   <view class="search-content" wx:if="{{isInput}}">
     <block wx:if="{{list.length>0}}">
@@ -38,7 +38,7 @@
 <block wx:else>
   <view class="search-box flex">
     <image src="../../assets/img/search.png"></image>
-    <input value="{{keyword}}" placeholder="请输入区域或楼盘名称" bindinput="changeInput"></input>
+    <input value="{{keyword}}" placeholder="请输入区域或楼盘名称" bindinput="changeInput" focus="{{inputShowed}}"></input>
   </view>
   <view class="search-content" wx:if="{{isInput}}">
     <block wx:if="{{list.length>0}}">

@@ -1,0 +1,122 @@
+<!--pages/maifangchuzu/maifangchuzu.wxml-->
+<view class='warp'>
+  <view class='phone'>
+    <view class='title'>
+      <text>您的手机号</text>
+      <text>*</text>
+    </view>
+    <view>
+      <input type='number' placeholder='请输入您的手机号' bindblur="moblieInput" value='{{moblie}}'></input>
+    </view>
+  </view>
+
+  <view class='phone chenghubox'>
+    <view class='title'>
+      <text>称呼</text>
+    </view>
+    <view class='chenghuinput'>
+      <input type='text' placeholder='您希望我们怎么称呼您' bindblur="surnameInput" value='{{surname}}'></input>
+      <view class='chenghu'>
+        <text class='{{call == 1? "active":""}}' bindtap='callSelect' data-call='1'>先生</text>
+        <text class='{{call == 2? "active":""}}' bindtap='callSelect' data-call='2'>女士</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='price'>
+    <view class='phone'>
+      <view class='title'>
+        <text>您的需求</text>
+      </view>
+      <view class='selectitem'>
+        <picker value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
+          <view class="picker">
+            {{array[index]}}
+            <image src='../img/sjblack.png' mode='widthFix'></image>
+          </view>
+        </picker>
+
+      </view>
+    </view>
+    <view class='phone'>
+      <view class='title'>
+        <text>期望价格</text>
+      </view>
+      <view class='yuan'>
+        <input type='number' placeholder='请输入...' bindblur="expectedPriceInput" value='{{expected_price}}'></input>
+        <text>元</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='phone'>
+    <view class='title'>
+      <text>小区名称</text>
+    </view>
+    <view>
+      <input type='text' placeholder='请输入小区名称' bindblur="residentialNameInput" value='{{residential_name}}'></input>
+    </view>
+  </view>
+
+  <view class='phone'>
+    <view class='title'>
+      <text>具体地址</text>
+    </view>
+    <view>
+      <input type='text' placeholder='请输入楼栋单元房间号' bindblur="residentialAddressInput" value='{{residential_address}}'></input>
+    </view>
+  </view>
+  <view class='subbtn'>
+    <button bindtap='entrustBtn'>一键省心委托</button>
+  </view>
+
+
+  <view class='guwen'>
+    <text class='gw-title'>为您推荐资深顾问</text>
+    <view class='guwencard'>
+      <view class='left'>
+        <image src='../img/zjz.jpg' mode='widthFix'></image>
+      </view>
+      <view class='right'>
+        <view>
+          <text>于承光</text>
+          <image src='../img/id.png' mode='widthFix'></image>
+        </view>
+        <view>
+          <text>17888888888</text>
+        </view>
+        <view>
+          <text>我是资深店经理，竭诚为您服务</text>
+        </view>
+      </view>
+      <view class='position-icon'>
+        <image src='../img/pop.png' mode='widthFix'></image>
+        <image src='../img/call.png' mode='widthFix'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='guwen'>
+    <text class='gw-title'>卖房 · 出租服务流程</text>
+    <view class='bgimage'>
+      <image src='../img/liucheng.jpg' mode='widthFix'></image>
+    </view>
+  </view>
+  <!-- 提示弹出层 -->
+  <view class='pop-warp' wx:if='{{tipShow}}'>
+    <view class='pop-box'>
+      <image src='../img/popbg.jpg' mode='widthFix'></image>
+      <view>
+        <view class='p-title'>
+          <text>委托成功</text>
+        </view>
+        <view class='p-con'>
+          <text>客服人员将在1小时内为您提供服务</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{canToIndex}}" class='backToindex' bindtap='backToindex' >
+	回首页
+</view>

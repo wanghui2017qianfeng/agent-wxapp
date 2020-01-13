@@ -40,6 +40,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    inputShowed:true,
     isInput: false,
     list: [],
     keyword: ''

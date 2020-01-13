@@ -10,7 +10,7 @@
 <view wx:if="{{index==0}}">
   <view class="search-box flex" bindtap="goSearchBuy">
     <image src="../../assets/img/search.png"></image>
-    <input value="{{cusNameBuy}}" placeholder="请输入客户姓名或客户编号" readonly></input>
+    <input value="{{cusNameBuy}}" placeholder="请输入客户姓名或客户编号" readonly disabled></input>
   </view>
   <index-kehu-item-comp list="{{buyList}}" bind:goDetail="goDetailBuy" bind:refresh="getBuyList"></index-kehu-item-comp>
 

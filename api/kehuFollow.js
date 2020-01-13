@@ -12,8 +12,8 @@ export const kehuControlApi = {
     return api.post(uri + "/LookDetail", model)
   },
   geLookRecord(model) {
-    // return api.post(uri + "/LookRecord", model)
-    return api.post(uri + "/LookRecord?userId=" + model.userId + "&pageNo=" + model.pageNo + "&pageSize=" + model.pageSize + "&buyOrRent =" + model.buyOrRent + "&startDate =" + model.startDate + "&endDate =" + model.endDate )
+
+    return api.post(uri + "/LookRecord?userId=" + model.userId + "&pageNo=" + model.pageNo + "&pageSize=" + model.pageSize + "&buyOrRent=" + model.buyOrRent + "&startDate=" + model.startDate + "&endDate=" + model.endDate )
   },
   addFollow(model){
     return api.post(uri + "/saveFollowUp", model)

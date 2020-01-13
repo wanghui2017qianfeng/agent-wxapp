@@ -2,6 +2,9 @@
   "pages": [
     "pages/index/index",
     
+    "pages/maifangchuzu/maifangchuzu",
+    
+    
       "pages/buy-kehu-detail/buy-kehu-detail",
     
     "pages/kehu/kehu",
