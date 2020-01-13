@@ -32,13 +32,14 @@
     <block wx:if="{{searchActive==1}}">
       <view class="content">
         <view class="flex check-item">
-          <!-- <view bindtap="chooseType" data-index="0" class="check-item-box {{typeIndex==0?'activeType':''}}">
-            <image src="../../assets/img/lan-checked.png" wx:if="{{typeIndex==0}}"></image>
-            <image src="../../assets/img/lan-no-checked.png" wx:else></image>
+         
+           <!-- <view bindtap="chooseType" class="check-item-box" >
+        
             <view>不限</view>
           </view> -->
-           <view bindtap="chooseType" class="check-item-box" >
-        
+          <view bindtap="chooseType" data-index="0" class="check-item-box {{typeIndex==0?'activeType':''}}">
+            <image src="../../assets/img/lan-checked.png" wx:if="{{typeIndex==0}}"></image>
+            <image src="../../assets/img/lan-no-checked.png" wx:else></image>
             <view>不限</view>
           </view>
           <view bindtap="chooseType" data-index="1" class="check-item-box {{typeIndex==1?'activeType':''}}">

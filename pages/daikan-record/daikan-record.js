@@ -16,7 +16,7 @@ Page({
     typeTitle: '类型',
     typeIndex: 0,
     userId: '',
-    buyOrRent: 1,
+    buyOrRent: '',
     pageNo: 1,
     pageSize: 5,
     startDate: '',
@@ -140,11 +140,23 @@ Page({
   },
   chooseType(e) {
     // 1是购看 2是租看
-    let index = e.currentTarget.dataset.index
-    this.setData({
-      typeIndex: e.currentTarget.dataset.index,
-      buyOrRent: index
-    })
+    let index = e.currentTarget.dataset.index;
+    if(index=='0'){
+console.log("oooo")
+      this.setData({
+        typeIndex: e.currentTarget.dataset.index,
+        buyOrRent: '',
+        pageNo: 1
+      })
+    }else{
+      this.setData({
+        typeIndex: e.currentTarget.dataset.index,
+        buyOrRent: Number(index),
+        pageNo: 1
+      })
+    }
+   
+    console.log("选择", this.data.buyOrRent, typeof (this.data.buyOrRent))
   },
 
 
@@ -186,6 +198,7 @@ Page({
       pageSize: this.data.pageSize,
       buyOrRent: this.data.buyOrRent,
     }
+    console.log("model",model)
     return new Promise(ok => {
       kehuControlApi.geLookRecord(model).then(res => {
         this.setData({
@@ -193,7 +206,8 @@ Page({
           lastPage: res.lastPage
         })
 
-        console.log("list",res.list)
+        console.log("list", this.data.list)
+      
         wx.hideLoading()
         ok(res)
       })
@@ -252,7 +266,7 @@ Page({
       pageSize: this.data.pageSize,
       buyOrRent: this.data.buyOrRent,
     }
-  
+    console.log("pageNo", this.data.pageNo)
       kehuControlApi.geLookRecord(model).then(res => {
         let pageNo = this.data.pageNo + 1;
         if (!res.lastPage) { //不是最后一页
@@ -278,11 +292,44 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    wx.showLoading({
-      title: '正在加载',
-    })
-    this.loadInfinite();
-    wx.stopPullDownRefresh()
+  
+    if(this.data.buyOrRent==1){//够看
+      wx.showLoading({
+        title: '正在加载',
+      })
+      this.setData({
+        pageNo: 1
+      })
+      this.loadInfinite();
+      wx.stopPullDownRefresh();
+
+    }else if(this.data.buyOrRent==2){//租看
+      wx.showLoading({
+        title: '正在加载',
+      })
+      this.setData({
+        pageNo: 1
+      })
+      this.loadInfinite();
+      wx.stopPullDownRefresh()
+
+    }else {
+      wx.showLoading({
+        title: '正在加载',
+      })
+      this.setData({
+        pageNo: 1
+      })
+      this.loadInfinite();
+      wx.stopPullDownRefresh()
+ 
+    }
+
+
+
+
+   
+    // wx.stopPullDownRefresh()
 
   },
 
