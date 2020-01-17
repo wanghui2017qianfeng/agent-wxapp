@@ -13,9 +13,9 @@ Page({
     rentList: [],
     cusName: '',
     buyPageNo: 1,
-    buyLastPage:false,
-    rentPageNo:1,
-    rentLastPage:false,
+    buyLastPage: false,
+    rentPageNo: 1,
+    rentLastPage: false,
     pageSize: 5,
     activeTab: 0,
     cusNameRent: '',
@@ -58,11 +58,25 @@ Page({
       pageSize: 5,
       userId: this.data.userId
     }
-
-    kehuApi.getPage(model).then(res => {
-      this.setData({
-        buyList: this.data.buyPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
-        buyLastPage: res.lastPage
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
+    return new Promise(ok => {
+      kehuApi.getPage(model).then(res => {
+        this.setData({
+          buyList: this.data.buyPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
+          buyLastPage: res.lastPage
+        })
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+        ok(res)
       })
     })
 
@@ -75,11 +89,25 @@ Page({
       pageSize: 5,
       userId: this.data.userId
     }
-
-    kehuApi.getPage(model).then(res => {
-      this.setData({
-        rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
-        rentLastPage: res.lastPage
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
+    return new Promise(ok => {
+      kehuApi.getPage(model).then(res => {
+        this.setData({
+          rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
+          rentLastPage: res.lastPage
+        })
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+        ok(res)
       })
     })
 
@@ -94,7 +122,7 @@ Page({
       cusNameBuy: options.activeTab == 0 ? options.cusName : '',
       cusNameRent: options.activeTab == 1 ? options.cusName : '',
       activeTab: options.activeTab,
-      index: options.activeTab ? options.activeTab:0,
+      index: options.activeTab ? options.activeTab : 0,
     })
     this.getBuyList()
     this.getRentList()
@@ -128,17 +156,159 @@ Page({
 
   },
 
+  loadInfiniteBuy() {
+    let model = {
+      cusName: this.data.cusNameBuy,
+      pageNo: this.data.buyPageNo,
+      buyOrRent: 1,
+      pageSize: 5,
+      userId: this.data.userId
+    }
+
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
+
+    kehuApi.getPage(model).then(res => {
+
+      let pageNo = this.data.buyPageNo + 1;
+      if (!res.lastPage) { //不是最后一页
+        this.setData({
+          buyList: this.data.buyPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
+          buyPageNo: pageNo,
+          buyLastPage: res.lastPage
+
+        })
+        this.loadInfiniteBuy()
+
+      } else {
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      }
+    })
+  },
+  loadInfiniteRent() {
+    let model = {
+      cusName: this.data.cusNameRent,
+      pageNo: this.data.rentPageNo,
+      buyOrRent: 2,
+      pageSize: 5,
+      userId: this.data.userId
+    }
+    wx.showLoading({
+      title: '加载中',
+      icon: 'none'
+    })
+
+    kehuApi.getPage(model).then(res => {
+      let pageNo = this.data.rentPageNo + 1;
+      if (!res.lastPage) { //不是最后一页
+        this.setData({
+          rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
+          rentPageNo: pageNo,
+          rentLastPage: res.lastPage
+
+        })
+        this.loadInfiniteRent()
+
+      } else {
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      }
+    })
+  },
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
+    if (this.data.index == 0) { //二手房
+      this.loadInfiniteBuy()
+      wx.stopPullDownRefresh()
 
+    } else if (this.data.index == 1) { //租房
+      this.loadInfiniteRent()
+      wx.stopPullDownRefresh()
+    }
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+console.log("index",this.data.index)
+
+    if (this.data.index == 0) { //求购
+      let pageNo = this.data.buyPageNo;
+
+      if (!this.data.buyLastPage) { //不是最后一页
+        this.setData({
+          buyPageNo: pageNo + 1,
+        })
+
+        this.getBuyList().then(res => {
+          if (res.list.length == 0) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '没有更多啦',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    } else if (this.data.index == 1) { //租房
+    console.log("租房")
+      let pageNo = this.data.rentPageNo;
+
+      if (!this.data.rentLastPage) { //不是最后一页
+        this.setData({
+          rentPageNo: pageNo + 1,
+        })
+
+        this.getRentList().then(res => {
+          if (res.list.length == 0) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '没有更多啦',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    }
+
+
+
+
+
+
+
 
   },
 

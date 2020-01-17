@@ -13,7 +13,6 @@ Page({
    */
   data: {
     id: '',
-    openid: '',
     isFocus: false,
     info: {},
     nowImgIndex: 1,
@@ -62,7 +61,7 @@ Page({
       sellOrRentId: this.data.id,
       type: 2
     }
-    if (userId) { //有openid才可以关注,否则去登陆
+    if (userId) { 
       if (isFocus) {
         houseCollectApi.cancelCollect(model).then(res => {
           wx.showToast({

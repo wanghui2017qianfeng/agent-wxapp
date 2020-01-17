@@ -23,34 +23,27 @@ Page({
 
   },
   goLogin(e) {
-    // var getUser = e.detail;
+    var getUser = e.detail;
     var that = this;
-    // console.log("getUser", getUser)
-
-    wx.getUserInfo({
-      success: function(getUser1) {
-        let getUser = getUser1;
+  
         wx.login({
           success: (res00) => {
             wx.login({
               success: (res) => {
                 if (res.code) {
                   let loginCode = res.code;
-                  console.log("js_code,", loginCode)
-                  console.log("encrypted,", getUser.encryptedData)
-                  console.log("iv,", getUser.iv)
-
+                  let appId = 'wx0f5bf6eab087ad79';
+                  let secret = 'a30003246dedd23bb747003beb5a864a'
                   wx.request({
                     url: app.globalData.baseUrl + 'brokerInfo/authorize',
                     method: 'post', //请求方式
                     data: {
                       js_code: loginCode,
-                      encrypted: getUser.encryptedData,
-                      iv: getUser.iv
+                   
                     },
-                    header: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
-                    },
+                  header: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                  },
                     success: (res1) => {
                       if (res1.data.result) {
                         console.log("经纪人登陆授权成功", res1.data.data.openid)
@@ -69,50 +62,23 @@ Page({
                           },
                           success: (res3) => {
                             if (res3.data.result) {
-                              console.log("账号密码登陆成功", res3)
-                              let userInfo2 = res3.data.data
+                              console.log("账号密码登陆成功", res3.data.data);
+                              let userInfo={
+                                userid: res3.data.data,
+                                avatarUrl: getUser.userInfo.avatarUrl
 
+                              }
 
-                              wx.request({
-                                url: app.globalData.baseUrl + 'brokerInfo/findByOpenId?openid=' + openid,
-                                method: 'post', //请求方式
+                            //   let userInfo2 = res3.data.data;
+                              wx.setStorage({
+                              key: 'userInfo',
+                              data: userInfo,
+                            })
+                       
+                            wx.switchTab({
+                              url: '/pages/my/my',
+                            })
 
-                                success: (res2) => {
-                                  console.log("获得经纪人信息", res2)
-
-
-                                  if (res2.data.result) {
-
-
-                                    let userInfo1 = res2.data.data
-                                    let userInfo = Object.assign(userInfo1, userInfo2)
-
-                                    wx.setStorage({
-                                      key: 'userInfo',
-                                      data: userInfo,
-                                    })
-
-
-                                    var pages = getCurrentPages();
-                                    var beforePage = pages[pages.length - 2];
-
-                                    beforePage.onShow();
-                                    wx.navigateBack({
-                                      delta: 1,
-                                    })
-
-
-                                  } else {
-                                    wx.showToast({
-                                      title: res2.data.errorMessage,
-                                      icon: 'none'
-                                    })
-                                  }
-                                },
-                                fail: (err2) => {
-                                  console.log("获取经纪人信息失败", err2)
-                                }
-                              })
                             } else {
                               wx.showToast({
                                 title: res3.data.errorMessage,
@@ -158,8 +124,7 @@ Page({
             })
           }
         })
-      }
-    })
+   
 
 
 
@@ -225,6 +190,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '租售系统小程序',
+      path: '/pages/login/login'
+    }
   }
 })

@@ -503,7 +503,7 @@ Page({
       pageNum: 1
     })
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     this.getData()
   },
@@ -583,7 +583,7 @@ Page({
     })
 
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
 
     this.getData()
@@ -667,7 +667,7 @@ Page({
       pageNum: 1
     })
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     this.getData()
   },
@@ -695,7 +695,7 @@ Page({
     }
     console.log("model", model)
     // wx.showLoading({
-    //   title: '正在加载',
+    //   title: '加载中',
     // })
     return new Promise(ok => {
       secondApi.getPage(model).then(res => {
@@ -705,6 +705,13 @@ Page({
           lastPage: res.lastPage
         })
         wx.hideLoading()
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -803,7 +810,7 @@ Page({
       pageSize: this.data.pageSize
     }
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     secondApi.getPage(model).then(res => {
       let pageNum = this.data.pageNum + 1;
@@ -818,6 +825,13 @@ Page({
 
       } else {
         wx.hideLoading()
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        
+       
       }
     })
   },
@@ -840,7 +854,7 @@ Page({
         pageNum: pageNum + 1,
       })
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.getData().then(res => {
         if (res.list.length == 0) {

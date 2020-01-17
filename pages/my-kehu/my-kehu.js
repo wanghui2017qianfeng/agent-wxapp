@@ -56,7 +56,14 @@ Page({
           rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
           rentLastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -80,7 +87,14 @@ Page({
           buyList: this.data.buyPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
           buyLastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -151,7 +165,14 @@ Page({
         this.loadInfiniteBuy()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       }
     })
   },
@@ -180,7 +201,14 @@ Page({
         this.loadInfiniteRent()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       }
     })
   },

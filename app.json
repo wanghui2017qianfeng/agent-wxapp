@@ -1,34 +1,26 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
-    
     "pages/maifangchuzu/maifangchuzu",
-      "pages/buy-kehu-detail/buy-kehu-detail",
+    "pages/buy-kehu-detail/buy-kehu-detail",
     "pages/kehu/kehu",
     "pages/my/my",
     "pages/my-house/my-house",
-    
-    
     "pages/daikan-feedback/daikan-feedback",
-    
     "pages/daikan-record/daikan-record",
-    
     "pages/my-focus-house/my-focus-house",
     "pages/choose-daikan-house/choose-daikan-house",
     "pages/rent/rent",
     "pages/msg/msg",
-    "pages/login/login",
     "pages/my-kehu/my-kehu",
-    
     "pages/album/album",
     "pages/second-detail/second-detail",
     "pages/second/second",
     "pages/rent-kehu-detail/rent-kehu-detail",
-   
     "pages/write-genjin/write-genjin",
     "pages/daikan-detail/daikan-detail",
     "pages/search/search",
- 
     "pages/genjin-record/genjin-record",
     "pages/genjin/genjin",
     "pages/rent-detail/rent-detail",

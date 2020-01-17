@@ -256,9 +256,9 @@
     </block>
 
     <view class="two-btn flex-around">
-      <view class="width374" bindtap="goGenjin">跟进带看</view>
+      <view class="width374" bindtap="goGenjin">写跟进</view>
       <view class="border-center"></view>
-      <view class="width374" bindtap="goFeedback">操作</view>
+      <view class="width374" bindtap="goFeedback">带看</view>
 
     </view>
 

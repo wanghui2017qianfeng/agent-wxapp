@@ -73,6 +73,23 @@ Page({
       houseNames: this.data.houseNames
     }
 
+    if (this.data.houseIds.length==0) {
+      wx.showToast({
+        title: '请先选择房源',
+        icon: 'none'
+      })
+      return 
+    }
+
+    if(!this.data.remark){
+      wx.showToast({
+        title: '请填写跟进内容',
+        icon: 'none'
+      })
+      return 
+
+    }
+
     if (this.data.houseIds && this.data.houseIds.length>0){
       kehuControlApi.addFollow(model).then(res => {
         wx.showToast({

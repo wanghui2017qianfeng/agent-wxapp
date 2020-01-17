@@ -17,7 +17,7 @@ Page({
   },
   getList() {
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     let model = {
       userId: this.data.userId,
@@ -31,7 +31,14 @@ Page({
           list: this.data.pageNo == 1 ? res.list : this.data.list.concat(res.list),
           lastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -95,7 +102,14 @@ Page({
         this.loadInfinite()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       }
     })
 
@@ -105,7 +119,7 @@ Page({
    */
   onPullDownRefresh: function() {
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
 
     this.loadInfinite()

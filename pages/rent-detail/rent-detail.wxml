@@ -180,7 +180,7 @@
     <view class="flex-between yeji-item">
       <view class="name">{{item.contactsName?item.contactsName:'暂无'}}</view>
       <view class="tag">{{item.owerRelationshipName?item.owerRelationshipName:'暂无'}}</view>
-      <view class="phone-number">{{item.contactsPhone?item.contactsPhone:'暂无'}}</view>
+      <view class="phone-number">{{item.contactsPhone?tools.hidePhone(item.contactsPhone):'暂无'}}</view>
       <image src="../../assets/img/phone.png" class="phone" bindtap="openPhone" data-phone="{{item.contactsPhone}}"></image>
     </view>
   </block>
@@ -190,12 +190,14 @@
   </block>
 </view>
 
-<view class="huxing huxing1 flex-between" style="margin-bottom:60rpx;border-bottom:30rpx solid #f5f5f5" bindtap="goGenjinRecord">
+<view class="huxing huxing1 flex-between"  bindtap="goGenjinRecord">
   <view class="border-left">
     跟进记录
   </view>
   <van-icon name="arrow"  />
   </view>
+
+  <view style="background:#f5f5f5;width:100%;height:75px;"></view>
 
 
 

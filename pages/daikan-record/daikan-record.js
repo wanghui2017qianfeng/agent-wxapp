@@ -208,7 +208,14 @@ console.log("oooo")
 
         console.log("list", this.data.list)
       
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -279,7 +286,14 @@ console.log("oooo")
           this.loadInfinite()
 
         } else {
-          wx.hideLoading()
+          wx.hideLoading();
+          if (res.lastPage) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
         }
       })
 
@@ -295,7 +309,7 @@ console.log("oooo")
   
     if(this.data.buyOrRent==1){//够看
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.setData({
         pageNo: 1
@@ -305,7 +319,7 @@ console.log("oooo")
 
     }else if(this.data.buyOrRent==2){//租看
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.setData({
         pageNo: 1
@@ -315,7 +329,7 @@ console.log("oooo")
 
     }else {
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.setData({
         pageNo: 1

@@ -69,6 +69,22 @@ Page({
       type: this.data.type,
       remark: this.data.remark,
     }
+    if (!this.data.type) {
+      wx.showToast({
+        title: '请选择跟进方式',
+        icon: 'none'
+      })
+      return;
+    }
+
+    if (!this.data.remark){
+      wx.showToast({
+        title: '请填写跟进内容',
+        icon: 'none'
+      })
+      return;
+
+    }
     houseFollowApi.addFollow(model).then(()=>{
       wx.showToast({
         title: '保存成功',

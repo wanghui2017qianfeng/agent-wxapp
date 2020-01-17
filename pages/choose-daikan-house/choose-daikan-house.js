@@ -46,7 +46,7 @@ Page({
     }
 
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
 
     if (this.data.isSell == 1) { //获取出售资源
@@ -57,7 +57,14 @@ Page({
             lastPage: res.lastPage
           })
 
-          wx.hideLoading()
+          wx.hideLoading();
+          if (res.lastPage) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
           ok(res)
         })
       })
@@ -70,7 +77,14 @@ Page({
             lastPage: res.lastPage
           })
 
-          wx.hideLoading()
+          wx.hideLoading();
+          if (res.lastPage) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
           ok(res)
         })
       })
@@ -133,7 +147,7 @@ Page({
     }
 
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
 
     if (this.data.isSell == 1) { //获取出售资源
@@ -149,7 +163,14 @@ Page({
           this.loadInfinite()
 
         } else {
-          wx.hideLoading()
+          wx.hideLoading();
+          if (res.lastPage) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
         }
       })
     } else { //获取出租资源
@@ -166,7 +187,14 @@ Page({
           this.loadInfinite()
 
         } else {
-          wx.hideLoading()
+          wx.hideLoading();
+          if (res.lastPage) {
+            wx.showToast({
+              title: '没有更多啦',
+              icon: 'none',
+              duration: 1000
+            })
+          }
         }
       })
     }

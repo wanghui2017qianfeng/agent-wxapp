@@ -530,7 +530,7 @@ Page({
       showContent: false
     })
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     this.getData()
   },
@@ -608,7 +608,7 @@ Page({
       showContent: false,
     })
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     this.getData()
 
@@ -643,7 +643,7 @@ Page({
       pageNum: 1
     })
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     this.getData()
   },
@@ -670,7 +670,7 @@ Page({
       pageSize: this.data.pageSize
     }
     // wx.showLoading({
-    //   title: '正在加载',
+    //   title: '加载中',
     // })
     console.log("model", model)
     return new Promise(ok => {
@@ -680,7 +680,14 @@ Page({
           list: this.data.pageNum == 1 ? res.list : this.data.list.concat(res.list),
           lastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
         ok(res)
       })
     })
@@ -742,7 +749,7 @@ Page({
       })
       this.getCircleList(res[0].id)
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.getData()
     })
@@ -785,7 +792,7 @@ Page({
       pageSize: this.data.pageSize
     }
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     rentApi.getPage(model).then(res => {
       let pageNum = this.data.pageNum + 1;
@@ -799,7 +806,13 @@ Page({
         this.loadInfinite()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        
       }
     })
   },
@@ -825,7 +838,7 @@ Page({
         pageNum: pageNum + 1,
       })
       wx.showLoading({
-        title: '正在加载',
+        title: '加载中',
       })
       this.getData().then(res => {
         if (res.list.length == 0) {

@@ -79,7 +79,14 @@ Page({
           followList: this.data.followPageNo == 1 ? res.list : this.data.followList.concat(res.list),
           followLastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       })
     })
   },
@@ -103,7 +110,14 @@ Page({
           lookList: this.data.lookPageNo == 1 ? res.list : this.data.lookList.concat(res.list),
           lookLastPage: res.lastPage
         })
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       })
     })
   },
@@ -185,7 +199,14 @@ Page({
         this.loadInfiniteFollow()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       }
     })
   },
@@ -210,7 +231,14 @@ Page({
         this.loadInfiniteLook()
 
       } else {
-        wx.hideLoading()
+        wx.hideLoading();
+        if (res.lastPage) {
+          wx.showToast({
+            title: '没有更多啦',
+            icon: 'none',
+            duration: 1000
+          })
+        }
       }
     })
   },

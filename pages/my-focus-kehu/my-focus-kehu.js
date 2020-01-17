@@ -33,14 +33,21 @@ Page({
 
     }
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     kehuCollectApi.getPage(model).then(res => {
       this.setData({
         rentList: this.data.rentPageNo == 1 ? res.list : this.data.rentList.concat(res.list),
         lastPage: res.lastPage
       })
-      wx.hideLoading()
+      wx.hideLoading();
+      if (res.lastPage) {
+        wx.showToast({
+          title: '没有更多啦',
+          icon: 'none',
+          duration: 1000
+        })
+      }
     })
   },
   getBuyData() {
@@ -52,14 +59,21 @@ Page({
 
     }
     wx.showLoading({
-      title: '正在加载',
+      title: '加载中',
     })
     kehuCollectApi.getPage(model).then(res => {
       this.setData({
         buyList: this.data.rentPageNo == 1 ? res.list : this.data.buyList.concat(res.list),
         lastPage: res.lastPage
       })
-      wx.hideLoading()
+      wx.hideLoading();
+      if (res.lastPage) {
+        wx.showToast({
+          title: '没有更多啦',
+          icon: 'none',
+          duration: 1000
+        })
+      }
     })
   },
   /**

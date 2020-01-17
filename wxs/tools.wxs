@@ -6,7 +6,7 @@ var split = function(str, p) {
   return str.split(p)
 }
 // 2019-12-30 17:24:12=>2019/12/30
-var formatDate = function(str,str1) {
+var formatDate = function(str, str1) {
   var date = str.substring(0, 10)
   return date.split("-").join(str1)
 }
@@ -19,8 +19,8 @@ var toFixed = function(str, num) {
   }
 }
 
-var floorName = function (floor) {
-  console.log("floor",floor)
+var floorName = function(floor) {
+  console.log("floor", floor)
   if (floor >= 1 && floor < 5) {
     return '低层'
   } else if (floor >= 5 && floor < 10) {
@@ -30,15 +30,15 @@ var floorName = function (floor) {
   }
 }
 
-var timeToZn=function(str){
-  var time= str.substring(0,10);
+var timeToZn = function(str) {
+  var time = str.substring(0, 10);
   var arr = time.split("-");
-  return arr[0]+'年'+arr[1]+"月"+arr[2]+"日"
+  return arr[0] + '年' + arr[1] + "月" + arr[2] + "日"
 
 }
 
-var toStar=function(str){
-  if(str==1){
+var toStar = function(str) {
+  if (str == 1) {
     return "一星"
 
   } else if (str == 2) {
@@ -53,10 +53,21 @@ var toStar=function(str){
   } else if (str == 5) {
     return "五星"
 
-  }else{
+  } else {
     return "暂无"
   }
 
+}
+
+var hidePhone = function(tel) {
+
+  // var reg = '/^(\d{3})\d{4}(\d{4})$/';
+
+  // tel = tel.replace(reg, "$1****$2");
+
+  var str2 = tel.substring(0, 3) + "****" + tel.substring(7);
+  console.log("电话", str2)
+  return str2
 }
 
 module.exports = {
@@ -66,5 +77,6 @@ module.exports = {
   toFixed: toFixed,
   floorName: floorName,
   timeToZn: timeToZn,
-  toStar: toStar
+  toStar: toStar,
+  hidePhone: hidePhone,
 };
